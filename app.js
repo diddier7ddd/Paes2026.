@@ -742,6 +742,26 @@ const SUBJECTS = {
 };
 const SUBJECT_KEYS = Object.keys(SUBJECTS); // ['bio','fis','qui']
 
+// Duración real del ensayo final: la PAES electiva de Ciencias dura
+// 2 horas y 40 minutos (80 preguntas) según el temario oficial DEMRE.
+const EXAM_MINUTES = 160;
+
+// ---------------------------------------------------------------------
+// UTILIDADES: barajar / muestrear arreglos (usadas por el motor de
+// ensayos y cuestionarios para randomizar preguntas y alternativas).
+// ---------------------------------------------------------------------
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i = a.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+function sample(arr, n){
+  return shuffle(arr).slice(0, Math.max(0, Math.min(n, arr.length)));
+}
+
 // ---------------------------------------------------------------------
 // Índice plano de todas las preguntas (para ensayos y ensayo final),
 // combinando las tres asignaturas.
@@ -763,7 +783,7 @@ const ALL_QUESTIONS = SUBJECT_KEYS.reduce((acc,k)=>acc.concat(SUBJECTS[k].allQue
 // ---------------------------------------------------------------------
 // PROGRESO (localStorage)
 // ---------------------------------------------------------------------
-const STORAGE_KEY = 'paesCiencias_progress_v2';
+const STORAGE_KEY = 'paesCiencias_progress_v3';
 function loadProgress(){
   try{
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -775,6 +795,17 @@ function saveProgress(){
   try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); }catch(e){}
 }
 let progress = loadProgress();
+
+// Reinicia todo el progreso guardado EN ESTE NAVEGADOR/DISPOSITIVO (subtemas, unidades,
+// ensayo final y el historial de ensayos). Pensado para que una persona nueva que use
+// este mismo computador/navegador pueda empezar de cero sin borrar el sitio a mano.
+function resetProgress(){
+  const ok = confirm('¿Reiniciar todo tu progreso en este dispositivo?\n\nSe borrarán tus subtemas aprobados, cuestionarios de unidad, ensayo final e historial de ensayos. Esta acción no se puede deshacer.');
+  if(!ok) return;
+  progress = { subtopics:{}, units:{}, finalExam:{done:false,attempts:0}, ensayos:[] };
+  saveProgress();
+  go(renderProgress);
+}
 
 function subtopicById(subjectKey, subId){
   const subj = SUBJECTS[subjectKey];
@@ -1180,7 +1211,7 @@ function renderTemarioSubtopics(subjectKey, unitId){
     <div class="section-head">
       <h2>${u.name}</h2>
     </div>
-    <p style="color:var(--muted); font-family:'Space Grotesk',sans-serif; font-size:14px; max-width:640px; margin-top:-14px;">${u.intro}</p>
+    ${u.intro ? `<p style="color:var(--muted); font-family:'Space Grotesk',sans-serif; font-size:14px; max-width:640px; margin-top:-14px;">${u.intro}</p>` : ''}
     <div class="grid" style="margin-top:24px;">
       ${u.subtopics.map((s,i)=>{
         const p = progress.subtopics[s.id];
@@ -1327,7 +1358,11 @@ function renderProgress(){
   const avgPct = ensayos.length ? Math.round(ensayos.reduce((a,e)=>a+(e.correct/e.total),0)/ensayos.length*100) : null;
 
   app.innerHTML = `
-    <div class="section-head"><h2>Tu progreso</h2></div>
+    <div class="section-head">
+      <h2>Tu progreso</h2>
+      <button class="nav-btn" onclick="resetProgress()" style="border-color:var(--rust); color:var(--rust);">↺ Reiniciar progreso</button>
+    </div>
+    <p class="empty-note" style="margin:-18px 0 26px;">Este progreso se guarda solo en este navegador y este dispositivo: si abres la web en otro computador o navegador, partirá desde 0%.</p>
 
     <div class="prog-block">
       <div class="prog-top">
