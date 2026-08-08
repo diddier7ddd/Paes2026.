@@ -735,16 +735,1770 @@ const QUI_UNITS = [
   ] }
 ];
 
+// =======================================================================
+// MÓDULO DE MATEMÁTICA (M1) — añadido en la expansión de matemáticas.
+// Estructura idéntica a BIO_UNITS/FIS_UNITS/QUI_UNITS: se integra al motor
+// existente (renderTemarioUnits, renderTemarioSubtopics, renderSubtopicDetail,
+// startSubtopicQuiz, startUnitQuiz) sin modificar esas funciones genéricas.
+// =======================================================================
+const MAT_UNITS = [
+// =======================================================================
+// UNIDAD 1 — NÚMEROS (m1)
+// Subtemas: m1s1 Conjunto de los números enteros y racionales,
+//           m1s2 Porcentaje, m1s3 Potencias y raíces enésimas.
+// =======================================================================
+{
+  id: "m1",
+  name: "Números",
+  intro: "Las operaciones y el orden en los números enteros, racionales, el cálculo de porcentajes y las potencias y raíces son la base sobre la que se construye todo lo demás en la PAES de Matemática M1: si estos temas quedan firmes, los tres ejes siguientes son mucho más fáciles.",
+  subtopics: [
+
+    // -----------------------------------------------------------------
+    // m1s1 — Conjunto de los números enteros y racionales
+    // -----------------------------------------------------------------
+    {
+      id: "m1s1",
+      name: "Conjunto de los números enteros y racionales",
+      videoUrl: "https://www.youtube.com/watch?v=-z7lwZJrZUQ",
+      videoTitle: "Conjunto de los ENTEROS y RACIONALES | PAES M1 de MATEMÁTICA | Eje: Números",
+      content: `<p>Antes de resolver cualquier problema de la PAES necesitas tener muy firme algo que parece básico: qué tipos de números existen y cómo se operan. Esta guía parte literalmente desde cero, así que aunque sientas que "esto ya lo sé", igual revisa las reglas de signos: son la causa número uno de errores en toda la prueba de Matemática.</p>
+
+<h4 style="margin-top:22px;color:#4a3208;">¿Qué es un número entero?</h4>
+<p>Los <strong>números naturales</strong> (1, 2, 3, 4...) sirven para contar. Cuando les agregamos el cero y los negativos, obtenemos el conjunto de los <strong>números enteros</strong>, que se representa con el símbolo <strong>ℤ</strong>:</p>
+<div class="calc">ℤ = {..., −3, −2, −1, 0, 1, 2, 3, ...}</div>
+<p>Los enteros negativos aparecen todo el tiempo fuera de la sala de clases: la temperatura bajo cero, un saldo en contra en la cuenta bancaria, la profundidad bajo el nivel del mar, un piso de subterráneo (−1, −2...). El cero no es positivo ni negativo: es el punto de referencia.</p>
+
+<div class="fig"><div class="fig-frame"><svg role="img" aria-label="Recta numérica con números enteros y racionales ubicados, mostrando el orden de izquierda a derecha" viewBox="0 0 900 220" xmlns="http://www.w3.org/2000/svg">
+<rect x="6" y="6" width="888" height="208" rx="18" fill="#fbf2e6" fill-opacity="0.35"/>
+<line x1="60" y1="120" x2="840" y2="120" stroke="#6b4a10" stroke-width="2.5"/>
+<path d="M 840 120 L 824 112 L 824 128 Z" fill="#6b4a10"/>
+<path d="M 60 120 L 76 112 L 76 128 Z" fill="#6b4a10"/>
+<text x="852" y="126" font-family="Georgia,serif" font-size="15" fill="#5a3d0d">+</text>
+<text x="42" y="126" font-family="Georgia,serif" font-size="15" fill="#5a3d0d">−</text>
+<!-- marcas enteras -->
+<line x1="120" y1="112" x2="120" y2="128" stroke="#6b4a10" stroke-width="2"/>
+<text x="120" y="150" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="15" fill="#5a3d0d">−3</text>
+<line x1="220" y1="112" x2="220" y2="128" stroke="#6b4a10" stroke-width="2"/>
+<text x="220" y="150" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="15" fill="#5a3d0d">−2</text>
+<line x1="320" y1="112" x2="320" y2="128" stroke="#6b4a10" stroke-width="2"/>
+<text x="320" y="150" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="15" fill="#5a3d0d">−1</text>
+<line x1="420" y1="106" x2="420" y2="134" stroke="#8a3550" stroke-width="3"/>
+<text x="420" y="150" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="15" font-weight="700" fill="#8a3550">0</text>
+<line x1="520" y1="112" x2="520" y2="128" stroke="#6b4a10" stroke-width="2"/>
+<text x="520" y="150" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="15" fill="#5a3d0d">1</text>
+<line x1="620" y1="112" x2="620" y2="128" stroke="#6b4a10" stroke-width="2"/>
+<text x="620" y="150" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="15" fill="#5a3d0d">2</text>
+<line x1="720" y1="112" x2="720" y2="128" stroke="#6b4a10" stroke-width="2"/>
+<text x="720" y="150" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="15" fill="#5a3d0d">3</text>
+<!-- racionales -->
+<circle cx="370" cy="120" r="7" fill="#8a3550"/>
+<text x="370" y="98" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="13.5" fill="#8a3550">−1,5</text>
+<circle cx="570" cy="120" r="7" fill="#3f6236"/>
+<text x="570" y="98" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="13.5" fill="#3f6236">3/2</text>
+<circle cx="670" cy="120" r="7" fill="#3f6236"/>
+<text x="670" y="98" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="13.5" fill="#3f6236">7/3</text>
+<text x="450" y="190" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-style="italic" fill="#6b4a10">los puntos en rosa/verde son racionales no enteros: también viven en la recta, entre los enteros</text>
+</svg></div><figcaption><strong>Figura 1.</strong> En la recta numérica, cada número entero tiene su lugar fijo; los racionales no enteros (fracciones, decimales) se ubican en los espacios intermedios.</figcaption></div>
+
+<h4 style="margin-top:24px;color:#4a3208;">Valor absoluto y orden</h4>
+<p>El <strong>valor absoluto</strong> de un número, escrito |a|, es su distancia al cero en la recta numérica — siempre positivo o cero, nunca negativo. Por ejemplo, |−7| = 7 y |7| = 7: ambos están a 7 unidades del cero.</p>
+<p>Para <strong>comparar</strong> enteros, el que está más a la derecha en la recta es siempre mayor, sin importar el valor absoluto. Este es el error más común de todo el eje: muchos estudiantes piensan que −8 es "más grande" que −3 porque el 8 es mayor que el 3, pero es al revés: −8 está más a la izquierda, así que −8 < −3.</p>
+
+<div class="note-box"><p class="nb-title">Atención</p><p>Con negativos, "mayor valor absoluto" casi siempre significa "menor número". −20 °C es mucho más frío (menor) que −2 °C, aunque 20 sea mayor que 2.</p></div>
+
+<h4 style="margin-top:22px;color:#4a3208;">Operaciones con enteros: la regla de los signos</h4>
+<p>Para <strong>sumar o restar</strong>, lo más simple es pensar en "restar" como "sumar el opuesto": restar un número es lo mismo que sumar ese mismo número cambiado de signo. Así, toda resta se convierte en una suma:</p>
+<table class="ref-table">
+<tr><th>Situación</th><th>Regla</th><th>Ejemplo</th></tr>
+<tr><td>Sumar dos números del <strong>mismo signo</strong></td><td>se suman los valores y se conserva el signo común</td><td>(−4) + (−9) = −13</td></tr>
+<tr><td>Sumar dos números de <strong>distinto signo</strong></td><td>se restan los valores absolutos (mayor menos menor) y se deja el signo del que tiene mayor valor absoluto</td><td>(−10) + 4 = −6</td></tr>
+<tr><td>Restar un número</td><td>se suma su opuesto: a − b = a + (−b)</td><td>5 − (−3) = 5 + 3 = 8</td></tr>
+</table>
+
+<p>Para <strong>multiplicar o dividir</strong>, la regla depende solo de si los signos son iguales o distintos, sin importar los valores:</p>
+<table class="ref-table">
+<tr><th>Signos</th><th>Resultado</th></tr>
+<tr><td>(+) × (+) o (+) ÷ (+)</td><td><strong>+</strong></td></tr>
+<tr><td>(−) × (−) o (−) ÷ (−)</td><td><strong>+</strong></td></tr>
+<tr><td>(+) × (−) o (+) ÷ (−)</td><td><strong>−</strong></td></tr>
+<tr><td>(−) × (+) o (−) ÷ (+)</td><td><strong>−</strong></td></tr>
+</table>
+
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Calcula: −8 + 5 − (−3)</p>
+<div class="calc">−8 + 5 − (−3)<br>= −8 + 5 + 3  <span style="color:var(--muted);">(restar −3 es sumar +3)</span><br>= −3 + 3<br><span class="r">= 0</span></div>
+</div>
+
+<h4 style="margin-top:24px;color:#4a3208;">¿Qué es un número racional?</h4>
+<p>Un número es <strong>racional</strong> si se puede escribir como una fracción a/b, donde a y b son números enteros y b es distinto de cero. El conjunto de los racionales se anota <strong>ℚ</strong>. Todo entero es racional (por ejemplo, −5 = −5/1), así que ℤ está "contenido" dentro de ℚ: todos los enteros son racionales, pero no todos los racionales son enteros.</p>
+<div class="concept-box">
+<p class="cx-title">Glosario rápido</p>
+<dl>
+<dt>Fracción propia</dt><dd>el numerador es menor que el denominador (ej: 3/5); su valor está entre −1 y 1.</dd>
+<dt>Fracción impropia</dt><dd>el numerador es mayor o igual que el denominador (ej: 7/4); se puede escribir como número mixto (7/4 = 1 3/4).</dd>
+<dt>Fracciones equivalentes</dt><dd>representan la misma cantidad aunque se vean distintas (ej: 2/4 = 1/2); se obtienen multiplicando o dividiendo numerador y denominador por el mismo número.</dd>
+<dt>Decimal exacto</dt><dd>tiene una cantidad finita de cifras decimales (ej: 0,75).</dd>
+<dt>Decimal periódico</dt><dd>tiene una cifra o bloque de cifras que se repite para siempre (ej: 0,333... = 0,&#773;3, o 0,454545... = 0,&#773;45).</dd>
+<dt>Decimal semiperiódico</dt><dd>tiene cifras que no se repiten justo después de la coma, y luego un bloque que sí se repite (ej: 0,1666... = 0,1&#773;6).</dd>
+</dl>
+</div>
+
+<h4 style="margin-top:22px;color:#4a3208;">Convertir entre fracción y decimal</h4>
+<p>De <strong>fracción a decimal</strong>: se divide el numerador entre el denominador. De <strong>decimal exacto a fracción</strong>: el número, sin la coma, va como numerador; el denominador es 1 seguido de tantos ceros como cifras decimales tenía.</p>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Escribe 0,75 como fracción irreducible.</p>
+<div class="calc">0,75 tiene 2 cifras decimales → denominador 100<br>0,75 = 75/100<br>simplificando por 25: 75÷25 = 3, 100÷25 = 4<br><span class="r">0,75 = 3/4</span></div>
+</div>
+<p>Para un <strong>decimal periódico puro</strong> (el período empieza justo después de la coma), la fracción generatriz se arma así: numerador = número completo (sin coma) menos la parte entera, denominador = tantos 9 como cifras tenga el período.</p>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Escribe 0,&#773;3 = 0,3333... como fracción.</p>
+<div class="calc">Parte entera: 0. Período: 3 (una cifra) → un solo 9 en el denominador<br>numerador = 3 − 0 = 3<br><span class="r">0,3333... = 3/9 = 1/3</span></div>
+</div>
+
+<h4 style="margin-top:22px;color:#4a3208;">Jerarquía de operaciones</h4>
+<p>Cuando una expresión combina varias operaciones, no se resuelve de izquierda a derecha sin más: existe un orden obligatorio, igual en enteros que en racionales:</p>
+<div class="calc">1) Paréntesis (de adentro hacia afuera)<br>2) Potencias y raíces<br>3) Multiplicaciones y divisiones, en el orden en que aparecen (de izquierda a derecha)<br>4) Sumas y restas, en el orden en que aparecen (de izquierda a derecha)</div>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Calcula: 2 + 3 × (−4) − (−6) ÷ 2</p>
+<div class="calc">2 + 3×(−4) − (−6)÷2<br>= 2 + (−12) − (−3)  <span style="color:var(--muted);">(multiplicaciones/divisiones primero)</span><br>= 2 − 12 + 3<br><span class="r">= −7</span></div>
+</div>
+
+<div class="note-box"><p class="nb-title">Atención</p><p>"Multiplicaciones y divisiones antes que sumas y restas" NO significa "todas las multiplicaciones antes que todas las divisiones": esas dos van al mismo nivel y se resuelven en el orden en que aparecen, de izquierda a derecha. Lo mismo pasa entre sumas y restas.</p></div>`,
+      formulario: `<div class="f-item"><span class="f-name">Signos iguales (suma)</span><span>se suman los valores, se conserva el signo</span></div>
+<div class="f-item"><span class="f-name">Signos distintos (suma)</span><span>se restan los valores (mayor − menor), signo del mayor</span></div>
+<div class="f-item"><span class="f-name">Restar un número</span><span>a − b = a + (−b)</span></div>
+<div class="f-item"><span class="f-name">Multiplicación / división</span><span>igual signo → resultado +; distinto signo → resultado −</span></div>
+<div class="f-item"><span class="f-name">Valor absoluto</span><span>|a| = a si a ≥ 0; |a| = −a si a &lt; 0</span></div>
+<div class="f-item"><span class="f-name">Fracción → decimal</span><span>se divide numerador ÷ denominador</span></div>
+<div class="f-item"><span class="f-name">Decimal exacto → fracción</span><span>cifras sin coma ÷ (1 seguido de tantos ceros como decimales)</span></div>
+<div class="f-item"><span class="f-name">Decimal periódico puro → fracción</span><span>(número completo − parte entera) ÷ (tantos 9 como cifras del período)</span></div>
+<div class="f-item"><span class="f-name">Jerarquía de operaciones</span><span>paréntesis → potencias/raíces → ×÷ (izq. a der.) → +− (izq. a der.)</span></div>`,
+      questions: [
+        { q:"Calcula: −8 + 5 − (−3)", o:["−16","−6","0","6"], c:2, e:"Restar −3 equivale a sumar 3: −8 + 5 + 3 = −3 + 3 = 0." },
+        { q:"Calcula: (−4) × (−6) ÷ (−3)", o:["−8","8","−2","24"], c:0, e:"(−4)×(−6) = 24 (signos iguales, resultado positivo); 24 ÷ (−3) = −8 (signos distintos, resultado negativo)." },
+        { q:"Calcula: 2 + 3 × (−4) − (−6) ÷ 2", o:["−13","1","−7","−1"], c:2, e:"Primero las multiplicaciones/divisiones: 3×(−4) = −12 y (−6)÷2 = −3. Luego: 2 + (−12) − (−3) = 2 − 12 + 3 = −7." },
+        { q:"Calcula: 2/3 + 1/6", o:["3/9","5/6","1/2","3/6"], c:1, e:"Se amplifica 2/3 a sextos: 2/3 = 4/6. Luego 4/6 + 1/6 = 5/6, que ya es irreducible." },
+        { q:"Expresa 0,75 como fracción irreducible", o:["75/100","7/5","3/4","15/2"], c:2, e:"0,75 = 75/100; simplificando por 25 (75÷25=3, 100÷25=4) queda 3/4." },
+        { q:"Expresa 0,3333... como fracción irreducible", o:["1/3","3/10","33/100","1/9"], c:0, e:"Es un decimal periódico puro de período 3: numerador = 3 − 0 = 3, denominador = 9 (una cifra periódica). 3/9 se simplifica a 1/3." },
+        { q:"Ordena de menor a mayor: −3/4, −0,7 y −4/5", o:["−0,7 < −3/4 < −4/5","−4/5 < −3/4 < −0,7","−3/4 < −4/5 < −0,7","−4/5 < −0,7 < −3/4"], c:1, e:"En decimales: −3/4 = −0,75; −4/5 = −0,80. Comparando −0,80 < −0,75 < −0,70, el orden de menor a mayor es −4/5 < −3/4 < −0,7." },
+        { q:"Un submarino se encuentra a 120 m bajo el nivel del mar (−120 m). Desciende 45 m más y luego asciende 78 m. ¿A qué profundidad queda respecto del nivel del mar?", o:["−87 m","−243 m","−3 m","−153 m"], c:0, e:"Se modela con enteros: −120 − 45 + 78 = −165 + 78 = −87. Queda a 87 m bajo el nivel del mar." },
+        { q:"A las 6:00 AM la temperatura en una ciudad era de −4 °C. Durante el día subió 11 °C y, al anochecer, bajó 6 °C respecto de ese máximo. ¿Cuál fue la temperatura al anochecer?", o:["1 °C","13 °C","−9 °C","−1 °C"], c:0, e:"Se modela como −4 + 11 − 6 = 7 − 6 = 1. La temperatura al anochecer fue de 1 °C." },
+        { q:"Un estudiante afirma que −5 − (−8) = −13, razonando que 'restar hace todo más negativo'. ¿Es correcto ese razonamiento?", o:["Sí, porque toda resta entre negativos da un resultado más negativo","No, porque restar −8 equivale a sumar +8, y −5 + 8 = 3","Sí, porque −13 está más a la izquierda en la recta numérica","No, porque el resultado correcto es −3"], c:1, e:"Restar un número es sumar su opuesto: −5 − (−8) = −5 + 8 = 3. El razonamiento de 'restar siempre da más negativo' es falso cuando se resta un número negativo." },
+        { q:"Calcula: (2/5) ÷ (3/10)", o:["6/50","4/3","3/25","10/15"], c:1, e:"Dividir por una fracción equivale a multiplicar por su inverso: (2/5) × (10/3) = 20/15, que simplificado por 5 da 4/3." },
+        { q:"¿Cuál de los siguientes números NO pertenece al conjunto de los números racionales (ℚ)?", o:["−3","7/2","0,5","√2"], c:3, e:"√2 es un número irracional: no puede escribirse como fracción de dos enteros (su expansión decimal es infinita y no periódica). −3, 7/2 y 0,5 sí son racionales." },
+        { q:"Calcula: (−15) ÷ 3 + 2 × (−4)", o:["−13","28","−3","4"], c:0, e:"Primero las multiplicaciones/divisiones: (−15)÷3=−5 y 2×(−4)=−8. Luego: −5 + (−8) = −13." },
+        { q:"Calcula: 3/4 × 2/9", o:["5/13","1/6","6/36","3/18"], c:1, e:"3/4 × 2/9 = 6/36, que simplificado (dividiendo por 6) da 1/6." },
+        { q:"Un buzo se sumerge desde la superficie (0 m) hasta −35 m y luego asciende 12 m. ¿A qué profundidad respecto del nivel del mar queda?", o:["−23 m","−47 m","−12 m","23 m"], c:0, e:"Se modela como −35 + 12 = −23. Queda a 23 m bajo el nivel del mar." },
+        { q:"Expresa 1,25 como fracción irreducible", o:["5/4","125/100","25/20","1 y 1/4 solamente, no como fracción impropia"], c:0, e:"1,25 = 125/100; simplificando por 25, queda 5/4 (una fracción impropia, ya que 1,25 es mayor que 1)." },
+        { q:"Calcula: 15 − 22 + 8", o:["−1","1","−15","29"], c:1, e:"15 − 22 = −7; −7 + 8 = 1." },
+        { q:"Calcula: (−7) × 4 − (−15) ÷ 5", o:["−25","−31","−22","−19"], c:0, e:"(−7)×4 = −28. (−15)÷5 = −3. Luego: −28 − (−3) = −28 + 3 = −25." },
+        { q:"Ordena de mayor a menor: −12, 5, −8, 0", o:["5, 0, −8, −12","−12, −8, 0, 5","5, −8, 0, −12","0, 5, −8, −12"], c:0, e:"En la recta numérica, mientras más a la derecha, mayor el número: 5 > 0 > −8 > −12." },
+        { q:"Simplifica la fracción 36/48", o:["3/4","6/8","18/24","4/3"], c:0, e:"El máximo común divisor entre 36 y 48 es 12: 36÷12=3, 48÷12=4, quedando 3/4 (irreducible)." },
+        { q:"Calcula: 5/8 + 3/4", o:["8/12","1","11/8","7/8"], c:2, e:"Se amplifica 3/4 a octavos: 3/4 = 6/8. Luego 5/8 + 6/8 = 11/8." },
+        { q:"Calcula: 7/10 − 2/5", o:["5/5","3/10","1/2","9/10"], c:1, e:"Se amplifica 2/5 a décimos: 2/5 = 4/10. Luego 7/10 − 4/10 = 3/10." },
+        { q:"Expresa 0,1666... (0,1\u03046) como fracción irreducible", o:["1/6","16/90","1/9","5/30"], c:0, e:"Es un decimal semiperiódico: 1 cifra no periódica (el 1) y 1 cifra periódica (el 6). Numerador = 16 − 1 = 15; denominador = 90 (un 9 por la cifra periódica, un 0 por la no periódica). 15/90 se simplifica a 1/6." },
+        { q:"Un ascensor está en el piso 3. Baja 5 pisos y luego sube 2 pisos. ¿En qué piso queda?", o:["Piso 0 (planta baja)","Piso 6","Piso −6","Piso 4"], c:0, e:"Se modela como 3 − 5 + 2 = −2 + 2 = 0. Queda en el piso 0, la planta baja." },
+        { q:"Un estudiante afirma: 'todo número racional es entero, ya que por ejemplo 4/2 = 2'. ¿Es correcto ese razonamiento?", o:["Sí, todo racional es entero", "No: es al revés — todo entero es racional, pero no todo racional es entero (ej: 1/2 no es entero)", "Sí, siempre que el numerador sea par", "No, ningún racional es entero"], c:1, e:"El ejemplo 4/2=2 es un caso donde la fracción SÍ resulta entera, pero eso no prueba la afirmación general. La relación correcta es al revés: ℤ está contenido en ℚ (todo entero es racional), pero hay racionales como 1/2 que no son enteros." },
+      ]
+    },
+
+    // -----------------------------------------------------------------
+    // m1s2 — Porcentaje
+    // -----------------------------------------------------------------
+    {
+      id: "m1s2",
+      name: "Porcentaje",
+      videoUrl: "https://www.youtube.com/watch?v=aIwIw0TFiBM",
+      videoTitle: "PORCENTAJES | PAES M1 de MATEMÁTICA | Eje: Números",
+      content: `<p>El porcentaje es, probablemente, el contenido de toda la PAES de Matemática con más aplicaciones directas a la vida diaria: descuentos, IVA, intereses, estadísticas de noticias. La buena noticia es que, una vez que entiendes la idea central, casi todos los problemas se resuelven con el mismo procedimiento.</p>
+
+<h4 style="margin-top:22px;color:#4a3208;">¿Qué significa "por ciento"?</h4>
+<p>La palabra <strong>porcentaje</strong> viene del latín "por cada cien". Decir que algo es el <strong>25%</strong> de una cantidad significa, literalmente, "25 de cada 100 partes iguales" de esa cantidad. Matemáticamente, un porcentaje es una fracción con denominador 100, y por eso siempre se puede transformar en fracción o en decimal:</p>
+<div class="calc">25% = 25/100 = 1/4 = 0,25<br>90% = 90/100 = 9/10 = 0,90<br>150% = 150/100 = 3/2 = 1,50</div>
+<p>Fíjate en el último caso: un porcentaje puede ser mayor que 100% (por ejemplo, cuando algo "más que se duplicó"), y eso corresponde a un decimal mayor que 1.</p>
+
+<h4 style="margin-top:22px;color:#4a3208;">Calcular el porcentaje de una cantidad</h4>
+<p>Para calcular el <strong>k% de una cantidad C</strong>, se multiplica la cantidad por el decimal equivalente al porcentaje:</p>
+<div class="calc">k% de C = C × (k/100)</div>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>¿Cuánto es el 18% de 45.000?</p>
+<div class="calc">18% de 45.000 = 45.000 × 0,18<br><span class="r">= 8.100</span></div>
+</div>
+
+<h4 style="margin-top:22px;color:#4a3208;">Descuentos y aumentos porcentuales</h4>
+<p>Un <strong>descuento</strong> del k% reduce el precio original; un <strong>aumento</strong> del k% lo incrementa. En ambos casos, lo más rápido es multiplicar directamente por un solo factor, sin calcular el porcentaje por separado y después restarlo o sumarlo:</p>
+<table class="ref-table">
+<tr><th>Situación</th><th>Factor multiplicador</th><th>Ejemplo (k = 20%)</th></tr>
+<tr><td>Descuento del k%</td><td>(1 − k/100)</td><td>precio final = precio original × 0,80</td></tr>
+<tr><td>Aumento del k%</td><td>(1 + k/100)</td><td>precio final = precio original × 1,20</td></tr>
+</table>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Una polera cuesta $14.000 y tiene un 30% de descuento. ¿Cuál es el precio final?</p>
+<div class="calc">factor = 1 − 30/100 = 1 − 0,30 = 0,70<br>precio final = 14.000 × 0,70<br><span class="r">= $9.800</span></div>
+</div>
+
+<h4 style="margin-top:22px;color:#4a3208;">Descuentos o aumentos sucesivos</h4>
+<p>Un error muy frecuente: aplicar dos descuentos seguidos (por ejemplo, "20% y luego 10%") NO es lo mismo que aplicar un descuento único del 30%. Cada descuento se calcula sobre el precio que queda después del anterior, así que los factores se multiplican entre sí, no se suman los porcentajes.</p>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Un producto de $20.000 tiene un descuento del 20% y, sobre el precio ya rebajado, un segundo descuento del 10%. ¿Cuál es el precio final? ¿Equivale esto a un solo descuento del 30%?</p>
+<div class="calc">1er descuento: 20.000 × 0,80 = 16.000<br>2do descuento: 16.000 × 0,90 = 14.400<br><span class="r">Precio final: $14.400</span><br><br>Un descuento único del 30% habría dado: 20.000 × 0,70 = $14.000<br><span class="r">No son iguales: dos descuentos sucesivos de 20% y 10% equivalen a un descuento único del 28%, no del 30%.</span></div>
+</div>
+
+<h4 style="margin-top:22px;color:#4a3208;">Encontrar el porcentaje o el total (el "problema inverso")</h4>
+<p>No siempre se pide calcular el porcentaje de algo: a veces se conoce la parte y hay que encontrar qué porcentaje representa, o se conoce la parte y el porcentaje y hay que encontrar el total. En todos los casos sirve la misma relación, despejando lo que falte:</p>
+<div class="calc">parte = total × (porcentaje/100)</div>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>En un curso de 40 estudiantes, 24 aprobaron una evaluación. ¿Qué porcentaje del curso aprobó?</p>
+<div class="calc">porcentaje = (parte/total) × 100 = (24/40) × 100<br>= 0,6 × 100<br><span class="r">= 60%</span></div>
+</div>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>El 15% de los ahorros de Camila equivale a $27.000. ¿Cuánto tiene ahorrado en total?</p>
+<div class="calc">27.000 = total × 0,15<br>total = 27.000 ÷ 0,15<br><span class="r">= $180.000</span></div>
+</div>
+
+<div class="note-box"><p class="nb-title">Atención</p><p>Si un precio sube 50% y después baja 50%, NO vuelve al precio original: sube a 1,5 veces y luego baja a 0,5 × 1,5 = 0,75 veces el precio inicial, es decir, queda un 25% más bajo que al comienzo. Los porcentajes sucesivos nunca se cancelan sumando y restando el mismo número.</p></div>`,
+      formulario: `<div class="f-item"><span class="f-name">k% como decimal</span><span>k% = k/100</span></div>
+<div class="f-item"><span class="f-name">k% de una cantidad C</span><span>k% de C = C × (k/100)</span></div>
+<div class="f-item"><span class="f-name">Descuento del k%</span><span>precio final = precio original × (1 − k/100)</span></div>
+<div class="f-item"><span class="f-name">Aumento del k%</span><span>precio final = precio original × (1 + k/100)</span></div>
+<div class="f-item"><span class="f-name">Descuentos/aumentos sucesivos</span><span>se multiplican los factores, uno tras otro (no se suman los porcentajes)</span></div>
+<div class="f-item"><span class="f-name">¿Qué % es la parte del total?</span><span>porcentaje = (parte/total) × 100</span></div>
+<div class="f-item"><span class="f-name">Encontrar el total</span><span>total = parte ÷ (porcentaje/100)</span></div>`,
+      questions: [
+        { q:"Calcula el 18% de 45.000", o:["6.300","8.100","810","81.000"], c:1, e:"18% de 45.000 = 45.000 × 0,18 = 8.100." },
+        { q:"Una polera cuesta $14.000 y tiene un 30% de descuento. ¿Cuál es su precio final?", o:["$4.200","$9.800","$10.200","$18.200"], c:1, e:"Precio final = 14.000 × (1 − 0,30) = 14.000 × 0,70 = $9.800." },
+        { q:"Un artículo de $50.000 aumenta su precio en un 12%. ¿Cuál es el nuevo precio?", o:["$56.000","$44.000","$50.012","$62.000"], c:0, e:"Precio nuevo = 50.000 × (1 + 0,12) = 50.000 × 1,12 = $56.000." },
+        { q:"Un producto de $20.000 recibe un descuento del 20% y, sobre ese precio ya rebajado, un segundo descuento del 10%. ¿Cuál es el precio final?", o:["$14.000","$14.400","$13.600","$16.000"], c:1, e:"Primer descuento: 20.000 × 0,80 = 16.000. Segundo descuento sobre ese valor: 16.000 × 0,90 = $14.400. No equivale a un descuento único de 30% (que daría $14.000)." },
+        { q:"En un curso de 40 estudiantes, 24 aprobaron una evaluación. ¿Qué porcentaje del curso aprobó?", o:["24%","40%","60%","16%"], c:2, e:"Porcentaje = (24/40) × 100 = 0,6 × 100 = 60%." },
+        { q:"El 15% de los ahorros de Camila equivale a $27.000. ¿Cuánto tiene ahorrado en total?", o:["$40.500","$180.000","$4.050","$27.150"], c:1, e:"27.000 = total × 0,15, entonces total = 27.000 ÷ 0,15 = $180.000." },
+        { q:"Un precio sube un 50% y, sobre el nuevo precio, baja un 50%. Respecto del precio original, el precio final queda:", o:["Igual al precio original", "25% más bajo que el original", "25% más alto que el original", "50% más bajo que el original"], c:1, e:"Sube: original × 1,5. Baja: (original × 1,5) × 0,5 = original × 0,75, es decir, un 25% más bajo que el precio original. Los porcentajes sucesivos no se cancelan sumando y restando el mismo número." },
+        { q:"Una tienda anuncia 'IVA incluido' en un producto de $23.800, y el IVA en Chile corresponde a un 19% sobre el precio neto. ¿Cuál es, aproximadamente, el precio neto (sin IVA) del producto?", o:["$19.278", "$20.000", "$28.322", "$4.522"], c:1, e:"Si el precio con IVA es el neto multiplicado por 1,19, entonces neto = 23.800 ÷ 1,19 = 20.000. (No se puede simplemente restar el 19% de 23.800, porque ese 19% se calcula sobre el neto, no sobre el precio final)." },
+        { q:"Un vendedor afirma: 'Le hago un 40% de descuento y, además, otro 40% adicional, así que en total el descuento es del 80%'. ¿Es correcta esta afirmación?", o:["Sí, los descuentos sucesivos siempre se suman", "No, el descuento total real es del 64%, menor que 80%", "No, el descuento total real es del 96%, mayor que 80%", "Sí, siempre que el segundo descuento se aplique el mismo día"], c:1, e:"El precio final queda en (1 − 0,40) × (1 − 0,40) = 0,60 × 0,60 = 0,36 del precio original, es decir, un descuento efectivo del 64%, no del 80%. Los descuentos sucesivos se multiplican, no se suman." },
+        { q:"La población de una localidad era de 8.000 habitantes y aumentó a 9.200 habitantes en un año. ¿Cuál fue el porcentaje de aumento?", o:["12%", "13%", "15%", "1.200%"], c:2, e:"Aumento = 9.200 − 8.000 = 1.200. Porcentaje de aumento = (1.200/8.000) × 100 = 15%." },
+        { q:"En una encuesta a 250 personas, el 64% dijo preferir el transporte público. ¿Cuántas personas de la encuesta prefieren el transporte público?", o:["16", "160", "64", "1,6"], c:1, e:"64% de 250 = 250 × 0,64 = 160 personas." },
+        { q:"Si el 8% de una cantidad es 96, ¿cuál es el 25% de esa misma cantidad?", o:["300", "1.200", "384", "24"], c:0, e:"Primero se halla el total: 96 = total × 0,08, por lo que total = 1.200. Luego, el 25% de 1.200 es 1.200 × 0,25 = 300." },
+        { q:"Calcula el 45% de 800", o:["45","360","400","3.600"], c:1, e:"45% de 800 = 800 × 0,45 = 360." },
+        { q:"Un artículo cuesta $36.000 y, tras un descuento, su precio final es $27.000. ¿Qué porcentaje de descuento se aplicó?", o:["9%","33%","25%","75%"], c:2, e:"El descuento en dinero fue 36.000−27.000=9.000. Porcentaje = (9.000/36.000)×100 = 25%." },
+        { q:"Un salario sube de $450.000 a $500.000. ¿Cuál es, aproximadamente, el porcentaje de aumento?", o:["10%","11,1%","50%","5,6%"], c:1, e:"Aumento = 500.000−450.000=50.000. Porcentaje = (50.000/450.000)×100 ≈ 11,1%. (Ojo: se divide por el valor ORIGINAL, 450.000, no por el nuevo)." },
+        { q:"El 30% de un número es 45. ¿Cuál es ese número?", o:["13,5","150","75","300"], c:1, e:"45 = número × 0,30, entonces número = 45 ÷ 0,30 = 150." },
+        { q:"Calcula el 60% de 350", o:["180","210","240","350"], c:1, e:"60% de 350 = 350 × 0,60 = 210." },
+        { q:"Un artículo de $18.000 sube un 15% de precio. ¿Cuál es el nuevo precio?", o:["$18.150","$20.700","$20.070","$19.500"], c:1, e:"Precio nuevo = 18.000 × (1 + 0,15) = 18.000 × 1,15 = $20.700." },
+        { q:"Un producto de $25.000 tiene un descuento del 12%. ¿Cuál es su precio final?", o:["$22.000","$24.700","$3.000","$28.000"], c:0, e:"Precio final = 25.000 × (1 − 0,12) = 25.000 × 0,88 = $22.000." },
+        { q:"En un curso de 32 estudiantes, 8 son hombres. ¿Qué porcentaje del curso son mujeres?", o:["8%","25%","75%","24%"], c:2, e:"Mujeres = 32 − 8 = 24. Porcentaje = (24/32) × 100 = 75%." },
+        { q:"De $80.000 ahorrados, una persona gasta el 35%. ¿Cuánto dinero le queda?", o:["$28.000","$45.000","$52.000","$55.000"], c:2, e:"Le queda el 65% del total: 80.000 × 0,65 = $52.000." },
+        { q:"El precio neto de un producto es $45.000. Si se le agrega el 19% de IVA, ¿cuál es el precio final con IVA incluido?", o:["$53.550","$45.190","$8.550","$54.000"], c:0, e:"Precio con IVA = 45.000 × (1 + 0,19) = 45.000 × 1,19 = $53.550." },
+        { q:"Un precio de $10.000 recibe dos aumentos sucesivos del 10% cada uno. ¿Es esto lo mismo que un único aumento del 20%?", o:["Sí, ambos dan exactamente $12.000","No: los dos aumentos sucesivos dan $12.100, más que el aumento único de $12.000","No: los dos aumentos sucesivos dan $12.000, menos que el aumento único de $12.100","Sí, los porcentajes sucesivos siempre se pueden sumar"], c:1, e:"Dos aumentos del 10%: 10.000×1,1×1,1 = $12.100. Un aumento único del 20%: 10.000×1,2 = $12.000. Los aumentos sucesivos del mismo porcentaje dan un resultado mayor que sumar los porcentajes." },
+        { q:"Ana afirma: 'como bajé de peso un 10% y luego subí un 10%, volví a mi peso original'. ¿Es correcto ese razonamiento?", o:["Sí, los porcentajes se cancelan exactamente","No: queda un 1% por debajo del peso original","No: queda un 1% por encima del peso original","Sí, siempre que el peso inicial sea un número entero"], c:1, e:"Bajar 10%: factor 0,9. Subir 10% sobre ese nuevo valor: 0,9×1,1=0,99. Queda en el 99% del peso original, es decir, un 1% menos — los porcentajes sucesivos de subida y bajada no se cancelan." },
+        { q:"En una elección, el candidato A obtuvo 4.200 votos de un total de 12.000 votos válidos. ¿Qué porcentaje de los votos obtuvo?", o:["35%","42%","28,5%","4,2%"], c:0, e:"Porcentaje = (4.200/12.000) × 100 = 35%." },
+      ]
+    },
+
+    // -----------------------------------------------------------------
+    // m1s3 — Potencias y raíces enésimas
+    // -----------------------------------------------------------------
+    {
+      id: "m1s3",
+      name: "Potencias y raíces enésimas",
+      videoUrl: "https://www.youtube.com/watch?v=SPVOcwz-16I",
+      videoTitle: "Potencias y raíces enésimas | PAES M1 de MATEMÁTICA | Eje: Números",
+      content: `<p>Las potencias son una forma abreviada de escribir multiplicaciones repetidas, y las raíces son la operación que "deshace" una potencia. Este subtema junta ambas ideas porque en la PAES casi siempre aparecen combinadas: raíces escritas como potencias con exponente fraccionario, potencias de exponente negativo, etc.</p>
+
+<h4 style="margin-top:22px;color:#4a3208;">¿Qué es una potencia?</h4>
+<p>Una potencia <strong>aⁿ</strong> se lee "a elevado a n" y representa multiplicar la <strong>base</strong> a por sí misma, <strong>n</strong> veces (n es el <strong>exponente</strong>):</p>
+<div class="calc">2⁴ = 2 × 2 × 2 × 2 = 16<br>(−3)³ = (−3) × (−3) × (−3) = −27</div>
+<div class="note-box"><p class="nb-title">Atención</p><p>(−3)² = 9 (el paréntesis eleva todo el −3), pero −3² = −9 (aquí solo se eleva el 3, y el signo menos queda afuera, aplicado al final). El paréntesis cambia completamente el resultado.</p></div>
+
+<h4 style="margin-top:22px;color:#4a3208;">Propiedades de las potencias</h4>
+<p>Estas propiedades funcionan para bases racionales y exponentes racionales (enteros o fraccionarios), y son, junto con la regla de signos, lo más preguntado de todo el subtema:</p>
+<table class="ref-table">
+<tr><th>Propiedad</th><th>Regla</th><th>Ejemplo</th></tr>
+<tr><td>Multiplicación de potencias de igual base</td><td>aᵐ × aⁿ = a^(m+n)</td><td>2³ × 2² = 2⁵ = 32</td></tr>
+<tr><td>División de potencias de igual base</td><td>aᵐ ÷ aⁿ = a^(m−n)</td><td>2⁵ ÷ 2² = 2³ = 8</td></tr>
+<tr><td>Potencia de una potencia</td><td>(aᵐ)ⁿ = a^(m×n)</td><td>(2²)³ = 2⁶ = 64</td></tr>
+<tr><td>Potencia de un producto</td><td>(a×b)ⁿ = aⁿ × bⁿ</td><td>(2×3)² = 2²×3² = 36</td></tr>
+<tr><td>Exponente cero</td><td>a⁰ = 1 (con a ≠ 0)</td><td>7⁰ = 1</td></tr>
+<tr><td>Exponente negativo</td><td>a⁻ⁿ = 1/aⁿ</td><td>2⁻³ = 1/8</td></tr>
+</table>
+
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Calcula: 3⁴ ÷ 3⁶</p>
+<div class="calc">3⁴ ÷ 3⁶ = 3^(4−6) = 3⁻²<br>= 1/3²<br><span class="r">= 1/9</span></div>
+</div>
+
+<h4 style="margin-top:22px;color:#4a3208;">¿Qué es una raíz enésima?</h4>
+<p>La <strong>raíz enésima</strong> de un número a, escrita &#8319;√a (n es el <strong>índice</strong> y a el <strong>subradical</strong>), es el número que, elevado a n, da como resultado a:</p>
+<div class="calc">ⁿ√a = b   si y solo si   bⁿ = a</div>
+<p>Cuando el índice es 2 se llama raíz cuadrada y no se escribe (√a en vez de ²√a); cuando es 3, raíz cúbica (³√a).</p>
+<table class="ref-table">
+<tr><th>Ejemplo</th><th>Verificación</th></tr>
+<tr><td>√25 = 5</td><td>porque 5² = 25</td></tr>
+<tr><td>³√8 = 2</td><td>porque 2³ = 8</td></tr>
+<tr><td>³√(−27) = −3</td><td>porque (−3)³ = −27 (con índice impar, sí existe raíz de un número negativo)</td></tr>
+</table>
+<div class="note-box"><p class="nb-title">Atención</p><p>Con índice <strong>par</strong> (raíz cuadrada, cuarta, etc.), NO existe raíz de un número negativo dentro de los números reales: √(−9) no tiene solución real, porque ningún número real elevado a un exponente par da negativo. Con índice <strong>impar</strong> sí existe raíz de negativos, y el resultado también es negativo.</p></div>
+
+<h4 style="margin-top:22px;color:#4a3208;">La conexión clave: raíz como potencia de exponente fraccionario</h4>
+<p>Toda raíz se puede escribir como una potencia de exponente fraccionario, y esta es la idea que más se evalúa en la PAES porque permite aplicar las propiedades de potencias directamente a las raíces:</p>
+<div class="calc">ⁿ√(a^m) = a^(m/n)</div>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Escribe ³√(2⁵) como una potencia de exponente fraccionario y simplifica ⁴√16.</p>
+<div class="calc">³√(2⁵) = 2^(5/3)<br><br>⁴√16 = ⁴√(2⁴) = 2^(4/4) = 2¹ = 2</div>
+</div>
+
+<h4 style="margin-top:20px;color:#4a3208;">Descomponer para simplificar raíces</h4>
+<p>Cuando el número dentro de la raíz no es una potencia "perfecta" evidente, conviene descomponerlo en factores primos para encontrar qué parte sí se puede "sacar" de la raíz:</p>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Simplifica √72</p>
+<div class="calc">72 = 36 × 2 = 6² × 2<br>√72 = √(6² × 2) = √(6²) × √2<br><span class="r">= 6√2</span></div>
+</div>`,
+      formulario: `<div class="f-item"><span class="f-name">Multiplicación (igual base)</span><span>aᵐ × aⁿ = a^(m+n)</span></div>
+<div class="f-item"><span class="f-name">División (igual base)</span><span>aᵐ ÷ aⁿ = a^(m−n)</span></div>
+<div class="f-item"><span class="f-name">Potencia de potencia</span><span>(aᵐ)ⁿ = a^(m×n)</span></div>
+<div class="f-item"><span class="f-name">Potencia de un producto</span><span>(a×b)ⁿ = aⁿ × bⁿ</span></div>
+<div class="f-item"><span class="f-name">Exponente 0</span><span>a⁰ = 1, con a ≠ 0</span></div>
+<div class="f-item"><span class="f-name">Exponente negativo</span><span>a⁻ⁿ = 1/aⁿ</span></div>
+<div class="f-item"><span class="f-name">Raíz enésima</span><span>ⁿ√a = b ⟺ bⁿ = a</span></div>
+<div class="f-item"><span class="f-name">Raíz como potencia</span><span>ⁿ√(a^m) = a^(m/n)</span></div>
+<div class="f-item"><span class="f-name">Raíz de índice par de un negativo</span><span>no existe en los números reales</span></div>`,
+      questions: [
+        { q:"Calcula: 2³ × 2²", o:["2⁶","4⁵","2⁵","2¹"], c:2, e:"Al multiplicar potencias de igual base, se suman los exponentes: 2³ × 2² = 2^(3+2) = 2⁵ = 32." },
+        { q:"Calcula: 3⁴ ÷ 3⁶", o:["3⁻²= 1/9","3²= 9","3¹⁰","3⁻¹⁰"], c:0, e:"Al dividir potencias de igual base, se restan los exponentes: 3⁴ ÷ 3⁶ = 3^(4−6) = 3⁻² = 1/9." },
+        { q:"Calcula (−3)² y −3², y compara ambos resultados", o:["Ambos dan 9", "(−3)² = 9 y −3² = −9: son distintos", "(−3)² = −9 y −3² = 9: son distintos", "Ambos dan −9"], c:1, e:"El paréntesis en (−3)² afecta al signo: (−3)×(−3) = 9. En −3², el exponente solo afecta al 3, y el signo menos se aplica al final: −(3²) = −9." },
+        { q:"Simplifica: ⁴√16", o:["4","2","8","1"], c:1, e:"16 = 2⁴, entonces ⁴√16 = ⁴√(2⁴) = 2^(4/4) = 2¹ = 2." },
+        { q:"Simplifica √72", o:["6√2","36√2","2√6","72"], c:0, e:"72 = 36 × 2 = 6² × 2, entonces √72 = √(6²) × √2 = 6√2." },
+        { q:"Escribe ³√(2⁵) como una potencia de exponente fraccionario", o:["2^(3/5)","2^(5/3)","2^15","2^(1/15)"], c:1, e:"Por la equivalencia ⁿ√(a^m) = a^(m/n), con n=3 y m=5, se obtiene 2^(5/3)." },
+        { q:"¿Cuál de las siguientes expresiones NO tiene solución dentro de los números reales?", o:["³√(−8)","√(−9)","√9","³√8"], c:1, e:"Con índice par (como la raíz cuadrada), no existe raíz real de un número negativo, ya que ningún número real al cuadrado da un resultado negativo. Con índice impar, como en ³√(−8) = −2, sí existe solución." },
+        { q:"Calcula: 5⁻² × 5⁴", o:["5²= 25","5⁻⁸","5⁶","5⁻²"], c:0, e:"Se suman los exponentes: 5⁻² × 5⁴ = 5^(−2+4) = 5² = 25." },
+        { q:"Una célula se duplica cada hora. Si al comenzar hay 1 célula, ¿cuántas células habrá después de 6 horas?", o:["12","36","64","6"], c:2, e:"La cantidad se modela como 2⁶ (se duplica 6 veces desde 1 célula): 2⁶ = 64 células." },
+        { q:"Calcula: (2³)²", o:["2⁵","2⁶","4⁶","2⁹"], c:1, e:"Potencia de una potencia: se multiplican los exponentes. (2³)² = 2^(3×2) = 2⁶ = 64." },
+        { q:"Un cubo tiene un volumen de 125 cm³. ¿Cuánto mide la arista del cubo?", o:["25 cm","41,6 cm","5 cm","15 cm"], c:2, e:"El volumen de un cubo es (arista)³, así que la arista es ³√125 = 5 cm, porque 5³ = 125." },
+        { q:"Un estudiante afirma que √16 + √9 es lo mismo que √(16+9) = √25 = 5. ¿Es correcto este razonamiento?", o:["Sí, la raíz de una suma siempre es igual a la suma de las raíces", "No: √16 + √9 = 4 + 3 = 7, que es distinto de √25 = 5", "Sí, porque ambos caminos dan el mismo resultado en este caso", "No, porque √16 y √9 no existen"], c:1, e:"La raíz de una suma NO es igual a la suma de las raíces: √16 + √9 = 4 + 3 = 7, mientras que √(16+9) = √25 = 5. Son procedimientos distintos que en general dan resultados distintos." },
+        { q:"Calcula: (1/2)⁻³", o:["1/8","−1/8","8","−8"], c:2, e:"Con exponente negativo, se invierte la base: (1/2)⁻³ = (2/1)³ = 2³ = 8." },
+        { q:"Simplifica: √50", o:["5√2","25√2","10√5","5√10"], c:0, e:"50 = 25 × 2 = 5² × 2, entonces √50 = √(5²) × √2 = 5√2." },
+        { q:"Calcula: 4³ ÷ 2³", o:["2","4","8","16"], c:2, e:"Se puede calcular directamente: 4³=64, 2³=8, y 64÷8=8. (También se puede pensar como (4÷2)³ = 2³ = 8, aplicando la propiedad de potencia de un cociente)." },
+        { q:"Calcula: 7⁰ + 3⁻¹", o:["1","0","4/3","7"], c:2, e:"7⁰ = 1 (todo número distinto de cero elevado a 0 es 1). 3⁻¹ = 1/3. Sumando: 1 + 1/3 = 4/3." },
+        { q:"Calcula: (−2)⁴", o:["16","−16","8","−8"], c:0, e:"El paréntesis eleva todo el −2: (−2)×(−2)×(−2)×(−2) = 16 (signo positivo, porque hay 4 factores negativos, cantidad par)." },
+        { q:"Calcula: −2⁴", o:["16","−16","8","−8"], c:1, e:"Sin paréntesis, el exponente solo afecta al 2: −(2⁴) = −16. El signo menos se aplica al final." },
+        { q:"Simplifica: √98", o:["7√2","49√2","2√49","14√7"], c:0, e:"98 = 49 × 2 = 7² × 2, entonces √98 = √(7²) × √2 = 7√2." },
+        { q:"Calcula: (2/3)²", o:["4/9","4/6","2/9","4/3"], c:0, e:"(2/3)² = 2²/3² = 4/9." },
+        { q:"Calcula: 5² × 5⁻⁴", o:["1/25","25","5⁻²","5⁶"], c:0, e:"Se suman los exponentes: 5^(2+(−4)) = 5⁻² = 1/25." },
+        { q:"Simplifica: ³√(−64)", o:["−4","4","−8","No existe en los reales"], c:0, e:"Con índice impar sí existe raíz de un número negativo: ³√(−64) = −4, porque (−4)³ = −64." },
+        { q:"¿Para qué valor de x se cumple 2^x = 32?", o:["x = 4","x = 5","x = 6","x = 16"], c:1, e:"32 = 2⁵, entonces x = 5." },
+        { q:"El área de un cuadrado es 169 cm². ¿Cuánto mide su lado?", o:["12 cm","13 cm","84,5 cm","169 cm"], c:1, e:"Como Área = lado², el lado es √169 = 13 cm (porque 13²=169)." },
+        { q:"Un estudiante afirma que √4 + √9 = √13. ¿Es correcto?", o:["Sí, ambos caminos dan el mismo resultado","No: √4 + √9 = 2 + 3 = 5, que es distinto de √13 ≈ 3,6","Sí, porque 4+9=13","No, porque √4 y √9 no se pueden sumar"], c:1, e:"La raíz de una suma no es la suma de las raíces: √4 + √9 = 2 + 3 = 5, mientras que √13 ≈ 3,6. Son resultados distintos." },
+      ]
+    },
+  ]
+},
+
+// =======================================================================
+// UNIDAD 2 — ÁLGEBRA Y FUNCIONES (m2)
+// Subtemas: m2s1 Expresiones algebraicas, m2s2 Proporcionalidad,
+//           m2s3 Ecuaciones e inecuaciones de primer grado,
+//           m2s4 Sistemas de ecuaciones lineales (2x2),
+//           m2s5 Función lineal y afín, m2s6 Función cuadrática.
+// =======================================================================
+{
+  id: "m2",
+  name: "Álgebra y funciones",
+  intro: "Este es el eje con más preguntas en la PAES M1 real: cerca de 1 de cada 3 preguntas de la prueba viene de aquí. Parte con expresiones algebraicas y proporcionalidad, sigue con ecuaciones, y termina con funciones — cada subtema se apoya en el anterior.",
+  subtopics: [
+
+    // -----------------------------------------------------------------
+    // m2s1 — Expresiones algebraicas
+    // -----------------------------------------------------------------
+    {
+      id: "m2s1",
+      name: "Expresiones algebraicas",
+      videoUrl: "https://www.youtube.com/watch?v=N-2bjiNHpzM",
+      videoTitle: "EXPRESIONES ALGEBRAICAS | PAES M1 de MATEMÁTICA | Eje: Álgebra",
+      content: `<p>Una <strong>expresión algebraica</strong> es, en el fondo, una frase matemática que combina números y letras (llamadas variables o incógnitas) mediante sumas, restas, multiplicaciones, etc. Aquí aprenderás a leerlas, simplificarlas, multiplicarlas y —lo más importante para la PAES— a reconocer patrones que se repiten constantemente: los productos notables.</p>
+
+<h4 style="margin-top:22px;color:#4a3208;">Partes de una expresión algebraica</h4>
+<p>Una expresión como 5x²y − 3x + 7 está formada por <strong>términos</strong> (5x²y, −3x, 7), separados por + o −. Cada término tiene un <strong>coeficiente</strong> (el número, como 5 o −3) y una <strong>parte literal</strong> (las letras con su exponente, como x²y o x). El término 7, que no tiene letra, se llama <strong>término independiente</strong>.</p>
+<p>Dos términos son <strong>semejantes</strong> cuando tienen exactamente la misma parte literal (mismas letras, mismos exponentes). Solo los términos semejantes se pueden sumar o restar directamente, "reduciéndolos" en uno solo:</p>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Reduce: 3x + 5y − 2x + 7y</p>
+<div class="calc">3x + 5y − 2x + 7y<br>= (3x − 2x) + (5y + 7y)  <span style="color:var(--muted);">(se agrupan los términos semejantes)</span><br><span class="r">= x + 12y</span></div>
+</div>
+
+<h4 style="margin-top:22px;color:#4a3208;">Multiplicar expresiones algebraicas</h4>
+<p>Para multiplicar dos paréntesis, cada término del primero se multiplica por cada término del segundo (propiedad distributiva), y luego se reducen los términos semejantes que resulten:</p>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Multiplica: (2x + 3)(x − 5)</p>
+<div class="calc">(2x + 3)(x − 5)<br>= 2x·x + 2x·(−5) + 3·x + 3·(−5)<br>= 2x² − 10x + 3x − 15<br><span class="r">= 2x² − 7x − 15</span></div>
+</div>
+
+<h4 style="margin-top:22px;color:#4a3208;">Productos notables: atajos que conviene memorizar</h4>
+<p>Algunos productos aparecen tan seguido que tienen un resultado fijo, sin necesidad de multiplicar término a término cada vez. Estos tres son los que más se preguntan en la PAES:</p>
+
+<div class="fig"><div class="fig-frame"><svg role="img" aria-label="Modelo de área que representa el cuadrado de binomio (a+b) al cuadrado, dividido en cuatro regiones: a cuadrado, a por b, a por b y b cuadrado" viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+<rect x="6" y="6" width="488" height="388" rx="18" fill="#fbf2e6" fill-opacity="0.35"/>
+<rect x="100" y="40" width="180" height="180" fill="#e8c766" fill-opacity="0.55" stroke="#6b4a10" stroke-width="2"/>
+<rect x="280" y="40" width="110" height="180" fill="#e6a8c4" fill-opacity="0.55" stroke="#6b4a10" stroke-width="2"/>
+<rect x="100" y="220" width="180" height="110" fill="#e6a8c4" fill-opacity="0.55" stroke="#6b4a10" stroke-width="2"/>
+<rect x="280" y="220" width="110" height="110" fill="#9fbfa0" fill-opacity="0.65" stroke="#6b4a10" stroke-width="2"/>
+<text x="190" y="135" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="24" fill="#4a3208">a²</text>
+<text x="335" y="135" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="22" fill="#6b2f4a">ab</text>
+<text x="190" y="280" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="22" fill="#6b2f4a">ab</text>
+<text x="335" y="280" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="20" fill="#2e4a2c">b²</text>
+<text x="190" y="26" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#5a3d0d">a</text>
+<text x="335" y="26" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#5a3d0d">b</text>
+<text x="80" y="135" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#5a3d0d">a</text>
+<text x="80" y="280" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#5a3d0d">b</text>
+<rect x="100" y="40" width="290" height="290" fill="none" stroke="#4a3208" stroke-width="2.5"/>
+<text x="245" y="365" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-style="italic" fill="#6b4a10">área total = (a+b)² = a² + ab + ab + b² = a² + 2ab + b²</text>
+</svg></div><figcaption><strong>Figura 1.</strong> El cuadrado de lado (a+b) se descompone en cuatro rectángulos: por eso el desarrollo de (a+b)² tiene un término "2ab" — son las dos áreas iguales de color rosado.</figcaption></div>
+
+<table class="ref-table">
+<tr><th>Producto notable</th><th>Desarrollo</th></tr>
+<tr><td>Cuadrado de binomio (suma)</td><td>(a + b)² = a² + 2ab + b²</td></tr>
+<tr><td>Cuadrado de binomio (resta)</td><td>(a − b)² = a² − 2ab + b²</td></tr>
+<tr><td>Suma por su diferencia</td><td>(a + b)(a − b) = a² − b²</td></tr>
+</table>
+
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Desarrolla (x + 4)² y (x + 7)(x − 7)</p>
+<div class="calc">(x + 4)² = x² + 2·x·4 + 4² = x² + 8x + 16<br><br>(x + 7)(x − 7) = x² − 7² = x² − 49</div>
+</div>
+
+<div class="note-box"><p class="nb-title">Atención</p><p>(a + b)² NO es a² + b². El error de "olvidar el término del medio" (2ab) es uno de los más comunes de toda la PAES: siempre hay que verificar que aparezcan los tres términos.</p></div>
+
+<h4 style="margin-top:24px;color:#4a3208;">Factorización: el camino inverso</h4>
+<p><strong>Factorizar</strong> es escribir una expresión como una multiplicación, el proceso contrario a desarrollar. Los tres casos más frecuentes son justamente los productos notables anteriores, leídos "al revés", más el factor común:</p>
+<table class="ref-table">
+<tr><th>Caso</th><th>Se reconoce por...</th><th>Ejemplo</th></tr>
+<tr><td>Factor común</td><td>todos los términos comparten un factor</td><td>6x²y + 9xy² = 3xy(2x + 3y)</td></tr>
+<tr><td>Diferencia de cuadrados</td><td>dos términos, ambos cuadrados perfectos, con un signo menos entre ellos</td><td>x² − 16 = (x + 4)(x − 4)</td></tr>
+<tr><td>Trinomio cuadrado perfecto</td><td>tres términos donde el primero y el último son cuadrados perfectos y el del medio es el doble de sus raíces</td><td>x² + 10x + 25 = (x + 5)²</td></tr>
+</table>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Factoriza x² − 16</p>
+<div class="calc">x² − 16 = x² − 4²  <span style="color:var(--muted);">(16 es 4 al cuadrado)</span><br><span class="r">= (x + 4)(x − 4)</span></div>
+</div>`,
+      formulario: `<div class="f-item"><span class="f-name">Cuadrado de binomio (+)</span><span>(a+b)² = a² + 2ab + b²</span></div>
+<div class="f-item"><span class="f-name">Cuadrado de binomio (−)</span><span>(a−b)² = a² − 2ab + b²</span></div>
+<div class="f-item"><span class="f-name">Suma por su diferencia</span><span>(a+b)(a−b) = a² − b²</span></div>
+<div class="f-item"><span class="f-name">Factor común</span><span>ax + ay = a(x + y)</span></div>
+<div class="f-item"><span class="f-name">Factorizar diferencia de cuadrados</span><span>a² − b² = (a+b)(a−b)</span></div>
+<div class="f-item"><span class="f-name">Factorizar trinomio cuadrado perfecto</span><span>a² + 2ab + b² = (a+b)²</span></div>`,
+      questions: [
+        { q:"Reduce los términos semejantes: 3x + 5y − 2x + 7y", o:["x + 12y","5x + 12y","x + 2y","5x + 2y"], c:0, e:"Se agrupan por separado: (3x−2x)=x y (5y+7y)=12y, quedando x + 12y." },
+        { q:"Desarrolla: (x + 4)²", o:["x² + 16","x² + 4x + 16","x² + 8x + 16","x² + 8x + 8"], c:2, e:"(x+4)² = x² + 2·x·4 + 4² = x² + 8x + 16." },
+        { q:"Desarrolla: (x + 7)(x − 7)", o:["x² − 49","x² + 49","x² − 14x − 49","x² − 14x + 49"], c:0, e:"Es una suma por su diferencia: (x+7)(x−7) = x² − 7² = x² − 49." },
+        { q:"Factoriza: 6x²y + 9xy²", o:["3xy(2x + 3y)","3x(2xy + 3y)","xy(6x + 9y)","3xy(2x² + 3y²)"], c:0, e:"El factor común de 6x²y y 9xy² es 3xy: 6x²y = 3xy·2x y 9xy² = 3xy·3y, entonces 6x²y+9xy² = 3xy(2x+3y)." },
+        { q:"Factoriza: x² − 16", o:["(x − 4)²","(x + 4)(x − 4)","(x + 16)(x − 16)","(x + 4)²"], c:1, e:"16 = 4², así que es una diferencia de cuadrados: x² − 4² = (x+4)(x−4)." },
+        { q:"Multiplica: (2x + 3)(x − 5)", o:["2x² − 15","2x² − 7x − 15","2x² + 7x − 15","2x² − 2x − 15"], c:1, e:"Aplicando distributividad: 2x·x + 2x·(−5) + 3·x + 3·(−5) = 2x² −10x +3x −15 = 2x² − 7x − 15." },
+        { q:"Factoriza: x² + 10x + 25", o:["(x + 5)²","(x + 25)(x + 1)","(x + 5)(x − 5)","x(x + 10) + 25"], c:0, e:"Es un trinomio cuadrado perfecto: el primer y último término son cuadrados (x² y 5²) y el término del medio es el doble de sus raíces (2·x·5=10x). Se factoriza como (x+5)²." },
+        { q:"Un terreno rectangular tiene ancho x metros y largo (x + 3) metros. ¿Cuál expresión algebraica representa su área?", o:["2x + 3","x² + 3","x² + 3x","4x + 3"], c:2, e:"Área = largo × ancho = (x+3)·x = x² + 3x." },
+        { q:"¿Es correcto afirmar que (x + y)² = x² + y²?", o:["Sí, siempre", "No: el desarrollo correcto es x² + 2xy + y², que incluye el término 2xy", "Sí, pero solo si x = y", "No, el desarrollo correcto es x² − y²"], c:1, e:"El cuadrado de un binomio incluye el doble producto: (x+y)² = x² + 2xy + y². Omitir el término 2xy es uno de los errores más comunes en álgebra." },
+        { q:"Reduce: 5(x − 2) − 3(x + 1)", o:["2x − 13","2x − 7","8x − 13","2x + 1"], c:0, e:"Se distribuye primero: 5x −10 −3x −3, y se reducen términos semejantes: (5x−3x) + (−10−3) = 2x − 13." },
+        { q:"Evalúa la expresión 2x² − 3x + 1 cuando x = −2", o:["3","−13","15","11"], c:2, e:"2(−2)² − 3(−2) + 1 = 2(4) + 6 + 1 = 8 + 6 + 1 = 15." },
+        { q:"¿Cuál expresión algebraica representa 'la diferencia entre el triple de un número x y 5'?", o:["3x − 5","3(x − 5)","5 − 3x","x − 5"], c:0, e:"'El triple de un número x' es 3x; 'la diferencia entre eso y 5' es 3x − 5." },
+        { q:"Desarrolla: (2x − 3)²", o:["4x² − 9","4x² − 6x + 9","4x² − 12x + 9","2x² − 12x + 9"], c:2, e:"(2x−3)² = (2x)² − 2(2x)(3) + 3² = 4x² − 12x + 9." },
+        { q:"Factoriza: 4x² − 9", o:["(2x + 3)(2x − 3)","(4x + 9)(4x − 9)","(2x + 9)(2x − 1)","(4x − 3)²"], c:0, e:"4x² = (2x)² y 9 = 3², así que es una diferencia de cuadrados: 4x² − 9 = (2x+3)(2x−3)." },
+        { q:"Reduce: 7a − 3b + 2a − 5b + b", o:["9a − 7b","5a − 7b","9a − 9b","9a + 3b"], c:0, e:"Se agrupan por separado: (7a+2a)=9a y (−3b−5b+b)=−7b, quedando 9a − 7b." },
+        { q:"Evalúa la expresión 3x − 2y cuando x = 4 e y = −1", o:["10","14","−10","2"], c:1, e:"3(4) − 2(−1) = 12 + 2 = 14." },
+        { q:"Desarrolla: (x + 2)(x + 5)", o:["x² + 7x + 10","x² + 10x + 7","x² + 7x + 7","x² + 3x + 10"], c:0, e:"(x+2)(x+5) = x² + 5x + 2x + 10 = x² + 7x + 10." },
+        { q:"Desarrolla: (3x − 1)²", o:["9x² − 1","9x² − 6x + 1","9x² − 3x + 1","3x² − 6x + 1"], c:1, e:"(3x−1)² = (3x)² − 2(3x)(1) + 1² = 9x² − 6x + 1." },
+        { q:"Factoriza: x² − 7x + 12", o:["(x − 3)(x − 4)","(x + 3)(x + 4)","(x − 6)(x − 2)","(x − 12)(x − 1)"], c:0, e:"Se buscan dos números que multiplicados den 12 y sumados den −7: son −3 y −4. Entonces x²−7x+12 = (x−3)(x−4)." },
+        { q:"Factoriza: 5x + 15", o:["5(x + 15)","5(x + 3)","x(5 + 15)","15(x + 5)"], c:1, e:"El factor común de 5x y 15 es 5: 5x = 5·x y 15 = 5·3, entonces 5x+15 = 5(x+3)." },
+        { q:"Reduce: 4x² + 3x − 2x² + x", o:["2x² + 4x","6x² + 4x","2x² + 3x","2x² + 2x"], c:0, e:"Se agrupan por separado: (4x²−2x²)=2x² y (3x+x)=4x, quedando 2x² + 4x." },
+        { q:"Desarrolla: (a − 4)(a + 4)", o:["a² − 16","a² + 16","a² − 8a − 16","a² − 8a + 16"], c:0, e:"Es una suma por su diferencia: (a−4)(a+4) = a² − 4² = a² − 16." },
+        { q:"Factoriza: 9x² − 25", o:["(3x + 5)(3x − 5)","(9x + 25)(9x − 25)","(3x + 25)(3x − 1)","(9x − 5)²"], c:0, e:"9x² = (3x)² y 25 = 5², así que es una diferencia de cuadrados: 9x² − 25 = (3x+5)(3x−5)." },
+        { q:"Reduce: −(2x − 5) + 3(x − 1)", o:["x + 2","5x − 8","x − 8","5x + 2"], c:0, e:"Distribuyendo: −2x + 5 + 3x − 3. Agrupando: (−2x+3x) + (5−3) = x + 2." },
+        { q:"¿Es lo mismo 2x² que (2x)²?", o:["Sí, ambas expresiones son siempre iguales","No: 2x² = 2·x², mientras que (2x)² = 4x², expresiones distintas","Sí, porque el 2 y el cuadrado se pueden intercambiar","No, porque x² nunca puede multiplicarse por 2"], c:1, e:"En 2x², el exponente 2 solo afecta a la x. En (2x)², el paréntesis indica que se eleva todo el producto: (2x)² = 4x². Para x=3, por ejemplo: 2(3²)=18, pero (2·3)²=36 — son expresiones distintas." },
+      ]
+    },
+
+    // -----------------------------------------------------------------
+    // m2s2 — Proporcionalidad
+    // -----------------------------------------------------------------
+    {
+      id: "m2s2",
+      name: "Proporcionalidad",
+      videoUrl: "https://www.youtube.com/watch?v=Uz2sWVoPPs0",
+      videoTitle: "PROPORCIONALIDAD y PROPORCIONES en la PAES de C. Matemática M1",
+      content: `<p>Cuando dos cantidades cambian juntas de forma "ordenada" —si una sube, la otra también sube o baja de manera predecible— decimos que son proporcionales. Reconocer qué tipo de proporcionalidad hay en un problema es la mitad del trabajo: la otra mitad es aplicar la regla correcta.</p>
+
+<h4 style="margin-top:22px;color:#4a3208;">Proporcionalidad directa</h4>
+<p>Dos cantidades x e y son <strong>directamente proporcionales</strong> si, al aumentar una, la otra aumenta en la misma proporción (y al disminuir una, la otra disminuye igual). Esto ocurre exactamente cuando el cociente entre ambas es siempre el mismo número, llamado <strong>constante de proporcionalidad k</strong>:</p>
+<div class="calc">y/x = k (constante)   ⟺   y = k·x</div>
+<p>Ejemplos típicos: el costo total de un producto según la cantidad comprada (a más kilos, más dinero, en la misma proporción), la distancia recorrida a velocidad constante según el tiempo.</p>
+
+<h4 style="margin-top:22px;color:#4a3208;">Proporcionalidad inversa</h4>
+<p>Dos cantidades son <strong>inversamente proporcionales</strong> si, al aumentar una, la otra disminuye de forma que su <strong>producto</strong> se mantiene constante:</p>
+<div class="calc">x·y = k (constante)   ⟺   y = k/x</div>
+<p>Ejemplos típicos: el número de obreros y los días que demoran en terminar una obra (más obreros, menos días), la velocidad y el tiempo para recorrer una distancia fija (más rápido, menos tiempo).</p>
+
+<div class="fig"><div class="fig-frame"><svg role="img" aria-label="Dos gráficos comparando proporcionalidad directa (una recta que pasa por el origen) y proporcionalidad inversa (una curva que decrece)" viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg">
+<rect x="6" y="6" width="888" height="408" rx="18" fill="#fbf2e6" fill-opacity="0.35"/>
+<text x="230" y="40" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="16" font-weight="700" fill="#3f6236">Proporcionalidad directa: y = kx</text>
+<line x1="80" y1="360" x2="400" y2="360" stroke="#6b4a10" stroke-width="2"/>
+<line x1="80" y1="360" x2="80" y2="70" stroke="#6b4a10" stroke-width="2"/>
+<text x="405" y="365" font-family="Georgia,serif" font-size="14" fill="#5a3d0d">x</text>
+<text x="65" y="70" font-family="Georgia,serif" font-size="14" fill="#5a3d0d">y</text>
+<line x1="80" y1="360" x2="370" y2="90" stroke="#3f6236" stroke-width="3.5"/>
+<circle cx="80" cy="360" r="5" fill="#3f6236"/>
+<circle cx="225" cy="225" r="5" fill="#3f6236"/>
+<circle cx="370" cy="90" r="5" fill="#3f6236"/>
+<text x="245" y="335" font-family="Georgia,serif" font-size="12.5" font-style="italic" fill="#5a3d0d">pasa siempre por el origen (0,0)</text>
+
+<text x="700" y="40" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="16" font-weight="700" fill="#8a3550">Proporcionalidad inversa: y = k/x</text>
+<line x1="530" y1="360" x2="850" y2="360" stroke="#6b4a10" stroke-width="2"/>
+<line x1="530" y1="360" x2="530" y2="70" stroke="#6b4a10" stroke-width="2"/>
+<text x="855" y="365" font-family="Georgia,serif" font-size="14" fill="#5a3d0d">x</text>
+<text x="515" y="70" font-family="Georgia,serif" font-size="14" fill="#5a3d0d">y</text>
+<polyline points="555,90 570,130 590,165 615,195 645,220 685,245 730,268 780,290 835,308" fill="none" stroke="#8a3550" stroke-width="3.5"/>
+<circle cx="570" cy="130" r="5" fill="#8a3550"/>
+<circle cx="645" cy="220" r="5" fill="#8a3550"/>
+<circle cx="780" cy="290" r="5" fill="#8a3550"/>
+<text x="695" y="335" font-family="Georgia,serif" font-size="12.5" font-style="italic" fill="#5a3d0d">nunca toca los ejes: decrece cada vez más lento</text>
+</svg></div><figcaption><strong>Figura 1.</strong> La proporcionalidad directa se ve como una recta que pasa por el origen; la inversa, como una curva que baja sin tocar nunca los ejes.</figcaption></div>
+
+<h4 style="margin-top:22px;color:#4a3208;">Cómo distinguirlas en una tabla</h4>
+<p>Dada una tabla de valores, se calcula y/x en cada columna para ver si da siempre el mismo número (directa), o x·y en cada columna para ver si da siempre el mismo número (inversa). Si ninguno de los dos cocientes/productos es constante, no hay proporcionalidad directa ni inversa.</p>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>¿La siguiente tabla representa proporcionalidad directa, inversa o ninguna?</p>
+<table class="ref-table"><tr><th>x</th><td>2</td><td>4</td><td>6</td></tr><tr><th>y</th><td>12</td><td>6</td><td>4</td></tr></table>
+<div class="calc">y/x: 12/2=6 ; 6/4=1,5 ; 4/6=0,67 → no es constante, no es directa<br>x·y: 2·12=24 ; 4·6=24 ; 6·4=24 → <span class="r">es constante (k=24): proporcionalidad inversa</span></div>
+</div>
+
+<h4 style="margin-top:22px;color:#4a3208;">Resolver problemas con proporcionalidad</h4>
+<p>El método más directo es encontrar primero la constante k con el dato conocido, y luego usarla para responder lo que se pide.</p>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto (directa)</p>
+<p>5 kg de manzanas cuestan $4.500. ¿Cuánto cuestan 8 kg, manteniendo el mismo precio por kilo?</p>
+<div class="calc">k = 4.500 / 5 = 900 (precio por kilo)<br>costo de 8 kg = 8 × 900<br><span class="r">= $7.200</span></div>
+</div>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto (inversa)</p>
+<p>4 obreros terminan una obra en 15 días. Si se contratan 6 obreros trabajando al mismo ritmo, ¿en cuántos días terminarían la misma obra?</p>
+<div class="calc">k = 4 × 15 = 60 (obreros × días, constante)<br>días con 6 obreros = 60 / 6<br><span class="r">= 10 días</span></div>
+</div>
+<div class="note-box"><p class="nb-title">Atención</p><p>No toda situación de "a más de una cosa, menos de otra" es inversamente proporcional en el sentido estricto: hay que verificar que el producto x·y sea realmente constante. En problemas de la vida real (como el ejemplo de los obreros) se asume que todos trabajan al mismo ritmo constante; si esa condición no se cumple, la proporcionalidad inversa no aplica.</p></div>`,
+      formulario: `<div class="f-item"><span class="f-name">Proporcionalidad directa</span><span>y/x = k (constante) ⟺ y = kx</span></div>
+<div class="f-item"><span class="f-name">Proporcionalidad inversa</span><span>x·y = k (constante) ⟺ y = k/x</span></div>
+<div class="f-item"><span class="f-name">Gráfico directa</span><span>recta que pasa por el origen</span></div>
+<div class="f-item"><span class="f-name">Gráfico inversa</span><span>curva decreciente que no toca los ejes</span></div>
+<div class="f-item"><span class="f-name">Para resolver un problema</span><span>1) encontrar k con el dato conocido 2) usar k para hallar el valor pedido</span></div>`,
+      questions: [
+        { q:"5 kg de manzanas cuestan $4.500. Manteniendo el mismo precio por kilo, ¿cuánto cuestan 8 kg?", o:["$5.400","$7.200","$6.300","$9.000"], c:1, e:"Precio por kilo: k = 4.500/5 = 900. Costo de 8 kg = 8 × 900 = $7.200." },
+        { q:"4 obreros terminan una obra en 15 días, todos al mismo ritmo. ¿En cuántos días la terminarían 6 obreros?", o:["22,5 días","10 días","9 días","6 días"], c:1, e:"Es proporcionalidad inversa: k = 4×15 = 60. Con 6 obreros: 60/6 = 10 días." },
+        { q:"¿Qué tipo de proporcionalidad muestra esta tabla? x: 1, 2, 3 — y: 5, 10, 15", o:["Directa (k = 5)","Inversa (k = 5)","Directa (k = 15)","Ninguna de las dos"], c:0, e:"y/x es constante: 5/1=5, 10/2=5, 15/3=5. Es proporcionalidad directa con k = 5." },
+        { q:"¿Qué tipo de proporcionalidad muestra esta tabla? x: 2, 4, 6 — y: 12, 6, 4", o:["Directa (k = 24)","Inversa (k = 24)","Directa (k = 6)","Ninguna de las dos"], c:1, e:"x·y es constante: 2×12=24, 4×6=24, 6×4=24. Es proporcionalidad inversa con k = 24." },
+        { q:"En una tabla de proporcionalidad directa, x = 3 corresponde a y = 21. ¿Qué valor de y corresponde a x = 5?", o:["23","35","25","15"], c:1, e:"k = 21/3 = 7. Para x=5: y = 7×5 = 35." },
+        { q:"En una tabla de proporcionalidad inversa, x = 4 corresponde a y = 9. ¿Qué valor de y corresponde a x = 6?", o:["6","13,5","5,4","36"], c:0, e:"k = 4×9 = 36. Para x=6: y = 36/6 = 6." },
+        { q:"Un auto recorre 180 km en 2 horas a velocidad constante. Manteniendo esa velocidad, ¿cuántos km recorrerá en 5 horas?", o:["360 km","450 km","90 km","540 km"], c:1, e:"Es proporcionalidad directa: velocidad k = 180/2 = 90 km/h. En 5 horas: 90×5 = 450 km." },
+        { q:"En un mapa con escala 1:50.000, una distancia entre dos ciudades mide 3 cm. ¿Cuál es la distancia real, en kilómetros?", o:["1,5 km","15 km","150 km","0,15 km"], c:0, e:"Escala 1:50.000 significa que 1 cm en el mapa equivale a 50.000 cm reales. 3 cm × 50.000 = 150.000 cm = 1.500 m = 1,5 km." },
+        { q:"Una receta para 4 personas usa 500 g de arroz. Si se quiere preparar la misma receta para 10 personas, ¿cuántos gramos de arroz se necesitan (proporcionalidad directa)?", o:["1.000 g","1.250 g","800 g","2.000 g"], c:1, e:"k = 500/4 = 125 g por persona. Para 10 personas: 125×10 = 1.250 g." },
+        { q:"¿Esta tabla corresponde a una proporcionalidad directa, inversa o ninguna de las dos? x: 1, 2, 3 — y: 2, 5, 10", o:["Directa","Inversa","Ninguna de las dos: ni y/x ni x·y son constantes","Ambas al mismo tiempo"], c:2, e:"y/x da 2, 2.5 y 3.33 (no constante); x·y da 2, 10 y 30 (no constante). No es proporcionalidad directa ni inversa." },
+        { q:"Si dos ciudades A y B están conectadas y un vehículo aumenta su velocidad al doble para recorrer esa distancia fija, ¿qué ocurre con el tiempo de viaje (a mayor velocidad)?", o:["El tiempo se duplica","El tiempo se reduce a la mitad","El tiempo no cambia","El tiempo se reduce a un cuarto"], c:1, e:"Para una distancia fija, velocidad y tiempo son inversamente proporcionales (v×t = distancia constante). Si la velocidad se duplica, el tiempo se reduce a la mitad." },
+        { q:"El gráfico de una relación de proporcionalidad directa entre x e y corresponde a:", o:["Una recta que pasa por el origen (0,0)","Una curva que nunca toca los ejes","Una recta que no pasa por el origen","Una parábola"], c:0, e:"En y = kx, cuando x=0 siempre y=0, por lo que el gráfico es una línea recta que pasa exactamente por el origen del plano cartesiano." },
+        { q:"Una impresora imprime 45 páginas en 3 minutos, a ritmo constante. ¿Cuántas páginas imprime en 8 minutos?", o:["120 páginas","135 páginas","96 páginas","106 páginas"], c:0, e:"k = 45/3 = 15 páginas por minuto. En 8 minutos: 15×8 = 120 páginas." },
+        { q:"6 pintores pintan una casa en 8 días, todos al mismo ritmo. ¿Cuántos días demorarían 4 pintores?", o:["5,3 días","10 días","12 días","14 días"], c:2, e:"Es proporcionalidad inversa: k = 6×8 = 48. Con 4 pintores: 48/4 = 12 días." },
+        { q:"En una tabla de proporcionalidad directa, x = 8 corresponde a y = 20. ¿Cuál es la constante de proporcionalidad k?", o:["2,5","1,6","160","0,4"], c:0, e:"k = y/x = 20/8 = 2,5." },
+        { q:"¿Esta tabla corresponde a una proporcionalidad directa? x: 2, 5, 10 — y: 8, 20, 40", o:["Sí, es directa con k = 4","No, es inversa con k = 16","Sí, es directa con k = 2,5","No, no es ninguna de las dos"], c:0, e:"y/x es constante en los tres casos: 8/2=4, 20/5=4, 40/10=4. Es proporcionalidad directa con k=4." },
+        { q:"8 cuadernos cuestan $12.000. Manteniendo el mismo precio unitario, ¿cuánto cuestan 5 cuadernos?", o:["$6.000","$7.500","$8.000","$9.600"], c:1, e:"k = 12.000/8 = 1.500 por cuaderno. 5 cuadernos: 5 × 1.500 = $7.500." },
+        { q:"3 grifos llenan una piscina en 10 horas, todos al mismo ritmo. ¿Cuánto demorarían 5 grifos?", o:["6 horas","16,7 horas","30 horas","2 horas"], c:0, e:"Es proporcionalidad inversa: k=3×10=30. Con 5 grifos: 30/5=6 horas." },
+        { q:"Una receta usa 200 g de harina para 12 galletas. ¿Cuántos gramos se necesitan para 30 galletas (misma proporción)?", o:["400 g","500 g","480 g","600 g"], c:1, e:"k = 200/12 g por galleta. Para 30 galletas: (200/12)×30 = 500 g." },
+        { q:"Un auto gasta 6 litros de bencina cada 100 km. ¿Cuántos litros gastará en 350 km, al mismo rendimiento?", o:["18 litros","21 litros","24 litros","35 litros"], c:1, e:"k = 6/100 = 0,06 L/km. En 350 km: 0,06 × 350 = 21 litros." },
+        { q:"10 máquinas producen 500 piezas en un día. ¿Cuántas piezas producirán 4 máquinas en el mismo día, funcionando al mismo ritmo?", o:["125 piezas","200 piezas","1.250 piezas","50 piezas"], c:1, e:"Es proporcionalidad directa (menos máquinas, menos piezas en el mismo tiempo): k=500/10=50 piezas por máquina. Con 4 máquinas: 4×50=200 piezas." },
+        { q:"Si se duplica la cantidad de trabajadores en una tarea de proporcionalidad inversa, ¿qué ocurre con el tiempo que demoran?", o:["Se duplica","Se reduce a la mitad","No cambia","Se reduce a un cuarto"], c:1, e:"En proporcionalidad inversa, trabajadores × tiempo = constante. Si los trabajadores se duplican, el tiempo debe reducirse a la mitad para mantener el mismo producto." },
+        { q:"En un mapa a escala 1:10.000, ¿cuánto debe medir en el mapa una distancia real de 2,5 km?", o:["2,5 cm","25 cm","250 cm","0,25 cm"], c:1, e:"2,5 km = 250.000 cm. A escala 1:10.000: 250.000 ÷ 10.000 = 25 cm." },
+        { q:"12 obreros construyen un muro en 9 días, todos al mismo ritmo. ¿Cuántos obreros se necesitan para construirlo en solo 6 días?", o:["8 obreros","18 obreros","72 obreros","6 obreros"], c:1, e:"Es proporcionalidad inversa: k=12×9=108. Para 6 días: 108/6=18 obreros." },
+        { q:"¿Es siempre cierto que el precio de un producto y la cantidad comprada forman una proporcionalidad directa?", o:["Sí, siempre, sin excepciones","No necesariamente: si hay descuentos por volumen, la relación deja de ser directamente proporcional","Sí, porque el precio siempre aumenta con la cantidad","No, el precio y la cantidad nunca están relacionados"], c:1, e:"Si comprar más unidades activa descuentos (por ejemplo, 'll evando 10, el precio unitario baja'), el costo total ya no crece en la misma proporción que la cantidad, por lo que deja de ser una proporcionalidad directa estricta." },
+      ]
+    },
+
+    // -----------------------------------------------------------------
+    // m2s3 — Ecuaciones e inecuaciones de primer grado
+    // -----------------------------------------------------------------
+    {
+      id: "m2s3",
+      name: "Ecuaciones e inecuaciones de primer grado",
+      videoUrl: "https://www.youtube.com/watch?v=DS5HzH6O8hI",
+      videoTitle: "Ecuaciones e inecuaciones de primer grado — PAES M1",
+      content: `<p>Una <strong>ecuación</strong> es una igualdad que contiene una incógnita (una letra cuyo valor no conocemos todavía). "Resolver" la ecuación significa encontrar el valor (o los valores) que hacen que la igualdad sea verdadera. Una <strong>inecuación</strong> es lo mismo, pero con una desigualdad en vez de un signo igual — y por eso su "solución" no es un solo número, sino un conjunto de números.</p>
+
+<h4 style="margin-top:22px;color:#4a3208;">Resolver ecuaciones lineales</h4>
+<p>La idea central es siempre la misma: lo que se le hace a un lado de la igualdad, hay que hacérselo también al otro lado, para que la igualdad se mantenga. El objetivo es "despejar" la incógnita, dejándola sola en un lado.</p>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Resuelve: 3x + 7 = 22</p>
+<div class="calc">3x + 7 = 22<br>3x = 22 − 7   <span style="color:var(--muted);">(se resta 7 en ambos lados)</span><br>3x = 15<br>x = 15 ÷ 3<br><span class="r">x = 5</span></div>
+</div>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Resuelve: 2(x − 3) = x + 4</p>
+<div class="calc">2x − 6 = x + 4   <span style="color:var(--muted);">(se distribuye el 2)</span><br>2x − x = 4 + 6   <span style="color:var(--muted);">(se agrupan las x a un lado, los números al otro)</span><br><span class="r">x = 10</span></div>
+</div>
+
+<h4 style="margin-top:22px;color:#4a3208;">Resolver inecuaciones lineales</h4>
+<p>El procedimiento es prácticamente idéntico al de las ecuaciones, con <strong>una diferencia crucial</strong>: si en algún paso se multiplican o dividen ambos lados por un número <strong>negativo</strong>, el sentido de la desigualdad se invierte (el "&lt;" pasa a ser "&gt;", y viceversa).</p>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Resuelve: 2x − 5 &gt; 9</p>
+<div class="calc">2x − 5 > 9<br>2x > 14<br><span class="r">x > 7</span></div>
+</div>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto — aquí sí se invierte el signo</p>
+<p>Resuelve: −3x + 6 ≤ 15</p>
+<div class="calc">−3x ≤ 15 − 6<br>−3x ≤ 9<br>x ≥ 9 ÷ (−3)   <span style="color:var(--muted);">(se divide por −3: la desigualdad se invierte, de ≤ pasa a ≥)</span><br><span class="r">x ≥ −3</span></div>
+</div>
+
+<div class="note-box"><p class="nb-title">Atención</p><p>Este cambio de sentido es, por lejos, el error más frecuente al resolver inecuaciones. Regla práctica: cada vez que multipliques o dividas por un número negativo, date vuelta la "boca" de la desigualdad.</p></div>
+
+<div class="fig"><div class="fig-frame"><svg role="img" aria-label="Recta numérica mostrando la solución de la inecuación x mayor o igual a -3, con un círculo relleno en -3 y una flecha hacia la derecha" viewBox="0 0 900 200" xmlns="http://www.w3.org/2000/svg">
+<rect x="6" y="6" width="888" height="188" rx="18" fill="#fbf2e6" fill-opacity="0.35"/>
+<line x1="60" y1="110" x2="840" y2="110" stroke="#6b4a10" stroke-width="2.5"/>
+<path d="M 840 110 L 824 102 L 824 118 Z" fill="#6b4a10"/>
+<line x1="120" y1="102" x2="120" y2="118" stroke="#6b4a10" stroke-width="2"/><text x="120" y="140" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="15" fill="#5a3d0d">−5</text>
+<line x1="270" y1="102" x2="270" y2="118" stroke="#6b4a10" stroke-width="2"/><text x="270" y="140" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="15" fill="#5a3d0d">−4</text>
+<line x1="570" y1="102" x2="570" y2="118" stroke="#6b4a10" stroke-width="2"/><text x="570" y="140" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="15" fill="#5a3d0d">−2</text>
+<line x1="720" y1="102" x2="720" y2="118" stroke="#6b4a10" stroke-width="2"/><text x="720" y="140" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="15" fill="#5a3d0d">−1</text>
+<line x1="420" y1="60" x2="800" y2="60" stroke="#3f6236" stroke-width="6"/>
+<path d="M 800 60 L 786 52 L 786 68 Z" fill="#3f6236"/>
+<circle cx="420" cy="60" r="9" fill="#3f6236"/>
+<text x="420" y="140" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="16" font-weight="700" fill="#3f6236">−3</text>
+<text x="600" y="35" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-style="italic" fill="#3f6236">x ≥ −3: círculo relleno en −3 (incluido) y flecha hacia +∞</text>
+</svg></div><figcaption><strong>Figura 1.</strong> El círculo relleno indica que −3 SÍ es parte de la solución (por el "igual" en ≥); si fuera solo "&gt;", el círculo iría vacío.</figcaption></div>
+
+<h4 style="margin-top:24px;color:#4a3208;">Traducir un problema a una ecuación o inecuación</h4>
+<p>La parte más difícil casi nunca es resolver la ecuación: es traducir correctamente el enunciado. Conviene nombrar la incógnita con una letra y escribir paso a paso lo que dice el enunciado.</p>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>El doble de un número, más 9, es igual a 31. ¿Cuál es el número?</p>
+<div class="calc">Sea x el número:<br>2x + 9 = 31<br>2x = 22<br><span class="r">x = 11</span></div>
+</div>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Un taxi cobra $600 fijo de bajada de bandera más $200 por cada kilómetro recorrido. ¿Cuántos kilómetros como máximo se pueden recorrer con un presupuesto de $3.000?</p>
+<div class="calc">Sea k los kilómetros recorridos:<br>600 + 200k ≤ 3.000<br>200k ≤ 2.400<br><span class="r">k ≤ 12 km</span></div>
+</div>`,
+      formulario: `<div class="f-item"><span class="f-name">Resolver ecuación</span><span>aplicar la misma operación a ambos lados, hasta despejar la incógnita</span></div>
+<div class="f-item"><span class="f-name">Resolver inecuación</span><span>igual que una ecuación, PERO si se multiplica/divide por un negativo, se invierte el signo de la desigualdad</span></div>
+<div class="f-item"><span class="f-name">Círculo relleno vs vacío</span><span>relleno = incluye el valor (≤, ≥); vacío = no lo incluye (&lt;, &gt;)</span></div>
+<div class="f-item"><span class="f-name">Distribuir antes de despejar</span><span>a(b + c) = ab + ac</span></div>`,
+      questions: [
+        { q:"Resuelve: 3x + 7 = 22", o:["x = 5","x = 15","x = 29/3","x = 7,67"], c:0, e:"3x = 22 − 7 = 15, entonces x = 15/3 = 5." },
+        { q:"Resuelve: 5x − 3 = 2x + 9", o:["x = 2","x = 4","x = 12","x = 3"], c:1, e:"5x − 2x = 9 + 3, entonces 3x = 12, y x = 4." },
+        { q:"Resuelve: 2(x − 3) = x + 4", o:["x = 10","x = −2","x = 2","x = 1"], c:0, e:"Distribuyendo: 2x − 6 = x + 4. Despejando: 2x − x = 4 + 6, entonces x = 10." },
+        { q:"Resuelve la inecuación: 2x − 5 > 9", o:["x > 2","x > 7","x > 14","x < 7"], c:1, e:"2x > 9 + 5 = 14, entonces x > 14/2 = 7." },
+        { q:"Resuelve la inecuación: −3x + 6 ≤ 15", o:["x ≤ −3","x ≥ −3","x ≤ 3","x ≥ 3"], c:1, e:"−3x ≤ 9. Al dividir por −3 (negativo), la desigualdad se invierte: x ≥ 9÷(−3) = −3." },
+        { q:"El doble de un número, más 9, es igual a 31. ¿Cuál es el número?", o:["9","20","11","22"], c:2, e:"Con x el número: 2x + 9 = 31, entonces 2x = 22, y x = 11." },
+        { q:"Un taxi cobra $600 fijo más $200 por cada kilómetro recorrido. ¿Cuántos kilómetros como máximo se pueden recorrer con $3.000?", o:["12 km","15 km","9 km","10 km"], c:0, e:"600 + 200k ≤ 3.000, entonces 200k ≤ 2.400, y k ≤ 12 km." },
+        { q:"Un estudiante resuelve la inecuación −2x > 8 y concluye que x > −4, sin invertir el sentido de la desigualdad. ¿Es correcto ese procedimiento?", o:["Sí, el resultado x > −4 es correcto", "No: al dividir por −2 (negativo) se debe invertir el signo, quedando x < −4", "Sí, porque −2x siempre es positivo", "No, la ecuación no tiene solución"], c:1, e:"Al dividir ambos lados por −2 (un número negativo), la desigualdad debe invertirse: x < 8÷(−2) = −4. Omitir ese cambio es un error frecuente." },
+        { q:"Resuelve: x/2 + 1/3 = 5/6", o:["x = 1","x = 1/2","x = 3","x = 2"], c:0, e:"Multiplicando toda la ecuación por 6 (mínimo común múltiplo de 2, 3 y 6): 3x + 2 = 5, entonces 3x = 3, y x = 1." },
+        { q:"Resuelve la inecuación: 4 − x < 10", o:["x < 6","x > −6","x < −6","x > 6"], c:1, e:"−x < 10 − 4 = 6. Al multiplicar por −1 (negativo), se invierte el signo: x > −6." },
+        { q:"La suma de tres números enteros consecutivos es 72. ¿Cuál es el menor de ellos?", o:["22","23","24","25"], c:1, e:"Sea n el menor: n + (n+1) + (n+2) = 72, entonces 3n + 3 = 72, 3n = 69, y n = 23." },
+        { q:"¿Cuál de las siguientes representa correctamente 'el triple de un número, disminuido en 5, es a lo más 16'?", o:["3x − 5 ≤ 16","3x − 5 ≥ 16","3(x − 5) ≤ 16","3x − 5 < 16"], c:0, e:"'A lo más' significa 'menor o igual que' (≤). 'El triple de un número' es 3x, 'disminuido en 5' es 3x − 5, y esa cantidad es a lo más 16: 3x − 5 ≤ 16." },
+        { q:"Resuelve: 7x − 2 = 4x + 13", o:["x = 5","x = 11/3","x = 15","x = 3,67"], c:0, e:"7x − 4x = 13 + 2, entonces 3x = 15, y x = 5." },
+        { q:"Resuelve la inecuación: −5x > −20", o:["x > 4","x < 4","x > −4","x < −4"], c:1, e:"Al dividir por −5 (negativo), la desigualdad se invierte: x < (−20)÷(−5) = x < 4." },
+        { q:"El triple de la edad de Ana, menos 4, es 41. ¿Cuál es la edad de Ana?", o:["12","15","45","37"], c:1, e:"Con x la edad de Ana: 3x − 4 = 41, entonces 3x = 45, y x = 15." },
+        { q:"Resuelve la inecuación: 3(2x − 1) ≥ 15", o:["x ≥ 3","x ≥ 8/3","x ≤ 3","x ≥ 6"], c:0, e:"Distribuyendo: 6x − 3 ≥ 15, entonces 6x ≥ 18, y x ≥ 3." },
+        { q:"Resuelve: 4x + 9 = 2x + 21", o:["x = 6","x = 15","x = 4","x = 12"], c:0, e:"4x − 2x = 21 − 9, entonces 2x = 12, y x = 6." },
+        { q:"Resuelve: 6(x + 2) = 3x + 24", o:["x = 4","x = 2","x = 12","x = 6"], c:0, e:"Distribuyendo: 6x + 12 = 3x + 24. Despejando: 3x = 12, y x = 4." },
+        { q:"Resuelve la inecuación: 5x − 8 ≤ 2x + 7", o:["x ≤ 5","x ≥ 5","x ≤ 1/3","x ≤ 15"], c:0, e:"5x − 2x ≤ 7 + 8, entonces 3x ≤ 15, y x ≤ 5." },
+        { q:"Resuelve la inecuación: −4x + 3 < 19", o:["x < −4","x > −4","x < 4","x > 4"], c:1, e:"−4x < 16. Al dividir por −4 (negativo), se invierte la desigualdad: x > 16÷(−4) = −4." },
+        { q:"El doble de la edad de Pedro, disminuido en 6, es 24. ¿Qué edad tiene Pedro?", o:["9 años","15 años","30 años","12 años"], c:1, e:"Con x la edad de Pedro: 2x − 6 = 24, entonces 2x = 30, y x = 15." },
+        { q:"Resuelve: 2(x − 1) − (x + 3) = 5", o:["x = 10","x = 6","x = 0","x = −10"], c:0, e:"Distribuyendo: 2x − 2 − x − 3 = 5, entonces x − 5 = 5, y x = 10." },
+        { q:"Resuelve la inecuación: 3x/2 − 1 ≥ 5", o:["x ≥ 4","x ≥ 8","x ≥ 3","x ≥ 12"], c:0, e:"3x/2 ≥ 6. Multiplicando por 2/3: x ≥ 6×(2/3) = 4." },
+        { q:"La entrada al cine cuesta $4.500 y un combo de palomitas $2.800. Marco tiene $20.000 y quiere comprar entradas para él y sus amigos, además de un combo de palomitas para compartir. ¿Cuántas entradas puede comprar como máximo?", o:["3 entradas","4 entradas","3,8 entradas","5 entradas"], c:0, e:"4.500x + 2.800 ≤ 20.000, entonces x ≤ 3,82. Como no se pueden comprar entradas fraccionadas, el máximo es 3 entradas completas (con 4 entradas el total sería $20.800, superando el presupuesto)." },
+        { q:"Resuelve la inecuación: 7 − 2x > 1", o:["x < 3","x > 3","x < −3","x > −3"], c:0, e:"−2x > −6. Al dividir por −2 (negativo), se invierte la desigualdad: x < (−6)÷(−2) = 3." },
+      ]
+    },
+
+    // -----------------------------------------------------------------
+    // m2s4 — Sistemas de ecuaciones lineales (2x2)
+    // -----------------------------------------------------------------
+    {
+      id: "m2s4",
+      name: "Sistemas de ecuaciones lineales (2x2)",
+      videoUrl: "https://www.youtube.com/watch?v=S4hODfW8GlY",
+      videoTitle: "PAES | Competencia Matemática M1 | Sistemas de ecuaciones lineales (2x2)",
+      content: `<p>Un <strong>sistema de ecuaciones 2x2</strong> son dos ecuaciones lineales que comparten las mismas dos incógnitas (típicamente x e y), y que deben cumplirse <strong>al mismo tiempo</strong>. "Resolver el sistema" significa encontrar el par de valores (x, y) que satisface ambas ecuaciones a la vez.</p>
+
+<h4 style="margin-top:22px;color:#4a3208;">Interpretación gráfica</h4>
+<p>Cada ecuación lineal, al graficarla, es una recta. La solución del sistema es exactamente el <strong>punto donde ambas rectas se cruzan</strong> — porque ese es el único punto que cumple las dos ecuaciones simultáneamente.</p>
+<div class="fig"><div class="fig-frame"><svg role="img" aria-label="Dos rectas que se intersectan en el punto (3,2), representando la solución del sistema x+y=5, x-y=1" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg">
+<rect x="6" y="6" width="628" height="468" rx="18" fill="#fbf2e6" fill-opacity="0.35"/>
+<line x1="60" y1="400" x2="580" y2="400" stroke="#6b4a10" stroke-width="2"/>
+<path d="M 580 400 L 566 392 L 566 408 Z" fill="#6b4a10"/>
+<line x1="80" y1="440" x2="80" y2="60" stroke="#6b4a10" stroke-width="2"/>
+<path d="M 80 60 L 72 74 L 88 74 Z" fill="#6b4a10"/>
+<text x="590" y="405" font-family="Georgia,serif" font-size="14" fill="#5a3d0d">x</text>
+<text x="65" y="55" font-family="Georgia,serif" font-size="14" fill="#5a3d0d">y</text>
+<!-- eje marcas cada 60px = 1 unidad, origen en (80,400) -->
+<line x1="140" y1="395" x2="140" y2="405" stroke="#6b4a10"/><text x="140" y="420" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#5a3d0d">1</text>
+<line x1="200" y1="395" x2="200" y2="405" stroke="#6b4a10"/><text x="200" y="420" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#5a3d0d">2</text>
+<line x1="260" y1="395" x2="260" y2="405" stroke="#6b4a10"/><text x="260" y="420" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#5a3d0d">3</text>
+<line x1="320" y1="395" x2="320" y2="405" stroke="#6b4a10"/><text x="320" y="420" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#5a3d0d">4</text>
+<line x1="380" y1="395" x2="380" y2="405" stroke="#6b4a10"/><text x="380" y="420" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#5a3d0d">5</text>
+<line x1="75" y1="340" x2="85" y2="340" stroke="#6b4a10"/><text x="60" y="345" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#5a3d0d">1</text>
+<line x1="75" y1="280" x2="85" y2="280" stroke="#6b4a10"/><text x="60" y="285" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#5a3d0d">2</text>
+<line x1="75" y1="220" x2="85" y2="220" stroke="#6b4a10"/><text x="60" y="225" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#5a3d0d">3</text>
+<line x1="75" y1="160" x2="85" y2="160" stroke="#6b4a10"/><text x="60" y="165" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#5a3d0d">4</text>
+<line x1="75" y1="100" x2="85" y2="100" stroke="#6b4a10"/><text x="60" y="105" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#5a3d0d">5</text>
+<!-- recta x+y=5: por (0,5)=(80,100) y (5,0)=(380,400) -->
+<line x1="80" y1="100" x2="380" y2="400" stroke="#3f6236" stroke-width="3"/>
+<text x="345" y="150" font-family="'Space Grotesk',sans-serif" font-size="14" font-weight="700" fill="#3f6236">x + y = 5</text>
+<!-- recta x-y=1: por (1,0)=(140,400) y (5,4)=(380,160) ; extendida hasta (0,-1) fuera de vista -->
+<line x1="140" y1="400" x2="440" y2="100" stroke="#8a3550" stroke-width="3"/>
+<text x="420" y="130" font-family="'Space Grotesk',sans-serif" font-size="14" font-weight="700" fill="#8a3550">x − y = 1</text>
+<!-- interseccion en (3,2) = (260,280) -->
+<circle cx="260" cy="280" r="8" fill="#4a3208"/>
+<text x="270" y="270" font-family="'IBM Plex Mono',monospace" font-size="14" font-weight="700" fill="#4a3208">(3, 2)</text>
+<text x="300" y="440" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-style="italic" fill="#4a3208">la solución del sistema es el punto donde ambas rectas se cruzan</text>
+</svg></div><figcaption><strong>Figura 1.</strong> El sistema x + y = 5, x − y = 1 tiene como solución (3, 2): el único punto que está sobre ambas rectas a la vez.</figcaption></div>
+
+<h4 style="margin-top:22px;color:#4a3208;">Método de reducción (suma o resta)</h4>
+<p>Consiste en sumar o restar las dos ecuaciones, término a término, para que una de las incógnitas se cancele.</p>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Resuelve el sistema: x + y = 10 ; x − y = 2</p>
+<div class="calc">Se suman ambas ecuaciones (los "y" se cancelan):<br>(x+y) + (x−y) = 10 + 2<br>2x = 12 → x = 6<br>Se reemplaza en la primera ecuación: 6 + y = 10 → y = 4<br><span class="r">Solución: x = 6, y = 4</span></div>
+</div>
+
+<h4 style="margin-top:22px;color:#4a3208;">Método de sustitución</h4>
+<p>Consiste en despejar una incógnita en una de las ecuaciones, y reemplazar esa expresión en la otra ecuación.</p>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Resuelve el sistema: y = x − 2 ; 2x + y = 13</p>
+<div class="calc">Se reemplaza y = x−2 en la segunda ecuación:<br>2x + (x − 2) = 13<br>3x − 2 = 13<br>3x = 15 → x = 5<br>y = x − 2 = 5 − 2 = 3<br><span class="r">Solución: x = 5, y = 3</span></div>
+</div>
+
+<h4 style="margin-top:22px;color:#4a3208;">Tipos de solución</h4>
+<p>No todos los sistemas tienen una única solución. Gráficamente, esto corresponde a lo que le pasa a las dos rectas:</p>
+<table class="ref-table">
+<tr><th>Tipo</th><th>Gráficamente</th><th>Ejemplo</th></tr>
+<tr><td>Solución única</td><td>las rectas se cruzan en un solo punto</td><td>x+y=5, x−y=1</td></tr>
+<tr><td>Sin solución</td><td>las rectas son paralelas (nunca se cruzan)</td><td>x+y=5, x+y=8</td></tr>
+<tr><td>Infinitas soluciones</td><td>son la misma recta (se superponen)</td><td>x+y=5, 2x+2y=10</td></tr>
+</table>
+
+<div class="note-box"><p class="nb-title">Atención</p><p>Un sistema "sin solución" no significa que esté mal planteado: significa que, en ese contexto, no existe ningún par (x,y) que cumpla ambas condiciones a la vez — por ejemplo, dos rectas paralelas nunca se tocan.</p></div>`,
+      formulario: `<div class="f-item"><span class="f-name">Método de reducción</span><span>sumar o restar las ecuaciones para eliminar una incógnita</span></div>
+<div class="f-item"><span class="f-name">Método de sustitución</span><span>despejar una incógnita en una ecuación y reemplazarla en la otra</span></div>
+<div class="f-item"><span class="f-name">Interpretación gráfica</span><span>la solución es el punto de intersección de las dos rectas</span></div>
+<div class="f-item"><span class="f-name">Rectas paralelas (mismo m, distinto n)</span><span>sistema sin solución</span></div>
+<div class="f-item"><span class="f-name">Misma recta (mismo m y n)</span><span>sistema con infinitas soluciones</span></div>`,
+      questions: [
+        { q:"Resuelve el sistema: x + y = 10 ; x − y = 2", o:["x=6, y=4","x=4, y=6","x=8, y=2","x=5, y=5"], c:0, e:"Sumando ambas ecuaciones: 2x=12, x=6. Reemplazando en x+y=10: y=4." },
+        { q:"Resuelve el sistema: 2x + y = 11 ; x − y = 1", o:["x=3, y=5","x=4, y=3","x=5, y=1","x=4, y=7"], c:1, e:"Sumando ambas ecuaciones: 3x=12, x=4. Reemplazando en x−y=1: 4−y=1, y=3. Verificación: 2(4)+3=11 ✓." },
+        { q:"Resuelve el sistema por sustitución: y = x − 2 ; 2x + y = 13", o:["x=5, y=3","x=3, y=1","x=6, y=4","x=5, y=7"], c:0, e:"Sustituyendo: 2x + (x−2) = 13, entonces 3x=15, x=5. Luego y = 5−2 = 3." },
+        { q:"La suma de dos números es 45 y su diferencia es 11. ¿Cuáles son los números?", o:["28 y 17","30 y 15","25 y 20","33 y 12"], c:0, e:"Con x+y=45 y x−y=11: sumando, 2x=56, x=28; luego y=45−28=17." },
+        { q:"En un estacionamiento hay autos y motos: 27 vehículos en total y 84 ruedas en total (autos con 4 ruedas, motos con 2). ¿Cuántos autos hay?", o:["12","15","18","20"], c:1, e:"Con a+m=27 y 4a+2m=84: de la primera, m=27−a. Sustituyendo: 4a+2(27−a)=84, 4a+54−2a=84, 2a=30, a=15." },
+        { q:"¿Qué tipo de solución tiene el sistema x + y = 5 ; x + y = 8?", o:["Solución única (3, 2)","Sin solución (rectas paralelas)","Infinitas soluciones","Solución única (0, 0)"], c:1, e:"Ambas ecuaciones representan rectas con la misma pendiente pero distinto intercepto (son paralelas): nunca se cruzan, por lo que el sistema no tiene solución." },
+        { q:"¿Qué tipo de solución tiene el sistema x + y = 5 ; 2x + 2y = 10?", o:["Sin solución","Solución única (2, 3)","Infinitas soluciones: son la misma recta","Solución única (0, 5)"], c:2, e:"La segunda ecuación es exactamente el doble de la primera (2x+2y=10 equivale a x+y=5): representan la misma recta, por lo que cualquier punto de esa recta es solución." },
+        { q:"Resuelve por reducción: 3x − y = 7 ; x + y = 5", o:["x=2, y=3","x=3, y=2","x=4, y=1","x=1, y=4"], c:1, e:"Sumando ambas ecuaciones (los −y y +y se cancelan): 4x=12, x=3. Reemplazando en x+y=5: y=2." },
+        { q:"¿Es (2, 3) solución del sistema x + 2y = 8 ; 2x − y = 1?", o:["Sí, cumple ambas ecuaciones","No cumple la primera ecuación","No cumple la segunda ecuación","No cumple ninguna de las dos"], c:0, e:"Verificando: 2+2(3)=2+6=8 ✓ y 2(2)−3=4−3=1 ✓. El par (2,3) cumple ambas ecuaciones, por lo tanto sí es solución del sistema." },
+        { q:"Katherine compra 3 cuadernos y 2 lápices y paga $5.700. Pedro compra 1 cuaderno y 4 lápices, a los mismos precios, y paga $3.400. ¿Cuánto cuesta cada cuaderno?", o:["$1.200","$1.600","$1.800","$1.400"], c:1, e:"Con 3c+2l=5.700 y c+4l=3.400: de la segunda, c=3.400−4l. Sustituyendo: 3(3.400−4l)+2l=5.700, 10.200−12l+2l=5.700, −10l=−4.500, l=450. Entonces c=3.400−4(450)=1.600." },
+        { q:"¿Cuál sistema de ecuaciones representa correctamente: 'la suma de dos números es 20 y el doble del primero menos el segundo es 4'?", o:["x+y=20 ; 2x−y=4","x+y=20 ; x−2y=4","x−y=20 ; 2x+y=4","x+y=4 ; 2x−y=20"], c:0, e:"'La suma de dos números es 20' se traduce como x+y=20. 'El doble del primero menos el segundo es 4' se traduce como 2x−y=4." },
+        { q:"Gráficamente, la solución de un sistema de ecuaciones lineales 2x2 con solución única corresponde a:", o:["El punto donde ambas rectas cruzan el eje x", "El punto de intersección entre las dos rectas", "El punto donde ambas rectas cruzan el eje y", "Cualquier punto sobre alguna de las dos rectas"], c:1, e:"La solución de un sistema es el par (x,y) que satisface ambas ecuaciones a la vez, y eso corresponde exactamente al punto donde las dos rectas se cruzan en el plano cartesiano." },
+        { q:"Resuelve el sistema: x − y = 4 ; x + y = 12", o:["x=8, y=4","x=4, y=8","x=6, y=2","x=10, y=6"], c:0, e:"Sumando ambas ecuaciones: 2x=16, x=8. Reemplazando en x+y=12: y=4." },
+        { q:"Resuelve el sistema por sustitución: y = 2x + 1 ; x + y = 10", o:["x=3, y=7","x=7, y=3","x=2, y=5","x=4, y=9"], c:0, e:"Sustituyendo: x + (2x+1) = 10, entonces 3x=9, x=3. Luego y=2(3)+1=7." },
+        { q:"Dos números suman 60, y uno de ellos es el triple del otro. ¿Cuáles son esos números?", o:["45 y 15","40 y 20","30 y 30","50 y 10"], c:0, e:"Con x+y=60 y x=3y: 3y+y=60, entonces 4y=60, y=15, y x=3(15)=45." },
+        { q:"¿Qué tipo de solución tiene el sistema 2x + y = 6 ; 4x + 2y = 20?", o:["Solución única", "Sin solución (rectas paralelas)", "Infinitas soluciones (misma recta)", "No tiene rectas asociadas"], c:1, e:"Despejando y: la primera da y=−2x+6 y la segunda da y=−2x+10. Ambas tienen la misma pendiente (−2) pero distinto intercepto (6 y 10): son rectas paralelas, por lo que el sistema no tiene solución." },
+        { q:"Resuelve el sistema: 4x − y = 10 ; x + y = 5", o:["x=3, y=2","x=2, y=3","x=5, y=0","x=1, y=4"], c:0, e:"Sumando ambas ecuaciones (el −y y el +y se cancelan): 5x=15, x=3. Reemplazando en x+y=5: y=2." },
+        { q:"Resuelve el sistema: 2x + 3y = 16 ; x − y = 3", o:["x=5, y=2","x=2, y=5","x=4, y=1","x=6, y=3"], c:0, e:"De x−y=3: x=y+3. Sustituyendo: 2(y+3)+3y=16, entonces 5y+6=16, 5y=10, y=2. Luego x=2+3=5." },
+        { q:"Resuelve el sistema: 3x − 2y = 4 ; x + 2y = 12", o:["x=4, y=4","x=4, y=1","x=2, y=5","x=6, y=3"], c:0, e:"Sumando ambas ecuaciones: 4x=16, x=4. Reemplazando en x+2y=12: 4+2y=12, y=4." },
+        { q:"El perímetro de un rectángulo es 34 cm y su largo es 5 cm más que su ancho. ¿Cuáles son sus dimensiones?", o:["Ancho 6 cm, largo 11 cm","Ancho 11 cm, largo 6 cm","Ancho 7 cm, largo 12 cm","Ancho 5 cm, largo 10 cm"], c:0, e:"Con l+a=17 (mitad del perímetro) y l=a+5: a+5+a=17, entonces 2a=12, a=6, y l=11." },
+        { q:"Resuelve el sistema: y = 3x ; 2x + y = 25", o:["x=5, y=15","x=15, y=5","x=25, y=75","x=5, y=5"], c:0, e:"Sustituyendo y=3x en la segunda ecuación: 2x+3x=25, entonces 5x=25, x=5, y=3(5)=15." },
+        { q:"La entrada general a un concierto cuesta el doble que la entrada estudiantil. Si 3 entradas generales y 5 estudiantiles cuestan $88.000 en total, ¿cuánto cuesta la entrada estudiantil?", o:["$8.000","$16.000","$11.000","$5.500"], c:0, e:"Con e la entrada estudiantil y 2e la general: 3(2e)+5e=88.000, entonces 11e=88.000, y e=$8.000." },
+        { q:"En un corral hay 45 animales entre gallinas y conejos, con 128 patas en total (gallina: 2 patas, conejo: 4 patas). ¿Cuántos conejos hay?", o:["19","26","22","24"], c:0, e:"Con g+c=45 y 2g+4c=128: de la primera, g=45−c. Sustituyendo: 2(45−c)+4c=128, 90+2c=128, 2c=38, c=19." },
+        { q:"Resuelve el sistema: x + y = 20 ; x = y + 4", o:["x=12, y=8","x=8, y=12","x=10, y=10","x=16, y=4"], c:0, e:"Sustituyendo x=y+4 en x+y=20: (y+4)+y=20, entonces 2y=16, y=8, y x=8+4=12." },
+        { q:"¿Qué tipo de solución tiene un sistema formado por dos rectas con distinta pendiente entre sí?", o:["Siempre sin solución","Siempre infinitas soluciones","Siempre solución única: se cruzan en exactamente un punto","No se puede saber sin resolverlo"], c:2, e:"Dos rectas con pendientes distintas nunca son paralelas ni coinciden, así que necesariamente se cruzan en un único punto: el sistema siempre tiene solución única." },
+      ]
+    },
+
+    // -----------------------------------------------------------------
+    // m2s5 — Función lineal y afín
+    // -----------------------------------------------------------------
+    {
+      id: "m2s5",
+      name: "Función lineal y afín",
+      videoUrl: "https://www.youtube.com/watch?v=dtkYsyJ1saw",
+      videoTitle: "FUNCIÓN LINEAL Y FUNCIÓN AFÍN | PAES M1 y M2 de MATEMÁTICA | Eje: Álgebra",
+      content: `<p>Una <strong>función</strong> es una regla que a cada valor de entrada (x) le asigna exactamente un valor de salida (y). Las funciones lineal y afín son las más simples de todas: su gráfico siempre es una línea recta, y aparecen constantemente en situaciones donde algo cambia "a ritmo constante" (un costo por hora, una distancia según el tiempo, etc.).</p>
+
+<h4 style="margin-top:22px;color:#4a3208;">Función lineal vs. función afín: la diferencia que siempre preguntan</h4>
+<table class="ref-table">
+<tr><th></th><th>Función lineal</th><th>Función afín</th></tr>
+<tr><td>Forma</td><td>y = mx</td><td>y = mx + n (con n ≠ 0)</td></tr>
+<tr><td>¿Pasa por el origen (0,0)?</td><td>Siempre sí</td><td>No (salvo que n = 0, y ahí sería lineal)</td></tr>
+<tr><td>Ejemplo</td><td>y = 3x</td><td>y = 3x + 5</td></tr>
+</table>
+<p>En ambas, <strong>m</strong> es la <strong>pendiente</strong> (qué tan inclinada está la recta y hacia dónde) y <strong>n</strong> es el <strong>coeficiente de posición</strong> (el valor donde la recta cruza el eje y, también llamado "intercepto" u "ordenada en el origen").</p>
+
+<div class="fig"><div class="fig-frame"><svg role="img" aria-label="Gráfico comparando la función lineal y=x que pasa por el origen, con la función afín y=x+3 que no pasa por el origen" viewBox="0 0 640 460" xmlns="http://www.w3.org/2000/svg">
+<rect x="6" y="6" width="628" height="448" rx="18" fill="#fbf2e6" fill-opacity="0.35"/>
+<line x1="60" y1="380" x2="580" y2="380" stroke="#6b4a10" stroke-width="2"/>
+<path d="M 580 380 L 566 372 L 566 388 Z" fill="#6b4a10"/>
+<line x1="90" y1="420" x2="90" y2="50" stroke="#6b4a10" stroke-width="2"/>
+<path d="M 90 50 L 82 64 L 98 64 Z" fill="#6b4a10"/>
+<text x="590" y="385" font-family="Georgia,serif" font-size="14" fill="#5a3d0d">x</text>
+<text x="75" y="45" font-family="Georgia,serif" font-size="14" fill="#5a3d0d">y</text>
+<!-- origen (0,0) en pixel (90,380); escala 40px/unidad -->
+<!-- y=x: de (-3,-3)=(90-120,380+120)=(-30,500 fuera) a (7,7)=(90+280,380-280)=(370,100) -->
+<line x1="130" y1="420" x2="410" y2="90" stroke="#3f6236" stroke-width="3"/>
+<text x="380" y="130" font-family="'Space Grotesk',sans-serif" font-size="14" font-weight="700" fill="#3f6236">y = x (lineal)</text>
+<circle cx="90" cy="380" r="6" fill="#3f6236"/>
+<text x="60" y="400" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#3f6236">(0,0)</text>
+<!-- y=x+3: intercepto en (0,3)=(90,380-120=260); pasa por (-6,-3)=(90-240,380+120=500 fuera) a (4,7)=(90+160,380-280=100) -->
+<line x1="30" y1="440" x2="410" y2="60" stroke="#8a3550" stroke-width="3"/>
+<text x="200" y="150" font-family="'Space Grotesk',sans-serif" font-size="14" font-weight="700" fill="#8a3550">y = x + 3 (afín)</text>
+<circle cx="90" cy="260" r="6" fill="#8a3550"/>
+<text x="30" y="255" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#8a3550">(0,3)</text>
+<text x="320" y="430" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-style="italic" fill="#4a3208">ambas tienen la misma pendiente (m=1): son rectas paralelas</text>
+</svg></div><figcaption><strong>Figura 1.</strong> y = x pasa por el origen (función lineal); y = x + 3 es paralela, pero cruza el eje y en el punto (0,3) — es afín porque n = 3 ≠ 0.</figcaption></div>
+
+<h4 style="margin-top:22px;color:#4a3208;">Calcular la pendiente entre dos puntos</h4>
+<p>Si conoces dos puntos (x₁, y₁) y (x₂, y₂) de la recta, la pendiente se calcula así:</p>
+<div class="calc">m = (y₂ − y₁) / (x₂ − x₁)</div>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Encuentra la pendiente de la recta que pasa por (1, 4) y (3, 10)</p>
+<div class="calc">m = (10 − 4) / (3 − 1) = 6/2<br><span class="r">= 3</span></div>
+</div>
+<p>El <strong>signo de m</strong> indica si la función crece o decrece: si m &gt; 0, la recta sube (a mayor x, mayor y); si m &lt; 0, la recta baja; si m = 0, la recta es horizontal (y no cambia, sin importar x).</p>
+
+<h4 style="margin-top:22px;color:#4a3208;">Modelar situaciones con una función afín</h4>
+<p>Muchas situaciones de "costo fijo más costo variable" se modelan con una función afín: n es el costo fijo (lo que se paga aunque no se use nada) y m es la tasa de cambio (cuánto aumenta por cada unidad).</p>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Un plomero cobra $15.000 fijos por la visita, más $8.000 por cada hora trabajada. Escribe la función C(h) que modela el costo total según las horas trabajadas h, y calcula el costo de un trabajo de 3 horas.</p>
+<div class="calc">C(h) = 8.000h + 15.000  <span style="color:var(--muted);">(m=8.000 es el costo por hora, n=15.000 es el costo fijo)</span><br><br>C(3) = 8.000(3) + 15.000 = 24.000 + 15.000<br><span class="r">= $39.000</span></div>
+</div>
+
+<h4 style="margin-top:20px;color:#4a3208;">Ceros de la función</h4>
+<p>El "cero" de una función (o su intercepto con el eje x) es el valor de x donde y = 0. Se encuentra igualando la función a cero y despejando x.</p>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Encuentra el cero de la función y = 2x − 8</p>
+<div class="calc">0 = 2x − 8<br>8 = 2x<br><span class="r">x = 4</span></div>
+</div>`,
+      formulario: `<div class="f-item"><span class="f-name">Función lineal</span><span>y = mx (siempre pasa por el origen)</span></div>
+<div class="f-item"><span class="f-name">Función afín</span><span>y = mx + n, con n ≠ 0 (no pasa por el origen)</span></div>
+<div class="f-item"><span class="f-name">Pendiente entre dos puntos</span><span>m = (y₂ − y₁) / (x₂ − x₁)</span></div>
+<div class="f-item"><span class="f-name">Signo de la pendiente</span><span>m&gt;0 crece; m&lt;0 decrece; m=0 recta horizontal</span></div>
+<div class="f-item"><span class="f-name">Cero de la función</span><span>se obtiene igualando y = 0 y despejando x</span></div>
+<div class="f-item"><span class="f-name">n (coef. de posición)</span><span>valor donde la recta cruza el eje y, es decir f(0)</span></div>`,
+      questions: [
+        { q:"En la función y = 3x − 5, ¿cuáles son la pendiente y el coeficiente de posición?", o:["m=3, n=−5","m=−5, n=3","m=3, n=5","m=5, n=−3"], c:0, e:"En la forma y=mx+n, el coeficiente que acompaña a x es la pendiente (m=3) y el término independiente es el coeficiente de posición (n=−5)." },
+        { q:"Encuentra la pendiente de la recta que pasa por los puntos (1, 4) y (3, 10)", o:["2","3","6","1/3"], c:1, e:"m = (10−4)/(3−1) = 6/2 = 3." },
+        { q:"¿La función y = 4x es lineal o afín?", o:["Lineal, porque pasa por el origen (n=0)","Afín, porque tiene pendiente distinta de 1","Lineal, porque el exponente de x es 1","Afín, porque no tiene término independiente"], c:0, e:"Como no tiene término independiente (equivale a n=0), la función pasa por el origen: es una función lineal." },
+        { q:"¿La función y = 4x + 7 es lineal o afín?", o:["Lineal","Afín, porque n=7≠0, no pasa por el origen","Lineal, porque m=4 es positivo","Ninguna de las dos, porque no es una recta"], c:1, e:"Como tiene un término independiente distinto de cero (n=7), la recta no pasa por el origen: es una función afín." },
+        { q:"Un plomero cobra $15.000 fijos por la visita más $8.000 por cada hora trabajada. ¿Cuál función C(h) modela el costo total según las horas h?", o:["C(h) = 15.000h + 8.000","C(h) = 8.000h + 15.000","C(h) = 8.000h × 15.000","C(h) = 23.000h"], c:1, e:"El costo fijo (15.000) es el término independiente n, y el costo por hora (8.000) es la pendiente m: C(h) = 8.000h + 15.000." },
+        { q:"Usando C(h) = 8.000h + 15.000, ¿cuánto cuesta un trabajo de 3 horas?", o:["$24.000","$39.000","$23.000","$45.000"], c:1, e:"C(3) = 8.000(3) + 15.000 = 24.000 + 15.000 = $39.000." },
+        { q:"Encuentra el cero (intercepto con el eje x) de la función y = 2x − 8", o:["x = −4","x = 8","x = 4","x = −8"], c:2, e:"0 = 2x − 8, entonces 2x = 8, y x = 4." },
+        { q:"Una recta pasa por el punto (0, −3) y tiene pendiente 5. ¿Cuál es su ecuación?", o:["y = 5x − 3","y = −3x + 5","y = 5x + 3","y = 3x − 5"], c:0, e:"El punto (0,−3) indica que n=−3 (cruce con el eje y), y la pendiente dada es m=5. La ecuación es y = 5x − 3." },
+        { q:"La altura de una vela disminuye según h(t) = −2t + 20 (h en cm, t en minutos). ¿Qué representa el −2 en este contexto?", o:["La vela mide 2 cm al comenzar", "La vela se consume 2 cm por cada minuto que pasa", "La vela dura 2 minutos en total", "La vela aumenta 2 cm por minuto"], c:1, e:"El −2 es la pendiente m: indica la tasa de cambio, es decir, cuánto disminuye (por el signo negativo) la altura por cada minuto que transcurre." },
+        { q:"¿Es la función y = 3x² una función afín?", o:["Sí, porque tiene la forma y=mx+n","No, porque x está elevado al cuadrado (no es de primer grado)","Sí, porque no tiene término independiente","No, porque falta el coeficiente de posición"], c:1, e:"Una función afín (o lineal) debe tener la variable x elevada solo a la primera potencia. Como aquí x está al cuadrado, no es una función afín ni lineal: es una función cuadrática." },
+        { q:"Una tabla de valores muestra: x=0→y=5, x=1→y=8, x=2→y=11. ¿Cuál es la función afín que representa estos datos?", o:["y = 3x + 5","y = 5x + 3","y = 3x + 8","y = 8x + 5"], c:0, e:"La pendiente es m=(8−5)/(1−0)=3, y el coeficiente de posición es n=5 (el valor de y cuando x=0). La función es y=3x+5. Verificación en x=2: 3(2)+5=11 ✓." },
+        { q:"El gráfico de una función afín pasa por los puntos (0, 6) y (4, 6). ¿Cuál es el valor de la pendiente m?", o:["6","4","1,5","0"], c:3, e:"m = (6−6)/(4−0) = 0/4 = 0. Cuando la pendiente es 0, la recta es horizontal: y no cambia, sin importar el valor de x." },
+        { q:"En la función y = −2x + 10, ¿cuáles son la pendiente y el coeficiente de posición?", o:["m=−2, n=10","m=10, n=−2","m=−2, n=−10","m=2, n=10"], c:0, e:"En y=mx+n, el coeficiente de x es la pendiente (m=−2) y el término independiente es n=10." },
+        { q:"Encuentra la función afín que pasa por los puntos (2, 7) y (5, 16)", o:["y = 3x + 1","y = 2x + 3","y = 3x − 1","y = 4x − 1"], c:0, e:"m = (16−7)/(5−2) = 9/3 = 3. Usando el punto (2,7): 7 = 3(2)+n, entonces n=1. La función es y=3x+1 (se puede verificar con el otro punto: 3(5)+1=16 ✓)." },
+        { q:"Un gimnasio cobra $10.000 de inscripción única más $5.000 mensuales. ¿Cuánto se ha pagado en total después de 6 meses?", o:["$30.000","$40.000","$60.000","$35.000"], c:1, e:"C(h) = 5.000h + 10.000. C(6) = 5.000(6) + 10.000 = 30.000 + 10.000 = $40.000." },
+        { q:"El Plan A de celular cuesta $8.000 fijos más $50 por minuto. El Plan B cuesta $5.000 fijos más $80 por minuto. ¿Para cuántos minutos usados ambos planes cuestan exactamente lo mismo?", o:["50 minutos","100 minutos","60 minutos","30 minutos"], c:1, e:"Se igualan las funciones: 8.000+50m = 5.000+80m. Despejando: 3.000=30m, entonces m=100 minutos (ambos planes cuestan $13.000)." },
+        { q:"Encuentra la pendiente de la recta que pasa por los puntos (0, 2) y (6, 20)", o:["2","3","18","9"], c:1, e:"m = (20−2)/(6−0) = 18/6 = 3." },
+        { q:"¿La función y = 5x − 2 es lineal o afín?", o:["Lineal, porque pasa por el origen","Afín, porque n=−2≠0, no pasa por el origen","Lineal, porque m=5 es positivo","Ninguna de las dos"], c:1, e:"Como tiene un término independiente distinto de cero (n=−2), no pasa por el origen: es una función afín." },
+        { q:"Un taxi cobra $600 fijos más $250 por cada kilómetro recorrido. Si C(k) es el costo según los km recorridos, ¿cuánto cuesta un viaje de 15 km?", o:["$3.750","$4.350","$3.850","$4.500"], c:1, e:"C(k) = 250k + 600. C(15) = 250(15) + 600 = 3.750 + 600 = $4.350." },
+        { q:"Encuentra el cero (intercepto con el eje x) de la función y = −4x + 20", o:["x = 5","x = −5","x = 4","x = 20"], c:0, e:"0 = −4x + 20, entonces 4x = 20, y x = 5." },
+        { q:"Una recta pasa por los puntos (3, 10) y (7, 10). ¿Cuál es su pendiente?", o:["0","4","10","2,5"], c:0, e:"m = (10−10)/(7−3) = 0/4 = 0. Es una recta horizontal." },
+        { q:"El estanque de agua de una casa tiene inicialmente 200 litros y se vacía a razón de 15 litros por minuto. ¿Cuál función V(t) modela el volumen (en litros) según los minutos t?", o:["V(t) = 15t + 200","V(t) = −15t + 200","V(t) = 200t − 15","V(t) = −200t + 15"], c:1, e:"El volumen inicial (200) es el término independiente, y como el estanque se vacía, la pendiente es negativa: V(t) = −15t + 200." },
+        { q:"Usando V(t) = −15t + 200 (el estanque que se vacía), ¿en cuántos minutos se vacía completamente?", o:["13,3 minutos","15 minutos","20 minutos","200 minutos"], c:0, e:"0 = −15t + 200, entonces 15t = 200, y t = 200/15 ≈ 13,3 minutos." },
+        { q:"Encuentra la ecuación de la recta que pasa por el punto (0, −4) con pendiente −2", o:["y = −2x − 4","y = −4x − 2","y = 2x − 4","y = −2x + 4"], c:0, e:"El punto (0,−4) da directamente n=−4 (cruce con el eje y). Con m=−2, la ecuación es y=−2x−4." },
+        { q:"Toda recta que no pasa por el origen (0,0), ¿es necesariamente una función afín?", o:["Sí: si no pasa por el origen, entonces n≠0, que es justamente la definición de función afín","No, podría ser lineal igualmente","Sí, pero solo si tiene pendiente positiva","No, las rectas que no pasan por el origen no tienen nombre especial"], c:0, e:"Una recta con ecuación y=mx+n pasa por el origen si y solo si n=0 (función lineal). Si no pasa por el origen, entonces n≠0, que es exactamente la definición de función afín. La afirmación es correcta." },
+      ]
+    },
+
+    // -----------------------------------------------------------------
+    // m2s6 — Función cuadrática
+    // -----------------------------------------------------------------
+    {
+      id: "m2s6",
+      name: "Función cuadrática",
+      videoUrl: "https://www.youtube.com/watch?v=4WMmp4Z5WTg",
+      videoTitle: "FUNCIÓN CUADRÁTICA | PAES M1 y M2 de MATEMÁTICA | Eje: Álgebra",
+      content: `<p>Una <strong>función cuadrática</strong> tiene la forma f(x) = ax² + bx + c, con a ≠ 0 (si a fuera 0, dejaría de ser cuadrática). Su gráfico ya no es una recta, sino una curva con forma de "U" llamada <strong>parábola</strong>. Aparece cada vez que algo depende del cuadrado de una variable: el área de una figura según su lado, la altura de un objeto lanzado al aire según el tiempo, etc.</p>
+
+<h4 style="margin-top:22px;color:#4a3208;">Elementos de la parábola</h4>
+<p>Toda parábola f(x) = ax² + bx + c tiene estos elementos, que son justamente lo que más se pregunta en la PAES:</p>
+<table class="ref-table">
+<tr><th>Elemento</th><th>Cómo se calcula</th><th>Qué representa</th></tr>
+<tr><td>Concavidad</td><td>signo de a</td><td>a &gt; 0: abre hacia arriba; a &lt; 0: abre hacia abajo</td></tr>
+<tr><td>Vértice</td><td>x_v = −b/(2a) ; y_v = f(x_v)</td><td>el punto más bajo (si abre arriba) o más alto (si abre abajo)</td></tr>
+<tr><td>Eje de simetría</td><td>x = x_v (recta vertical)</td><td>la parábola es un "espejo" a ambos lados de esta recta</td></tr>
+<tr><td>Intercepto con eje y</td><td>(0, c)</td><td>punto donde la parábola cruza el eje y</td></tr>
+<tr><td>Ceros o raíces</td><td>valores de x donde f(x) = 0</td><td>puntos donde la parábola cruza el eje x (puede haber 0, 1 o 2)</td></tr>
+</table>
+
+<div class="fig"><div class="fig-frame"><svg role="img" aria-label="Gráfico de la parábola f(x) = x al cuadrado menos 4x más 3, mostrando el vértice en (2,-1), las raíces en x=1 y x=3, y el intercepto con el eje y en (0,3)" viewBox="0 0 700 480" xmlns="http://www.w3.org/2000/svg">
+<rect x="6" y="6" width="688" height="468" rx="18" fill="#fbf2e6" fill-opacity="0.35"/>
+<line x1="40" y1="340" x2="650" y2="340" stroke="#6b4a10" stroke-width="2"/>
+<path d="M 650 340 L 636 332 L 636 348 Z" fill="#6b4a10"/>
+<line x1="150" y1="440" x2="150" y2="40" stroke="#6b4a10" stroke-width="2"/>
+<path d="M 150 40 L 142 54 L 158 54 Z" fill="#6b4a10"/>
+<text x="660" y="345" font-family="Georgia,serif" font-size="14" fill="#5a3d0d">x</text>
+<text x="135" y="35" font-family="Georgia,serif" font-size="14" fill="#5a3d0d">y</text>
+<!-- eje de simetria x=2 (pixel x=310) -->
+<line x1="310" y1="60" x2="310" y2="420" stroke="#8a3550" stroke-width="1.5" stroke-dasharray="6,5"/>
+<text x="310" y="450" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="13" fill="#8a3550">x = 2 (eje de simetría)</text>
+<polyline points="118.0,54.4 134.0,109.6 150.0,160.0 166.0,205.6 182.0,246.4 198.0,282.4 214.0,313.6 230.0,340.0 246.0,361.6 262.0,378.4 278.0,390.4 294.0,397.6 310.0,400.0 326.0,397.6 342.0,390.4 358.0,378.4 374.0,361.6 390.0,340.0 406.0,313.6 422.0,282.4 438.0,246.4 454.0,205.6 470.0,160.0 486.0,109.6" fill="none" stroke="#3f6236" stroke-width="3.5"/>
+<circle cx="310.0" cy="400.0" r="7" fill="#4a3208"/>
+<text x="310" y="425" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="14" font-weight="700" fill="#4a3208">Vértice (2, −1)</text>
+<circle cx="230.0" cy="340.0" r="6" fill="#8a3550"/>
+<text x="215" y="325" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="13" fill="#8a3550">raíz x=1</text>
+<circle cx="390.0" cy="340.0" r="6" fill="#8a3550"/>
+<text x="405" y="325" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="13" fill="#8a3550">raíz x=3</text>
+<circle cx="150.0" cy="160.0" r="6" fill="#3f6236"/>
+<text x="120" y="150" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="13" fill="#3f6236">(0, 3)</text>
+<text x="400" y="70" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="15" font-weight="700" fill="#3f6236">f(x) = x² − 4x + 3</text>
+</svg></div><figcaption><strong>Figura 1.</strong> Como a=1&gt;0, la parábola abre hacia arriba: el vértice (2,−1) es el punto más bajo de toda la curva.</figcaption></div>
+
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Encuentra el vértice de f(x) = x² − 4x + 3</p>
+<div class="calc">a=1, b=−4, c=3<br>x_v = −b/(2a) = −(−4)/(2·1) = 4/2 = 2<br>y_v = f(2) = 2² − 4(2) + 3 = 4 − 8 + 3 = −1<br><span class="r">Vértice: (2, −1)</span></div>
+</div>
+
+<h4 style="margin-top:22px;color:#4a3208;">Encontrar los ceros (resolver una ecuación de segundo grado)</h4>
+<p>Hay dos caminos principales para encontrar dónde f(x) = 0: <strong>factorizar</strong> (cuando es posible, es el más rápido) o usar la <strong>fórmula general</strong> (siempre funciona):</p>
+<div class="calc">x = (−b ± √(b² − 4ac)) / (2a)</div>
+<p>La expresión b² − 4ac se llama <strong>discriminante</strong>, y su signo anticipa cuántas soluciones reales tiene la ecuación, sin necesidad de terminar el cálculo:</p>
+<table class="ref-table">
+<tr><th>Discriminante</th><th>Cantidad de soluciones reales</th></tr>
+<tr><td>b² − 4ac &gt; 0</td><td>2 soluciones reales distintas</td></tr>
+<tr><td>b² − 4ac = 0</td><td>1 solución real (doble)</td></tr>
+<tr><td>b² − 4ac &lt; 0</td><td>0 soluciones reales</td></tr>
+</table>
+
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto (factorizando)</p>
+<p>Resuelve: x² − 5x + 6 = 0</p>
+<div class="calc">Se buscan dos números que multiplicados den 6 y sumados den −5: −2 y −3<br>x² − 5x + 6 = (x − 2)(x − 3) = 0<br><span class="r">x = 2  o  x = 3</span></div>
+</div>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto (fórmula general)</p>
+<p>Resuelve: x² + 2x − 8 = 0</p>
+<div class="calc">a=1, b=2, c=−8<br>discriminante = 2² − 4(1)(−8) = 4 + 32 = 36<br>x = (−2 ± √36) / 2 = (−2 ± 6) / 2<br><span class="r">x = 2  o  x = −4</span></div>
+</div>
+
+<h4 style="margin-top:20px;color:#4a3208;">Modelar con funciones cuadráticas</h4>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Se lanza una pelota hacia arriba, y su altura se modela con h(t) = −5t² + 20t (h en metros, t en segundos). ¿En qué momento alcanza su altura máxima, y cuál es esa altura?</p>
+<div class="calc">a=−5, b=20 → la parábola abre hacia abajo: el vértice es un máximo<br>t_v = −20/(2·(−5)) = −20/(−10) = 2<br>h(2) = −5(2)² + 20(2) = −20 + 40 = 20<br><span class="r">Máxima altura: 20 m, a los 2 segundos</span></div>
+</div>`,
+      formulario: `<div class="f-item"><span class="f-name">Forma general</span><span>f(x) = ax² + bx + c, con a ≠ 0</span></div>
+<div class="f-item"><span class="f-name">Concavidad</span><span>a&gt;0 abre hacia arriba; a&lt;0 abre hacia abajo</span></div>
+<div class="f-item"><span class="f-name">Vértice</span><span>x_v = −b/(2a) ; y_v = f(x_v)</span></div>
+<div class="f-item"><span class="f-name">Eje de simetría</span><span>x = x_v</span></div>
+<div class="f-item"><span class="f-name">Intercepto eje y</span><span>(0, c)</span></div>
+<div class="f-item"><span class="f-name">Fórmula general (ceros)</span><span>x = (−b ± √(b²−4ac)) / (2a)</span></div>
+<div class="f-item"><span class="f-name">Discriminante</span><span>&gt;0: 2 soluciones; =0: 1 solución; &lt;0: 0 soluciones reales</span></div>`,
+      questions: [
+        { q:"En la función f(x) = 2x² − 3x + 1, identifica los valores de a, b y c", o:["a=2, b=−3, c=1","a=1, b=2, c=−3","a=2, b=3, c=1","a=−3, b=2, c=1"], c:0, e:"En la forma ax²+bx+c, se identifica directamente: a=2 (coeficiente de x²), b=−3 (coeficiente de x), c=1 (término independiente)." },
+        { q:"Encuentra el vértice de f(x) = x² − 4x + 3", o:["(2, −1)","(4, 3)","(−2, 1)","(2, 3)"], c:0, e:"x_v = −(−4)/(2·1) = 2. y_v = f(2) = 4−8+3 = −1. Vértice: (2, −1)." },
+        { q:"¿Hacia dónde abre la parábola de f(x) = −3x² + 2x − 1?", o:["Hacia arriba, porque a=−3","Hacia abajo, porque a=−3 es negativo","Hacia arriba, porque c=−1 es negativo","Hacia la derecha"], c:1, e:"El signo de a determina la concavidad. Como a=−3 es negativo, la parábola abre hacia abajo." },
+        { q:"¿Cuál es el intercepto con el eje y de f(x) = 2x² − 5x + 7?", o:["(0, 7)","(7, 0)","(0, 2)","(0, −5)"], c:0, e:"El intercepto con el eje y es siempre (0, c). Aquí c=7, por lo que el punto es (0, 7)." },
+        { q:"Resuelve, factorizando: x² − 5x + 6 = 0", o:["x = 2 o x = 3","x = −2 o x = −3","x = 1 o x = 6","x = 5 o x = 6"], c:0, e:"Se buscan dos números que multiplicados den 6 y sumados den −5: son −2 y −3. Entonces (x−2)(x−3)=0, y x=2 o x=3." },
+        { q:"Resuelve usando la fórmula general: x² + 2x − 8 = 0", o:["x = 2 o x = −4","x = 4 o x = −2","x = 2 o x = 4","x = −2 o x = −4"], c:0, e:"Con a=1,b=2,c=−8: discriminante = 4+32=36. x = (−2±6)/2, entonces x=2 o x=−4." },
+        { q:"Una pelota se lanza hacia arriba con altura h(t) = −5t² + 20t (metros, segundos). ¿En qué momento alcanza su altura máxima?", o:["t = 1 s","t = 2 s","t = 4 s","t = 20 s"], c:1, e:"Como a=−5<0, el vértice es un máximo: t_v = −20/(2·(−5)) = 2 s." },
+        { q:"Usando h(t) = −5t² + 20t, ¿en qué momento la pelota vuelve a tocar el suelo (h=0), sin contar el instante inicial t=0?", o:["t = 2 s","t = 5 s","t = 4 s","t = 20 s"], c:2, e:"−5t² + 20t = 0 → −5t(t−4) = 0, entonces t=0 o t=4. Sin contar t=0 (el lanzamiento), toca el suelo en t=4 s." },
+        { q:"¿Cuántas soluciones reales tiene la ecuación x² + 4 = 0?", o:["Dos soluciones reales","Una solución real (doble)","Ninguna solución real","Infinitas soluciones"], c:2, e:"Escrita como x²+0x+4=0: discriminante = 0² − 4(1)(4) = −16 < 0. Un discriminante negativo indica que no hay soluciones reales." },
+        { q:"¿Cuántas soluciones reales tiene la ecuación x² − 6x + 9 = 0?", o:["Dos soluciones reales distintas","Una solución real (doble): x=3","Ninguna solución real","Tres soluciones"], c:1, e:"Discriminante = (−6)² − 4(1)(9) = 36 − 36 = 0. Un discriminante igual a 0 indica una única solución real (raíz doble): x = −(−6)/(2·1) = 3." },
+        { q:"¿Cuál es el vértice de la función escrita en forma y = (x − 1)² − 4?", o:["(1, −4)","(−1, 4)","(1, 4)","(−1, −4)"], c:0, e:"En la forma y=(x−h)²+k, el vértice es directamente (h, k). Aquí h=1 y k=−4, por lo que el vértice es (1, −4)." },
+        { q:"Un jardín rectangular usa 40 metros de cerca perimetral en total. Si x es el ancho, el largo es (20 − x). ¿Qué ancho x maximiza el área del jardín?", o:["x = 5 m","x = 20 m","x = 10 m","x = 40 m"], c:2, e:"El área es A(x) = x(20−x) = 20x − x², una parábola con a=−1 (abre hacia abajo, tiene máximo). El vértice está en x_v = −20/(2·(−1)) = 10 m." },
+        { q:"Encuentra el vértice de f(x) = x² − 6x + 8", o:["(3, −1)","(6, 8)","(−3, 1)","(3, 1)"], c:0, e:"x_v = −(−6)/(2·1) = 3. y_v = f(3) = 9 − 18 + 8 = −1. Vértice: (3, −1)." },
+        { q:"Resuelve: x² − 4 = 0", o:["x = 2 solamente","x = 2 o x = −2","x = 4 o x = −4","No tiene solución real"], c:1, e:"x² = 4, entonces x = ±√4 = ±2. Las soluciones son x=2 y x=−2." },
+        { q:"¿Cuántas soluciones reales tiene la ecuación 2x² + 3x + 5 = 0?", o:["Dos soluciones reales","Una solución real (doble)","Ninguna solución real","No se puede saber sin resolver"], c:2, e:"Discriminante = 3² − 4(2)(5) = 9 − 40 = −31 < 0. Un discriminante negativo indica que no existen soluciones reales." },
+        { q:"La altura de un cohete de juguete se modela con h(t) = −4t² + 16t + 2 (metros, segundos). ¿Cuál es la altura máxima que alcanza?", o:["16 m","18 m","2 m","20 m"], c:1, e:"t_v = −16/(2×(−4)) = 2 s. h(2) = −4(2)² + 16(2) + 2 = −16 + 32 + 2 = 18 m." },
+        { q:"Encuentra el vértice de f(x) = x² + 2x − 3", o:["(−1, −4)","(1, 4)","(−1, 4)","(1, −4)"], c:0, e:"x_v = −2/(2·1) = −1. y_v = f(−1) = 1 − 2 − 3 = −4. Vértice: (−1, −4)." },
+        { q:"¿Hacia dónde abre la parábola de f(x) = −2x² + 8x − 3?", o:["Hacia arriba","Hacia abajo","Hacia la derecha","Hacia la izquierda"], c:1, e:"Como a=−2 es negativo, la parábola abre hacia abajo." },
+        { q:"Resuelve: x² − 9 = 0", o:["x = 3 solamente","x = 3 o x = −3","x = 9 o x = −9","No tiene solución real"], c:1, e:"x² = 9, entonces x = ±√9 = ±3." },
+        { q:"Resuelve, factorizando: x² − 2x − 15 = 0", o:["x = 5 o x = −3","x = −5 o x = 3","x = 5 o x = 3","x = −5 o x = −3"], c:0, e:"Se buscan dos números que multiplicados den −15 y sumados den −2: son −5 y 3. Entonces (x−5)(x+3)=0, y x=5 o x=−3." },
+        { q:"Resuelve usando la fórmula general: 2x² − 3x − 5 = 0", o:["x = 2,5 o x = −1","x = 5 o x = −1","x = 2,5 o x = 1","x = −2,5 o x = 1"], c:0, e:"Con a=2,b=−3,c=−5: discriminante = 9+40=49. x = (3±7)/4, entonces x=2,5 o x=−1." },
+        { q:"¿Cuántas soluciones reales tiene la ecuación 3x² − 12x + 12 = 0?", o:["Dos soluciones reales distintas","Una solución real (doble)","Ninguna solución real","Tres soluciones"], c:1, e:"Discriminante = (−12)² − 4(3)(12) = 144 − 144 = 0. Un discriminante igual a 0 indica una única solución real (raíz doble)." },
+        { q:"Un objeto se lanza hacia arriba y su altura se modela con h(t) = −5t² + 30t (metros, segundos). ¿Cuál es su altura máxima?", o:["30 m","45 m","6 m","90 m"], c:1, e:"t_v = −30/(2×(−5)) = 3 s. h(3) = −5(3)² + 30(3) = −45 + 90 = 45 m." },
+        { q:"Usando h(t) = −5t² + 30t (el objeto lanzado), ¿en qué momento vuelve a tocar el suelo, sin contar t=0?", o:["t = 3 s","t = 5 s","t = 6 s","t = 30 s"], c:2, e:"−5t² + 30t = 0 → −5t(t−6) = 0, entonces t=0 o t=6. Sin contar el lanzamiento (t=0), toca el suelo en t=6 s." },
+        { q:"Un rectángulo tiene un perímetro de 24 cm. Si x es su ancho, su largo es (12 − x). ¿Qué ancho x maximiza su área?", o:["x = 3 cm","x = 12 cm","x = 6 cm","x = 24 cm"], c:2, e:"El área es A(x)=x(12−x)=12x−x², una parábola con a=−1 (tiene máximo). x_v = −12/(2×(−1)) = 6 cm (el rectángulo de mayor área resulta ser un cuadrado de 6×6)." },
+      ]
+    },
+  ]
+},
+
+// =======================================================================
+// UNIDAD 3 — GEOMETRÍA (m3)
+// Subtemas: m3s1 Figuras geométricas, m3s2 Cuerpos geométricos,
+//           m3s3 Transformaciones isométricas,
+//           m3s4 Semejanza y proporcionalidad de figuras.
+// Nota de alcance: el temario M1 solo evalúa paralelepípedos, cubos y
+// cilindros en cuerpos geométricos (NO conos ni esferas).
+// =======================================================================
+{
+  id: "m3",
+  name: "Geometría",
+  intro: "Acá el álgebra se vuelve visual: triángulos, cuerpos y figuras que se mueven o cambian de tamaño en el plano. Muchas de estas preguntas se resuelven más rápido dibujando que calculando, así que presta atención a los diagramas de cada subtema.",
+  subtopics: [
+
+    // -----------------------------------------------------------------
+    // m3s1 — Figuras geométricas
+    // -----------------------------------------------------------------
+    {
+      id: "m3s1",
+      name: "Figuras geométricas",
+      videoUrl: "https://www.youtube.com/watch?v=Uy3cPM0fZ0Y",
+      videoTitle: "PAES Matemática 2023. Clase 30: Figuras Geométricas M1",
+      content: `<p>Este subtema junta dos ideas que se usan constantemente juntas: el Teorema de Pitágoras (para encontrar lados de triángulos rectángulos) y las fórmulas de perímetro y área de las figuras planas más comunes.</p>
+
+<h4 style="margin-top:22px;color:#4a3208;">Teorema de Pitágoras</h4>
+<p>En cualquier <strong>triángulo rectángulo</strong> (uno de sus ángulos mide 90°), los dos lados que forman el ángulo recto se llaman <strong>catetos</strong>, y el lado opuesto al ángulo recto —el más largo— se llama <strong>hipotenusa</strong>. El teorema dice que:</p>
+<div class="calc">a² + b² = c²</div>
+<p>donde a y b son los catetos y c es la hipotenusa. Sirve para encontrar cualquiera de los tres lados si se conocen los otros dos.</p>
+
+<div class="fig"><div class="fig-frame"><svg role="img" aria-label="Triángulo rectángulo de catetos 3 y 4 e hipotenusa 5, con un cuadrado construido sobre cada lado, ilustrando que la suma de las áreas de los cuadrados menores es igual al área del cuadrado mayor" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+<rect x="6" y="6" width="488" height="488" rx="18" fill="#fbf2e6" fill-opacity="0.35"/>
+<!-- cuadrado cateto b=4 (abajo) -->
+<polygon points="150,300 310,300 310,460 150,460" fill="#e8c766" fill-opacity="0.55" stroke="#6b4a10" stroke-width="2"/>
+<text x="230" y="385" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="17" fill="#4a3208">b² = 16</text>
+<!-- cuadrado cateto a=3 (izquierda) -->
+<polygon points="150,300 150,180 30,180 30,300" fill="#9fbfa0" fill-opacity="0.6" stroke="#6b4a10" stroke-width="2"/>
+<text x="90" y="245" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="17" fill="#2e4a2c">a² = 9</text>
+<!-- cuadrado hipotenusa c=5 -->
+<polygon points="310,300 150,180 270,20 430,140" fill="#e6a8c4" fill-opacity="0.55" stroke="#6b4a10" stroke-width="2"/>
+<text x="290" y="150" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="17" fill="#6b2f4a">c² = 25</text>
+<!-- triangulo -->
+<polygon points="150,300 310,300 150,180" fill="#fdf8ef" stroke="#4a3208" stroke-width="2.5"/>
+<text x="225" y="292" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#4a3208">b = 4</text>
+<text x="128" y="245" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#4a3208">a = 3</text>
+<text x="255" y="225" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#4a3208">c = 5</text>
+<rect x="150" y="285" width="15" height="15" fill="none" stroke="#4a3208" stroke-width="2"/>
+<text x="250" y="490" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-style="italic" fill="#4a3208">9 + 16 = 25 → a² + b² = c²</text>
+</svg></div><figcaption><strong>Figura 1.</strong> El área del cuadrado construido sobre la hipotenusa (25) es exactamente igual a la suma de las áreas de los cuadrados sobre los catetos (9 + 16).</figcaption></div>
+
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Un triángulo rectángulo tiene catetos de 6 cm y 8 cm. ¿Cuánto mide su hipotenusa?</p>
+<div class="calc">c² = 6² + 8² = 36 + 64 = 100<br>c = √100<br><span class="r">c = 10 cm</span></div>
+</div>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Una escalera de 5 m está apoyada contra una pared, con su base a 3 m de la pared. ¿A qué altura de la pared llega la escalera?</p>
+<div class="calc">La escalera es la hipotenusa (5 m); la distancia a la pared es un cateto (3 m); la altura buscada es el otro cateto:<br>altura² = 5² − 3² = 25 − 9 = 16<br>altura = √16<br><span class="r">altura = 4 m</span></div>
+</div>
+
+<h4 style="margin-top:24px;color:#4a3208;">Perímetros y áreas</h4>
+<p>El <strong>perímetro</strong> es la suma de todos los lados (el "contorno" de la figura); el <strong>área</strong> es la superficie que cubre.</p>
+<table class="ref-table">
+<tr><th>Figura</th><th>Perímetro</th><th>Área</th></tr>
+<tr><td>Triángulo</td><td>suma de sus 3 lados</td><td>(base × altura) / 2</td></tr>
+<tr><td>Paralelogramo (rectángulo, cuadrado, romboide...)</td><td>2 × (lado 1 + lado 2)</td><td>base × altura</td></tr>
+<tr><td>Trapecio</td><td>suma de sus 4 lados</td><td>((base mayor + base menor) / 2) × altura</td></tr>
+<tr><td>Círculo</td><td>2πr (circunferencia)</td><td>πr²</td></tr>
+</table>
+<p>Para el círculo, se suele usar π ≈ 3,14 en los cálculos (a menos que el problema pida dejar la respuesta "en términos de π").</p>
+
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Calcula el área de un trapecio cuyas bases miden 10 cm y 6 cm, con una altura de 4 cm.</p>
+<div class="calc">Área = ((10 + 6) / 2) × 4<br>= (16/2) × 4 = 8 × 4<br><span class="r">= 32 cm²</span></div>
+</div>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Calcula el área de un círculo de radio 7 cm (usa π ≈ 3,14)</p>
+<div class="calc">Área = π × r² = 3,14 × 7²<br>= 3,14 × 49<br><span class="r">= 153,86 cm²</span></div>
+</div>
+
+<div class="note-box"><p class="nb-title">Atención</p><p>La "altura" de un triángulo o un paralelogramo no siempre es uno de sus lados dibujados: es la distancia perpendicular entre la base y el vértice (o el lado) opuesto. En una figura inclinada, hay que identificar bien cuál segmento es realmente la altura antes de aplicar la fórmula.</p></div>`,
+      formulario: `<div class="f-item"><span class="f-name">Teorema de Pitágoras</span><span>a² + b² = c² (a, b catetos; c hipotenusa)</span></div>
+<div class="f-item"><span class="f-name">Área triángulo</span><span>(base × altura) / 2</span></div>
+<div class="f-item"><span class="f-name">Área paralelogramo</span><span>base × altura</span></div>
+<div class="f-item"><span class="f-name">Área trapecio</span><span>((base mayor + base menor) / 2) × altura</span></div>
+<div class="f-item"><span class="f-name">Circunferencia (perímetro del círculo)</span><span>2πr</span></div>
+<div class="f-item"><span class="f-name">Área del círculo</span><span>πr² (con π ≈ 3,14)</span></div>`,
+      questions: [
+        { q:"Un triángulo rectángulo tiene catetos de 6 cm y 8 cm. ¿Cuánto mide su hipotenusa?", o:["14 cm","10 cm","48 cm","100 cm"], c:1, e:"c² = 6² + 8² = 36 + 64 = 100, entonces c = √100 = 10 cm." },
+        { q:"Un triángulo rectángulo tiene hipotenusa 13 cm y un cateto de 5 cm. ¿Cuánto mide el otro cateto?", o:["12 cm","8 cm","18 cm","144 cm"], c:0, e:"cateto² = 13² − 5² = 169 − 25 = 144, entonces cateto = √144 = 12 cm." },
+        { q:"Calcula el área de un triángulo de base 10 cm y altura 6 cm", o:["60 cm²","16 cm²","30 cm²","32 cm²"], c:2, e:"Área = (base × altura)/2 = (10×6)/2 = 60/2 = 30 cm²." },
+        { q:"Un rectángulo tiene lados de 8 cm y 5 cm. Calcula su área y su perímetro", o:["Área 40 cm², perímetro 26 cm","Área 13 cm², perímetro 40 cm","Área 40 cm², perímetro 13 cm","Área 26 cm², perímetro 40 cm"], c:0, e:"Área = 8×5 = 40 cm². Perímetro = 2×(8+5) = 2×13 = 26 cm." },
+        { q:"Calcula el área de un trapecio con bases de 10 cm y 6 cm, y altura 4 cm", o:["64 cm²","32 cm²","40 cm²","16 cm²"], c:1, e:"Área = ((10+6)/2)×4 = 8×4 = 32 cm²." },
+        { q:"Calcula el área de un círculo de radio 7 cm (usa π ≈ 3,14)", o:["43,96 cm²","153,86 cm²","21,98 cm²","307,72 cm²"], c:1, e:"Área = π×r² = 3,14×49 = 153,86 cm²." },
+        { q:"Calcula el perímetro (circunferencia) de un círculo de radio 5 cm (usa π ≈ 3,14)", o:["15,7 cm","78,5 cm","31,4 cm","62,8 cm"], c:2, e:"Circunferencia = 2πr = 2×3,14×5 = 31,4 cm." },
+        { q:"Una escalera de 5 m está apoyada contra una pared, con su base a 3 m de la pared. ¿A qué altura de la pared llega la escalera?", o:["2 m","4 m","8 m","6 m"], c:1, e:"altura² = 5² − 3² = 25 − 9 = 16, entonces altura = √16 = 4 m." },
+        { q:"Un jardín rectangular mide 12 m de largo por 9 m de ancho. Se quiere cercarlo por completo. ¿Cuántos metros de cerca se necesitan?", o:["21 m","108 m","42 m","84 m"], c:2, e:"Se necesita el perímetro: 2×(12+9) = 2×21 = 42 m." },
+        { q:"¿Es un triángulo de lados 5, 6 y 7 cm un triángulo rectángulo?", o:["Sí, porque 5²+6²=7²","No, porque 5²+6²=61 es distinto de 7²=49","Sí, porque 5+6=11 es mayor que 7","No, porque un triángulo no puede tener esos lados"], c:1, e:"Si fuera rectángulo, el cuadrado del lado mayor debería ser igual a la suma de los cuadrados de los otros dos: 5²+6²=25+36=61, mientras que 7²=49. Como 61≠49, no es un triángulo rectángulo." },
+        { q:"Un terreno con forma de trapecio tiene bases de 20 m y 12 m, y una altura (ancho) de 8 m. ¿Cuál es su área?", o:["256 m²","128 m²","160 m²","32 m²"], c:1, e:"Área = ((20+12)/2)×8 = 16×8 = 128 m²." },
+        { q:"Un triángulo isósceles tiene una base de 10 cm; cada uno de sus lados iguales mide 13 cm. Usando el Teorema de Pitágoras sobre la mitad del triángulo, ¿cuál es su altura?", o:["12 cm","8,4 cm","5 cm","17,3 cm"], c:0, e:"Al trazar la altura, se forma un triángulo rectángulo con hipotenusa 13 cm y un cateto de 5 cm (la mitad de la base). altura² = 13² − 5² = 169−25=144, altura=√144=12 cm." },
+        { q:"Un triángulo rectángulo tiene catetos de 9 cm y 12 cm. ¿Cuánto mide su hipotenusa?", o:["15 cm","21 cm","108 cm","225 cm"], c:0, e:"c² = 9² + 12² = 81 + 144 = 225, entonces c = √225 = 15 cm." },
+        { q:"Calcula el área de un cuadrado de lado 9 cm", o:["36 cm²","18 cm²","81 cm²","72 cm²"], c:2, e:"El cuadrado es un caso particular de paralelogramo: Área = lado × lado = 9×9 = 81 cm²." },
+        { q:"Calcula el perímetro de un triángulo equilátero (los 3 lados iguales) de lado 7 cm", o:["14 cm","21 cm","49 cm","10,5 cm"], c:1, e:"Perímetro = suma de los 3 lados = 7+7+7 = 21 cm." },
+        { q:"Calcula el área de un círculo de diámetro 10 cm (usa π ≈ 3,14)", o:["31,4 cm²","314 cm²","78,5 cm²","157 cm²"], c:2, e:"El radio es la mitad del diámetro: r=5 cm. Área = π×r² = 3,14×25 = 78,5 cm²." },
+        { q:"Un triángulo rectángulo tiene catetos de 5 cm y 12 cm. ¿Cuánto mide su hipotenusa?", o:["13 cm","17 cm","169 cm","7 cm"], c:0, e:"c² = 5² + 12² = 25 + 144 = 169, entonces c = √169 = 13 cm." },
+        { q:"Un triángulo rectángulo tiene hipotenusa 25 cm y un cateto de 7 cm. ¿Cuánto mide el otro cateto?", o:["18 cm","24 cm","32 cm","576 cm"], c:1, e:"cateto² = 25² − 7² = 625 − 49 = 576, entonces cateto = √576 = 24 cm." },
+        { q:"Calcula el área de un triángulo con base 14 cm y altura 9 cm", o:["126 cm²","63 cm²","23 cm²","46 cm²"], c:1, e:"Área = (base × altura)/2 = (14×9)/2 = 63 cm²." },
+        { q:"Calcula el perímetro de un rectángulo de lados 15 cm y 9 cm", o:["24 cm","48 cm","135 cm","42 cm"], c:1, e:"Perímetro = 2×(15+9) = 2×24 = 48 cm." },
+        { q:"Calcula el área de un trapecio con bases de 18 cm y 10 cm, y altura 6 cm", o:["168 cm²","84 cm²","48 cm²","28 cm²"], c:1, e:"Área = ((18+10)/2)×6 = 14×6 = 84 cm²." },
+        { q:"Calcula el perímetro (circunferencia) de un círculo de radio 12 cm (usa π ≈ 3,14)", o:["37,68 cm","75,36 cm","150,72 cm","452,16 cm"], c:1, e:"Circunferencia = 2πr = 2×3,14×12 = 75,36 cm." },
+        { q:"Una escalera de 10 m alcanza una ventana ubicada a 8 m de altura. ¿A qué distancia de la pared está la base de la escalera?", o:["2 m","6 m","36 m","18 m"], c:1, e:"distancia² = 10² − 8² = 100 − 64 = 36, entonces distancia = √36 = 6 m." },
+        { q:"Un terreno triangular tiene una base de 30 m y una altura de 18 m. ¿Cuál es su área?", o:["540 m²","270 m²","48 m²","96 m²"], c:1, e:"Área = (30×18)/2 = 540/2 = 270 m²." },
+        { q:"¿Es posible construir un triángulo con lados de 3 cm, 4 cm y 9 cm?", o:["Sí, cualquier tres medidas forman un triángulo","No: la suma de los dos lados menores (3+4=7) es menor que el lado mayor (9), así que no se puede formar el triángulo","Sí, porque 3+4+9 es un número entero","No, porque los tres lados deben ser iguales"], c:1, e:"Para que tres segmentos formen un triángulo, la suma de los dos lados menores debe ser mayor que el lado mayor (desigualdad triangular). Aquí 3+4=7 es menor que 9, así que estos tres segmentos no pueden cerrar un triángulo." },
+      ]
+    },
+
+    // -----------------------------------------------------------------
+    // m3s2 — Cuerpos geométricos
+    // -----------------------------------------------------------------
+    {
+      id: "m3s2",
+      name: "Cuerpos geométricos",
+      videoUrl: "https://www.youtube.com/watch?v=4A23ycIyLe4",
+      videoTitle: "Área y Volumen de PRISMAS y CILINDROS — Cuerpos Geométricos",
+      content: `<p>Este subtema se enfoca en tres cuerpos: <strong>cubos</strong>, <strong>paralelepípedos</strong> (cajas rectangulares) y <strong>cilindros</strong>. Para cada uno hay que saber calcular dos cosas: el <strong>área de sus superficies</strong> (cuánto material cubre por fuera, como si lo forraras) y su <strong>volumen</strong> (cuánto espacio ocupa por dentro, como si lo llenaras de agua).</p>
+
+<div class="fig"><div class="fig-frame"><svg role="img" aria-label="Un paralelepípedo (caja rectangular) y un cilindro dibujados en perspectiva, con sus dimensiones marcadas" viewBox="0 0 500 340" xmlns="http://www.w3.org/2000/svg">
+<rect x="6" y="6" width="488" height="328" rx="18" fill="#fbf2e6" fill-opacity="0.35"/>
+<!-- paralelepipedo -->
+<polygon points="90,320 250,320 250,210 90,210" fill="#e8c766" fill-opacity="0.5" stroke="#4a3208" stroke-width="2"/>
+<polygon points="90,210 160,165 320,165 250,210" fill="#f0d78a" fill-opacity="0.6" stroke="#4a3208" stroke-width="2"/>
+<polygon points="250,320 320,275 320,165 250,210" fill="#d9b34e" fill-opacity="0.6" stroke="#4a3208" stroke-width="2"/>
+<text x="170" y="345" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="14" font-weight="700" fill="#4a3208">Paralelepípedo</text>
+<text x="165" y="300" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#4a3208">largo</text>
+<text x="70" y="270" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#4a3208">alto</text>
+<text x="295" y="245" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#4a3208">ancho</text>
+<!-- cilindro -->
+<ellipse cx="350" cy="110" rx="90" ry="28" fill="#9fbfa0" fill-opacity="0.55" stroke="#4a3208" stroke-width="2"/>
+<line x1="260" y1="110" x2="260" y2="280" stroke="#4a3208" stroke-width="2"/>
+<line x1="440" y1="110" x2="440" y2="280" stroke="#4a3208" stroke-width="2"/>
+<path d="M 260 280 A 90 28 0 0 0 440 280" fill="none" stroke="#4a3208" stroke-width="2"/>
+<path d="M 260 280 A 90 28 0 0 1 440 280" fill="#9fbfa0" fill-opacity="0.3" stroke="none"/>
+<ellipse cx="350" cy="110" rx="90" ry="28" fill="none" stroke="#4a3208" stroke-width="2"/>
+<line x1="350" y1="110" x2="440" y2="110" stroke="#4a3208" stroke-width="1.5" stroke-dasharray="4,3"/>
+<text x="395" y="103" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#4a3208">r</text>
+<text x="255" y="200" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#4a3208">h</text>
+<text x="350" y="315" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="14" font-weight="700" fill="#2e4a2c">Cilindro</text>
+</svg></div><figcaption><strong>Figura 1.</strong> El paralelepípedo tiene tres medidas distintas (largo, ancho, alto); el cilindro tiene radio (r) y altura (h). El cubo es un caso particular del paralelepípedo donde las tres medidas son iguales.</figcaption></div>
+
+<h4 style="margin-top:22px;color:#4a3208;">Cubo</h4>
+<p>Un cubo tiene sus 6 caras cuadradas e idénticas, con arista a:</p>
+<table class="ref-table">
+<tr><th>Área total (superficie)</th><td>6a²  <span style="color:var(--muted);">(6 caras cuadradas de lado a)</span></td></tr>
+<tr><th>Volumen</th><td>a³</td></tr>
+</table>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Calcula el volumen y el área total de un cubo de arista 5 cm</p>
+<div class="calc">Volumen = 5³ = 5×5×5 = 125 cm³<br>Área total = 6 × 5² = 6 × 25 = 150 cm²</div>
+</div>
+
+<h4 style="margin-top:22px;color:#4a3208;">Paralelepípedo (caja rectangular)</h4>
+<p>Tiene tres medidas distintas: largo (l), ancho (a) y alto (h):</p>
+<table class="ref-table">
+<tr><th>Área total</th><td>2(l·a + l·h + a·h)  <span style="color:var(--muted);">(se suman las áreas de los 3 pares de caras)</span></td></tr>
+<tr><th>Volumen</th><td>l × a × h</td></tr>
+</table>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Una caja mide 6 cm de largo, 4 cm de ancho y 3 cm de alto. Calcula su volumen y su área total.</p>
+<div class="calc">Volumen = 6 × 4 × 3 = 72 cm³<br>Área total = 2(6×4 + 6×3 + 4×3) = 2(24 + 18 + 12) = 2 × 54 = 108 cm²</div>
+</div>
+
+<h4 style="margin-top:22px;color:#4a3208;">Cilindro</h4>
+<p>Tiene radio r y altura h. Su superficie total está formada por dos círculos (las "tapas") más un rectángulo enrollado (el "manto"):</p>
+<table class="ref-table">
+<tr><th>Área total</th><td>2πr² + 2πrh = 2πr(r + h)</td></tr>
+<tr><th>Volumen</th><td>πr²h</td></tr>
+</table>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Calcula el volumen de un cilindro de radio 3 cm y altura 10 cm (usa π ≈ 3,14)</p>
+<div class="calc">Volumen = π × r² × h = 3,14 × 3² × 10<br>= 3,14 × 9 × 10<br><span class="r">= 282,6 cm³</span></div>
+</div>
+
+<div class="note-box"><p class="nb-title">Atención</p><p>El temario de esta prueba (M1) solo pide paralelepípedos, cubos y cilindros. Conos, pirámides y esferas no forman parte de este subtema, así que no necesitas memorizar esas fórmulas para esta prueba.</p></div>`,
+      formulario: `<div class="f-item"><span class="f-name">Cubo — área total</span><span>6a²</span></div>
+<div class="f-item"><span class="f-name">Cubo — volumen</span><span>a³</span></div>
+<div class="f-item"><span class="f-name">Paralelepípedo — área total</span><span>2(l·a + l·h + a·h)</span></div>
+<div class="f-item"><span class="f-name">Paralelepípedo — volumen</span><span>l × a × h</span></div>
+<div class="f-item"><span class="f-name">Cilindro — área total</span><span>2πr² + 2πrh = 2πr(r+h)</span></div>
+<div class="f-item"><span class="f-name">Cilindro — volumen</span><span>πr²h</span></div>`,
+      questions: [
+        { q:"Calcula el volumen de un cubo de arista 5 cm", o:["25 cm³","125 cm³","30 cm³","150 cm³"], c:1, e:"Volumen = a³ = 5³ = 125 cm³." },
+        { q:"Calcula el área total (superficie) de un cubo de arista 4 cm", o:["16 cm²","64 cm²","96 cm²","24 cm²"], c:2, e:"Área total = 6a² = 6×4² = 6×16 = 96 cm²." },
+        { q:"Una caja rectangular mide 6 cm de largo, 4 cm de ancho y 3 cm de alto. ¿Cuál es su volumen?", o:["13 cm³","72 cm³","108 cm³","36 cm³"], c:1, e:"Volumen = largo × ancho × alto = 6×4×3 = 72 cm³." },
+        { q:"Usando la misma caja (6 cm × 4 cm × 3 cm), ¿cuál es su área total?", o:["54 cm²","72 cm²","108 cm²","216 cm²"], c:2, e:"Área total = 2(6×4 + 6×3 + 4×3) = 2(24+18+12) = 2×54 = 108 cm²." },
+        { q:"Calcula el volumen de un cilindro de radio 3 cm y altura 10 cm (usa π ≈ 3,14)", o:["94,2 cm³","282,6 cm³","188,4 cm³","30 cm³"], c:1, e:"Volumen = π×r²×h = 3,14×9×10 = 282,6 cm³." },
+        { q:"Calcula el área total de un cilindro de radio 2 cm y altura 5 cm (usa π ≈ 3,14)", o:["62,8 cm²","87,92 cm²","43,96 cm²","125,6 cm²"], c:1, e:"Área total = 2πr(r+h) = 2×3,14×2×(2+5) = 12,56×7 = 87,92 cm²." },
+        { q:"Se necesita construir una caja de regalo cúbica que contenga exactamente 64 cm³. ¿Cuánto debe medir cada arista?", o:["8 cm","4 cm","16 cm","6,4 cm"], c:1, e:"Si el volumen es a³=64, entonces a=³√64=4 cm (porque 4³=64)." },
+        { q:"Un estanque de agua tiene forma de cilindro, con radio 2 m y altura 4 m. ¿Cuál es su capacidad, en m³ (usa π ≈ 3,14)?", o:["50,24 m³","25,12 m³","16 m³","37,68 m³"], c:0, e:"Volumen = π×r²×h = 3,14×2²×4 = 3,14×4×4 = 50,24 m³." },
+        { q:"Si la arista de un cubo se duplica, ¿por qué factor se multiplica su volumen?", o:["Por 2","Por 4","Por 8","Por 6"], c:2, e:"Volumen = a³. Si la arista pasa a ser 2a, el nuevo volumen es (2a)³ = 8a³: se multiplica por 8, no por 2." },
+        { q:"El volumen de un cubo es 27 cm³. ¿Cuánto mide su arista?", o:["9 cm","3 cm","27 cm","5,2 cm"], c:1, e:"a³=27, entonces a=³√27=3 cm (porque 3³=27)." },
+        { q:"Un cilindro tiene radio r y altura h. Si la altura se triplica y el radio se mantiene igual, ¿qué ocurre con su volumen?", o:["Se mantiene igual","Se duplica","Se triplica","Se multiplica por 9"], c:2, e:"Como Volumen = πr²h, y h aparece elevado solo a la primera potencia, si h se triplica, el volumen también se triplica (el radio no cambió)." },
+        { q:"Dos cajas tienen el mismo volumen: la Caja A mide 4×3×2 cm y la Caja B mide 6×2×2 cm. ¿Es correcto decir que tienen el mismo volumen?", o:["Sí: ambas tienen volumen 24 cm³","No: la Caja A tiene mayor volumen","No: la Caja B tiene mayor volumen","No se puede comparar sin conocer sus áreas"], c:0, e:"Volumen Caja A = 4×3×2 = 24 cm³. Volumen Caja B = 6×2×2 = 24 cm³. Cuerpos con formas distintas pueden tener exactamente el mismo volumen." },
+        { q:"Calcula el volumen de un cubo de arista 6 cm", o:["36 cm³","216 cm³","216 cm²","18 cm³"], c:1, e:"Volumen = a³ = 6³ = 216 cm³." },
+        { q:"Un paralelepípedo mide 5 cm de largo, 2 cm de ancho y 4 cm de alto. ¿Cuál es su área total?", o:["40 cm²","76 cm²","38 cm²","19 cm²"], c:1, e:"Área total = 2(5×2 + 5×4 + 2×4) = 2(10+20+8) = 2×38 = 76 cm²." },
+        { q:"Calcula el volumen de un cilindro de radio 4 cm y altura 6 cm (usa π ≈ 3,14)", o:["150,72 cm³","301,44 cm³","75,36 cm³","96 cm³"], c:1, e:"Volumen = π×r²×h = 3,14×16×6 = 301,44 cm³." },
+        { q:"Si el radio de un cilindro se duplica y su altura se mantiene igual, ¿por qué factor se multiplica su volumen?", o:["Por 2","Por 4","Por 8","No cambia"], c:1, e:"Volumen = πr²h. Si el radio pasa a ser 2r, el nuevo volumen es π(2r)²h = 4πr²h: se multiplica por 4 (porque el radio está elevado al cuadrado en la fórmula)." },
+        { q:"Calcula el volumen de un cubo de arista 7 cm", o:["49 cm³","343 cm³","21 cm³","147 cm³"], c:1, e:"Volumen = a³ = 7³ = 343 cm³." },
+        { q:"Calcula el área total de un cubo de arista 5 cm", o:["25 cm²","125 cm²","150 cm²","30 cm²"], c:2, e:"Área total = 6a² = 6×5² = 6×25 = 150 cm²." },
+        { q:"Un paralelepípedo mide 8 cm de largo, 5 cm de ancho y 3 cm de alto. ¿Cuál es su volumen?", o:["120 cm³","16 cm³","96 cm³","158 cm³"], c:0, e:"Volumen = 8×5×3 = 120 cm³." },
+        { q:"Usando el mismo paralelepípedo (8×5×3 cm), ¿cuál es su área total?", o:["120 cm²","79 cm²","158 cm²","240 cm²"], c:2, e:"Área total = 2(8×5 + 8×3 + 5×3) = 2(40+24+15) = 2×79 = 158 cm²." },
+        { q:"Calcula el volumen de un cilindro de radio 5 cm y altura 8 cm (usa π ≈ 3,14)", o:["125,6 cm³","628 cm³","314 cm³","251,2 cm³"], c:1, e:"Volumen = π×r²×h = 3,14×25×8 = 628 cm³." },
+        { q:"Una piscina rectangular mide 10 m de largo, 4 m de ancho y 1,5 m de profundidad. ¿Cuántos m³ de agua caben en total?", o:["15,5 m³","40 m³","60 m³","75 m³"], c:2, e:"Volumen = 10×4×1,5 = 60 m³." },
+        { q:"El volumen de un cubo es 216 cm³. ¿Cuánto mide su arista?", o:["6 cm","36 cm","72 cm","108 cm"], c:0, e:"a³=216, entonces a=³√216=6 cm (porque 6³=216)." },
+        { q:"Si la altura de un paralelepípedo se triplica, manteniendo igual el área de su base, ¿qué ocurre con su volumen?", o:["Se mantiene igual","Se triplica","Se multiplica por 6","Se multiplica por 9"], c:1, e:"Volumen = área de la base × altura. Como la altura aparece elevada solo a la primera potencia, si se triplica, el volumen también se triplica." },
+        { q:"Un cilindro y un paralelepípedo tienen exactamente la misma altura y la misma área de base. ¿Tienen necesariamente el mismo volumen?", o:["Sí, porque Volumen = área de la base × altura para ambos cuerpos, sin importar la forma de la base", "No, porque el cilindro siempre tiene mayor volumen", "No, porque el paralelepípedo siempre tiene mayor volumen", "No se puede saber sin conocer el radio del cilindro"], c:0, e:"Para prismas (como el paralelepípedo) y cilindros, el volumen se calcula igual: área de la base × altura. Si ambas cantidades son iguales para los dos cuerpos, sus volúmenes son necesariamente iguales, sin importar que sus bases tengan formas distintas (círculo vs rectángulo)." },
+      ]
+    },
+
+    // -----------------------------------------------------------------
+    // m3s3 — Transformaciones isométricas
+    // -----------------------------------------------------------------
+    {
+      id: "m3s3",
+      name: "Transformaciones isométricas",
+      videoUrl: "https://www.youtube.com/watch?v=UwBsUEqwptg",
+      videoTitle: "Traslación, reflexión y rotación en GeoGebra — Movimientos en el plano",
+      content: `<p>Una <strong>transformación isométrica</strong> mueve una figura en el plano cartesiano <strong>sin cambiar su forma ni su tamaño</strong> ("isométrica" viene de "igual medida"): la figura resultante es siempre congruente con la original. Hay exactamente tres tipos, y cada uno tiene una regla de coordenadas que conviene memorizar.</p>
+
+<h4 style="margin-top:22px;color:#4a3208;">Traslación</h4>
+<p>Desliza la figura en línea recta, según un <strong>vector de traslación</strong> (a, b): cada punto se mueve "a" unidades horizontalmente y "b" unidades verticalmente.</p>
+<div class="calc">(x, y)  →  (x + a, y + b)</div>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Traslada el punto A(2, 3) según el vector (4, −2)</p>
+<div class="calc">A'(2+4, 3−2)<br><span class="r">A' = (6, 1)</span></div>
+</div>
+
+<h4 style="margin-top:22px;color:#4a3208;">Reflexión (simetría)</h4>
+<p>"Voltea" la figura como en un espejo, respecto de un eje o de un punto:</p>
+<table class="ref-table">
+<tr><th>Tipo de reflexión</th><th>Regla</th></tr>
+<tr><td>Respecto al eje x</td><td>(x, y) → (x, −y)</td></tr>
+<tr><td>Respecto al eje y</td><td>(x, y) → (−x, y)</td></tr>
+<tr><td>Respecto al origen (reflexión central)</td><td>(x, y) → (−x, −y)</td></tr>
+</table>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Refleja el punto P(4, −2) respecto al eje x y respecto al eje y</p>
+<div class="calc">Respecto al eje x: (4, −(−2)) = (4, 2)<br>Respecto al eje y: (−4, −2)</div>
+</div>
+
+<h4 style="margin-top:22px;color:#4a3208;">Rotación</h4>
+<p>Gira la figura en torno a un <strong>centro de rotación</strong> (frecuentemente el origen) un cierto <strong>ángulo</strong>. Para rotaciones en torno al origen, en sentido antihorario:</p>
+<table class="ref-table">
+<tr><th>Ángulo</th><th>Regla</th></tr>
+<tr><td>90°</td><td>(x, y) → (−y, x)</td></tr>
+<tr><td>180°</td><td>(x, y) → (−x, −y)</td></tr>
+<tr><td>270°</td><td>(x, y) → (y, −x)</td></tr>
+</table>
+<div class="note-box"><p class="nb-title">Atención</p><p>La rotación de 180° y la reflexión respecto al origen dan exactamente la misma regla de coordenadas: (x,y) → (−x,−y). No es casualidad — son la misma transformación vista de dos formas.</p></div>
+
+<div class="fig"><div class="fig-frame"><svg role="img" aria-label="Cuadrícula mostrando un triángulo y su imagen tras una rotación de 90 grados en sentido antihorario en torno al origen" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+<rect x="6" y="6" width="588" height="388" rx="18" fill="#fbf2e6" fill-opacity="0.35"/>
+<!-- cuadricula -->
+<g stroke="#d8c69a" stroke-width="1">
+<line x1="30" y1="30" x2="30" y2="370"/><line x1="75" y1="30" x2="75" y2="370"/><line x1="120" y1="30" x2="120" y2="370"/><line x1="165" y1="30" x2="165" y2="370"/><line x1="210" y1="30" x2="210" y2="370"/><line x1="255" y1="30" x2="255" y2="370"/><line x1="300" y1="30" x2="300" y2="370"/><line x1="345" y1="30" x2="345" y2="370"/><line x1="390" y1="30" x2="390" y2="370"/><line x1="435" y1="30" x2="435" y2="370"/><line x1="480" y1="30" x2="480" y2="370"/><line x1="525" y1="30" x2="525" y2="370"/><line x1="570" y1="30" x2="570" y2="370"/>
+<line x1="30" y1="30" x2="570" y2="30"/><line x1="30" y1="75" x2="570" y2="75"/><line x1="30" y1="120" x2="570" y2="120"/><line x1="30" y1="165" x2="570" y2="165"/><line x1="30" y1="210" x2="570" y2="210"/><line x1="30" y1="255" x2="570" y2="255"/><line x1="30" y1="300" x2="570" y2="300"/><line x1="30" y1="345" x2="570" y2="345"/>
+</g>
+<line x1="30" y1="300" x2="570" y2="300" stroke="#6b4a10" stroke-width="2.5"/>
+<line x1="300" y1="30" x2="300" y2="370" stroke="#6b4a10" stroke-width="2.5"/>
+<text x="580" y="305" font-family="Georgia,serif" font-size="14" fill="#5a3d0d">x</text>
+<text x="290" y="25" font-family="Georgia,serif" font-size="14" fill="#5a3d0d">y</text>
+<!-- triangulo original A(1,1) B(3,1) C(1,4) en px: A(345,255) B(435,255) C(345,120) -->
+<polygon points="345,255 435,255 345,120" fill="#e8c766" fill-opacity="0.55" stroke="#4a3208" stroke-width="2.5"/>
+<text x="365" y="272" font-family="'Space Grotesk',sans-serif" font-size="13" font-weight="700" fill="#4a3208">A</text>
+<text x="440" y="272" font-family="'Space Grotesk',sans-serif" font-size="13" font-weight="700" fill="#4a3208">B</text>
+<text x="325" y="115" font-family="'Space Grotesk',sans-serif" font-size="13" font-weight="700" fill="#4a3208">C</text>
+<!-- triangulo rotado A'(255,255) B'(255,165) C'(120,255) -->
+<polygon points="255,255 255,165 120,255" fill="#e6a8c4" fill-opacity="0.55" stroke="#8a3550" stroke-width="2.5"/>
+<text x="230" y="272" font-family="'Space Grotesk',sans-serif" font-size="13" font-weight="700" fill="#8a3550">A'</text>
+<text x="230" y="158" font-family="'Space Grotesk',sans-serif" font-size="13" font-weight="700" fill="#8a3550">C'</text>
+<text x="95" y="272" font-family="'Space Grotesk',sans-serif" font-size="13" font-weight="700" fill="#8a3550">B'</text>
+<path d="M 380 200 A 60 60 0 0 1 300 280" fill="none" stroke="#6b4a10" stroke-width="1.5" stroke-dasharray="4,3"/>
+<text x="330" y="320" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-style="italic" fill="#4a3208">rotación de 90° en sentido antihorario en torno al origen</text>
+</svg></div><figcaption><strong>Figura 1.</strong> El triángulo ABC (A(1,1), B(3,1), C(1,4)) rota 90° y se convierte en A'B'C', usando la regla (x,y) → (−y,x): A'(−1,1), B'(−1,3), C'(−4,1).</figcaption></div>
+
+<h4 style="margin-top:22px;color:#4a3208;">Encontrar el vector o el tipo de transformación</h4>
+<p>A veces se da la figura original y la transformada, y se pide encontrar qué transformación (o qué vector) se aplicó — es el mismo razonamiento, pero "al revés".</p>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Un punto A(1, 2) se traslada hasta A'(5, −1). ¿Cuál es el vector de traslación?</p>
+<div class="calc">vector = A' − A = (5−1, −1−2)<br><span class="r">vector = (4, −3)</span></div>
+</div>`,
+      formulario: `<div class="f-item"><span class="f-name">Traslación según vector (a,b)</span><span>(x,y) → (x+a, y+b)</span></div>
+<div class="f-item"><span class="f-name">Reflexión respecto al eje x</span><span>(x,y) → (x, −y)</span></div>
+<div class="f-item"><span class="f-name">Reflexión respecto al eje y</span><span>(x,y) → (−x, y)</span></div>
+<div class="f-item"><span class="f-name">Reflexión respecto al origen</span><span>(x,y) → (−x, −y)</span></div>
+<div class="f-item"><span class="f-name">Rotación 90° antihoraria (origen)</span><span>(x,y) → (−y, x)</span></div>
+<div class="f-item"><span class="f-name">Rotación 180° (origen)</span><span>(x,y) → (−x, −y)</span></div>
+<div class="f-item"><span class="f-name">Rotación 270° antihoraria (origen)</span><span>(x,y) → (y, −x)</span></div>`,
+      questions: [
+        { q:"Traslada el punto A(2, 3) según el vector (4, −2)", o:["(6, 1)","(−2, 5)","(6, −5)","(8, −6)"], c:0, e:"(2+4, 3−2) = (6, 1)." },
+        { q:"Traslada el punto B(−1, 5) según el vector (−3, 2)", o:["(2, 7)","(−4, 7)","(−4, 3)","(2, 3)"], c:1, e:"(−1−3, 5+2) = (−4, 7)." },
+        { q:"Refleja el punto P(4, −2) respecto al eje x", o:["(4, 2)","(−4, −2)","(−4, 2)","(2, −4)"], c:0, e:"Al reflejar respecto al eje x, la coordenada x se mantiene y la y cambia de signo: (4, −(−2)) = (4, 2)." },
+        { q:"Refleja el punto P(4, −2) respecto al eje y", o:["(4, 2)","(−4, −2)","(−4, 2)","(4, −2)"], c:1, e:"Al reflejar respecto al eje y, la coordenada y se mantiene y la x cambia de signo: (−4, −2)." },
+        { q:"Rota el punto P(3, 1) en 90° (sentido antihorario) en torno al origen", o:["(1, 3)","(−1, 3)","(1, −3)","(−3, 1)"], c:1, e:"Con la regla (x,y)→(−y,x): (−1, 3)." },
+        { q:"Rota el punto P(2, 5) en 180° en torno al origen", o:["(5, 2)","(−5, −2)","(−2, −5)","(2, −5)"], c:2, e:"Con la regla (x,y)→(−x,−y): (−2, −5)." },
+        { q:"Refleja el punto P(3, −6) respecto al origen (reflexión central)", o:["(3, 6)","(−3, −6)","(−3, 6)","(6, −3)"], c:2, e:"La reflexión respecto al origen sigue la regla (x,y)→(−x,−y): (−3, 6)." },
+        { q:"Un punto A(1, 2) se traslada hasta A'(5, −1). ¿Cuál es el vector de traslación?", o:["(4, −3)","(6, 1)","(−4, 3)","(5, −2)"], c:0, e:"El vector se calcula como A' menos A: (5−1, −1−2) = (4, −3)." },
+        { q:"¿Una traslación cambia el tamaño o la forma de una figura?", o:["Sí, siempre la reduce", "No: es una transformación isométrica, conserva forma y tamaño, solo cambia la posición", "Sí, siempre la agranda", "Depende del vector de traslación"], c:1, e:"Todas las transformaciones isométricas (traslación, reflexión y rotación) producen una figura congruente con la original: mismo tamaño y misma forma, solo cambia su posición o su orientación." },
+        { q:"Rota el punto P(0, 4) en 90° (sentido antihorario) en torno al origen", o:["(4, 0)","(0, −4)","(−4, 0)","(−4, 4)"], c:2, e:"Con la regla (x,y)→(−y,x): (−4, 0)." },
+        { q:"El punto A(5, 2) se refleja respecto al eje y, obteniendo A'. ¿Cuáles son las coordenadas de A'?", o:["(5, −2)","(−5, 2)","(−5, −2)","(2, 5)"], c:1, e:"Reflexión respecto al eje y: (x,y)→(−x,y). A' = (−5, 2)." },
+        { q:"Un triángulo se traslada 3 unidades a la derecha y 2 hacia abajo. Si uno de sus vértices era (0, 0), ¿cuál es la nueva posición de ese vértice?", o:["(3, 2)","(−3, −2)","(3, −2)","(−3, 2)"], c:2, e:"Trasladar 3 a la derecha suma 3 a x; trasladar 2 hacia abajo resta 2 a y: (0+3, 0−2) = (3, −2)." },
+        { q:"Traslada el punto C(−2, −3) según el vector (5, 1)", o:["(3, −2)","(−7, −4)","(3, −4)","(7, 4)"], c:0, e:"(−2+5, −3+1) = (3, −2)." },
+        { q:"Refleja el punto Q(−3, 4) respecto al eje x", o:["(3, 4)","(−3, −4)","(3, −4)","(−3, 4)"], c:1, e:"Al reflejar respecto al eje x, la coordenada x se mantiene y la y cambia de signo: (−3, −4)." },
+        { q:"Rota el punto R(4, 0) en 270° (sentido antihorario) en torno al origen", o:["(0, 4)","(0, −4)","(−4, 0)","(4, 0)"], c:1, e:"Con la regla para 270°, (x,y)→(y,−x): (0, −4)." },
+        { q:"Refleja el punto S(2, 2) respecto al origen (reflexión central)", o:["(2, −2)","(−2, 2)","(−2, −2)","(2, 2)"], c:2, e:"La reflexión respecto al origen sigue la regla (x,y)→(−x,−y): (−2, −2)." },
+        { q:"Traslada el punto D(5, −2) según el vector (−3, 4)", o:["(2, 2)","(8, −6)","(2, −6)","(−8, 6)"], c:0, e:"(5−3, −2+4) = (2, 2)." },
+        { q:"Refleja el punto E(−6, 3) respecto al eje x", o:["(6, 3)","(−6, −3)","(6, −3)","(−6, 3)"], c:1, e:"Al reflejar respecto al eje x, la coordenada x se mantiene y la y cambia de signo: (−6, −3)." },
+        { q:"Refleja el punto E(−6, 3) respecto al eje y", o:["(6, 3)","(−6, −3)","(6, −3)","(−6, 3)"], c:0, e:"Al reflejar respecto al eje y, la coordenada y se mantiene y la x cambia de signo: (6, 3)." },
+        { q:"Rota el punto F(2, −3) en 90° (sentido antihorario) en torno al origen", o:["(3, 2)","(−3, 2)","(3, −2)","(−3, −2)"], c:0, e:"Con la regla (x,y)→(−y,x): (−(−3), 2) = (3, 2)." },
+        { q:"Rota el punto F(2, −3) en 180° en torno al origen", o:["(2, 3)","(−2, 3)","(−2, −3)","(3, −2)"], c:1, e:"Con la regla (x,y)→(−x,−y): (−2, 3)." },
+        { q:"Un punto (4, 4) se traslada hasta (1, 7). ¿Cuál es el vector de traslación?", o:["(−3, 3)","(3, −3)","(5, 11)","(−3, −3)"], c:0, e:"El vector es el punto final menos el inicial: (1−4, 7−4) = (−3, 3)." },
+        { q:"Una figura tiene un vértice en (2, 6). Se traslada 4 unidades a la izquierda y 3 hacia arriba. ¿Cuál es la nueva posición de ese vértice?", o:["(−2, 9)","(6, 9)","(−2, 3)","(6, 3)"], c:0, e:"Trasladar 4 a la izquierda resta 4 a x; trasladar 3 hacia arriba suma 3 a y: (2−4, 6+3) = (−2, 9)." },
+        { q:"Rota el punto H(−3, −1) en 270° (sentido antihorario) en torno al origen", o:["(−1, 3)","(1, −3)","(−1, −3)","(1, 3)"], c:0, e:"Con la regla para 270°, (x,y)→(y,−x): (−1, −(−3)) = (−1, 3)." },
+        { q:"Al aplicar dos traslaciones seguidas a una figura, ¿el resultado es equivalente a una sola transformación?", o:["No, nunca es equivalente a una sola transformación", "Sí: es equivalente a una única traslación, según el vector suma de ambas traslaciones", "Sí, pero solo es equivalente a una rotación", "No, el resultado siempre depende del orden en que se apliquen"], c:1, e:"Aplicar una traslación según el vector (a,b) y luego otra según (c,d) equivale a una única traslación según el vector suma (a+c, b+d) — el orden no importa, porque la suma de vectores es conmutativa." },
+      ]
+    },
+
+    // -----------------------------------------------------------------
+    // m3s4 — Semejanza y proporcionalidad de figuras
+    // -----------------------------------------------------------------
+    {
+      id: "m3s4",
+      name: "Semejanza y proporcionalidad de figuras",
+      videoUrl: "https://www.youtube.com/watch?v=eoSvj4BbC7U",
+      videoTitle: "Teorema de Tales — Semejanza de Triángulos",
+      content: `<p>Dos figuras son <strong>semejantes</strong> cuando tienen exactamente la misma forma, aunque no el mismo tamaño: piensa en una fotografía y su ampliación, o en un plano y el edificio real. Este subtema aplica esa idea a mapas, maquetas, planos y triángulos.</p>
+
+<h4 style="margin-top:22px;color:#4a3208;">¿Cuándo dos figuras son semejantes?</h4>
+<p>Dos polígonos son semejantes cuando:</p>
+<div class="calc">1) sus ángulos correspondientes son iguales, y<br>2) sus lados correspondientes son proporcionales (todos guardan la misma razón)</div>
+<p>Esa razón constante entre lados correspondientes se llama <strong>razón de semejanza</strong> o <strong>escala</strong>, y se anota k.</p>
+<div class="note-box"><p class="nb-title">Atención</p><p>No basta con que dos figuras "se parezcan" o sean del mismo tipo (dos rectángulos cualquiera, por ejemplo) para que sean semejantes: hace falta que sus lados correspondientes guarden exactamente la misma proporción.</p></div>
+
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Un rectángulo mide 4 cm de ancho por 6 cm de largo. Se construye un rectángulo semejante con 6 cm de ancho. ¿Cuánto debe medir su largo?</p>
+<div class="calc">razón de semejanza k = 6/4 = 1,5<br>nuevo largo = 6 × 1,5<br><span class="r">= 9 cm</span></div>
+</div>
+
+<h4 style="margin-top:22px;color:#4a3208;">Teorema de Thales: triángulos semejantes por sombras</h4>
+<p>Una aplicación clásica: si dos objetos verticales proyectan sombra al mismo tiempo (bajo el mismo ángulo del sol), los triángulos que forman el objeto, su sombra y el rayo de sol son semejantes entre sí. Eso permite calcular la altura de algo muy grande (un árbol, un edificio) usando un objeto pequeño de referencia (un poste, una persona).</p>
+
+<div class="fig"><div class="fig-frame"><svg role="img" aria-label="Diagrama de un poste pequeño y un árbol proyectando sombras al mismo tiempo, formando triángulos semejantes que permiten calcular la altura del árbol" viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg">
+<rect x="6" y="6" width="688" height="408" rx="18" fill="#fbf2e6" fill-opacity="0.35"/>
+<line x1="40" y1="380" x2="660" y2="380" stroke="#6b4a10" stroke-width="2.5"/>
+<!-- arbol: base(90,380) tope(90,272) sombra hasta(234,380) -->
+<line x1="90" y1="380" x2="90" y2="272" stroke="#3f6236" stroke-width="6"/>
+<line x1="90" y1="272" x2="234" y2="380" stroke="#4a3208" stroke-width="1.5" stroke-dasharray="5,4"/>
+<line x1="90" y1="380" x2="234" y2="380" stroke="#8a3550" stroke-width="3"/>
+<text x="60" y="330" font-family="Georgia,serif" font-size="14" fill="#2e4a2c">árbol</text>
+<text x="60" y="345" font-family="'IBM Plex Mono',monospace" font-size="13" fill="#2e4a2c">h = ?</text>
+<text x="160" y="400" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="13" fill="#8a3550">sombra = 12 m</text>
+<!-- poste: base(550,380) tope(550,362) sombra hasta(574,380) -->
+<line x1="550" y1="380" x2="550" y2="362" stroke="#3f6236" stroke-width="6"/>
+<line x1="550" y1="362" x2="574" y2="380" stroke="#4a3208" stroke-width="1.5" stroke-dasharray="5,4"/>
+<line x1="550" y1="380" x2="574" y2="380" stroke="#8a3550" stroke-width="3"/>
+<text x="520" y="355" font-family="Georgia,serif" font-size="13" fill="#2e4a2c">poste</text>
+<text x="500" y="373" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#2e4a2c">1,5 m</text>
+<text x="560" y="400" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#8a3550">sombra = 2 m</text>
+<text x="350" y="30" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-style="italic" fill="#4a3208">mismos rayos de sol → los triángulos (altura, sombra, rayo) son semejantes</text>
+</svg></div><figcaption><strong>Figura 1.</strong> Como ambos triángulos son semejantes, la razón altura/sombra es la misma para el árbol y para el poste.</figcaption></div>
+
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Un árbol proyecta una sombra de 12 m. En ese mismo momento, un poste de 1,5 m de altura proyecta una sombra de 2 m. ¿Cuál es la altura del árbol?</p>
+<div class="calc">Como los triángulos son semejantes, se cumple:<br>altura árbol / sombra árbol = altura poste / sombra poste<br>altura árbol / 12 = 1,5 / 2<br>altura árbol = 12 × (1,5 / 2)<br><span class="r">= 9 m</span></div>
+</div>
+
+<h4 style="margin-top:22px;color:#4a3208;">Escalas en mapas, planos y maquetas</h4>
+<p>Una escala 1:n (léase "uno es a ene") significa que 1 unidad medida en el mapa, plano o maqueta representa n unidades reales.</p>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Un mapa tiene escala 1:25.000. La distancia entre dos pueblos en el mapa es 4 cm. ¿Cuál es la distancia real, en kilómetros?</p>
+<div class="calc">distancia real = 4 cm × 25.000 = 100.000 cm<br>100.000 cm = 1.000 m = 1 km<br><span class="r">distancia real = 1 km</span></div>
+</div>`,
+      formulario: `<div class="f-item"><span class="f-name">Figuras semejantes</span><span>ángulos correspondientes iguales + lados correspondientes proporcionales</span></div>
+<div class="f-item"><span class="f-name">Razón de semejanza (escala) k</span><span>k = lado de la figura nueva / lado correspondiente de la original</span></div>
+<div class="f-item"><span class="f-name">Escala 1:n</span><span>1 unidad en el dibujo/mapa = n unidades reales</span></div>
+<div class="f-item"><span class="f-name">Thales (sombras)</span><span>altura objeto / sombra objeto = altura referencia / sombra referencia</span></div>`,
+      questions: [
+        { q:"Un rectángulo mide 4 cm de ancho por 6 cm de largo. Se construye uno semejante con 6 cm de ancho. ¿Cuánto mide su largo?", o:["8 cm","9 cm","10 cm","7,5 cm"], c:1, e:"Razón de semejanza k = 6/4 = 1,5. Nuevo largo = 6 × 1,5 = 9 cm." },
+        { q:"Un mapa tiene escala 1:25.000. Dos pueblos están a 4 cm de distancia en el mapa. ¿Cuál es la distancia real, en kilómetros?", o:["0,25 km","2,5 km","1 km","25 km"], c:2, e:"4 cm × 25.000 = 100.000 cm = 1.000 m = 1 km." },
+        { q:"Un árbol proyecta una sombra de 12 m. En ese momento, un poste de 1,5 m proyecta una sombra de 2 m. ¿Cuál es la altura del árbol?", o:["9 m","16 m","1,5 m","18 m"], c:0, e:"altura/12 = 1,5/2, entonces altura = 12 × (1,5/2) = 9 m." },
+        { q:"Una maqueta a escala 1:20 representa un auto. Si el modelo mide 22 cm de largo, ¿cuánto mide el auto real, en metros?", o:["2,2 m","0,44 m","4,4 m","44 m"], c:2, e:"22 cm × 20 = 440 cm = 4,4 m." },
+        { q:"Dos triángulos son semejantes con razón de semejanza k = 3 (del menor al mayor). Si un lado del triángulo menor mide 5 cm, ¿cuánto mide su lado correspondiente en el triángulo mayor?", o:["8 cm","15 cm","5/3 cm","1,67 cm"], c:1, e:"lado mayor = lado menor × k = 5 × 3 = 15 cm." },
+        { q:"Dos triángulos son semejantes. Un lado de 8 cm en el triángulo menor corresponde a un lado de 20 cm en el mayor. ¿Cuál es la razón de semejanza (del menor al mayor)?", o:["2","2,5","0,4","12"], c:1, e:"k = lado mayor / lado menor correspondiente = 20/8 = 2,5." },
+        { q:"Con la razón de semejanza k = 2,5 del ejercicio anterior, si otro lado del triángulo menor mide 6 cm, ¿cuánto mide su lado correspondiente en el triángulo mayor?", o:["8,5 cm","2,4 cm","15 cm","3,6 cm"], c:2, e:"lado mayor = 6 × 2,5 = 15 cm." },
+        { q:"El plano de una casa está a escala 1:50. Una habitación mide 6 cm de largo en el plano. ¿Cuál es su largo real, en metros?", o:["0,3 m","3 m","30 m","0,12 m"], c:1, e:"6 cm × 50 = 300 cm = 3 m." },
+        { q:"¿Son siempre semejantes dos rectángulos cualquiera?", o:["Sí, todos los rectángulos son semejantes entre sí", "No: deben tener sus lados correspondientes en la misma proporción (mismo cociente largo/ancho)", "Sí, siempre que ambos sean cuadrados", "No, los rectángulos nunca son semejantes entre sí"], c:1, e:"Aunque todos los rectángulos tienen ángulos de 90° (iguales), eso no basta: además necesitan que la razón entre sus lados correspondientes sea la misma. Un rectángulo de 2x8 no es semejante a uno de 3x9, por ejemplo." },
+        { q:"A la misma hora, un poste de 1,5 m proyecta una sombra de 2,4 m, y un edificio cercano proyecta una sombra de 20 m. ¿Cuál es la altura aproximada del edificio?", o:["12,5 m","13,3 m","32 m","30 m"], c:0, e:"altura edificio / 20 = 1,5 / 2,4, entonces altura = 20 × (1,5/2,4) = 12,5 m." },
+        { q:"Para que dos triángulos sean semejantes, ¿qué condición(es) deben cumplir?", o:["Solo que tengan el mismo perímetro", "Ángulos correspondientes iguales y lados correspondientes proporcionales", "Solo que sus áreas sean iguales", "Solo que uno de sus lados sea igual"], c:1, e:"La definición de semejanza exige ambas condiciones a la vez: ángulos correspondientes iguales (misma forma) y lados correspondientes proporcionales (mismo 'estiramiento' en todas direcciones)." },
+        { q:"Una fotografía de 10 cm de ancho por 15 cm de largo se amplía manteniendo la proporción, hasta que su ancho mide 40 cm. ¿Cuánto mide el largo de la ampliación?", o:["45 cm","50 cm","60 cm","65 cm"], c:2, e:"Razón de ampliación k = 40/10 = 4. Nuevo largo = 15 × 4 = 60 cm." },
+        { q:"Un edificio de 15 m de altura proyecta una sombra de 10 m. En ese mismo momento, ¿cuánto mide la sombra de una persona de 1,8 m de estatura?", o:["1,2 m","1,5 m","2,7 m","0,83 m"], c:0, e:"Por triángulos semejantes: 1,8/sombra = 15/10, entonces sombra = 1,8×10/15 = 1,2 m." },
+        { q:"Una maqueta a escala 1:100 representa un edificio real de 45 m de altura. ¿Cuánto mide la maqueta, en centímetros?", o:["4,5 cm","45 cm","450 cm","0,45 cm"], c:1, e:"45 m = 4.500 cm. A escala 1:100, la maqueta mide 4.500 ÷ 100 = 45 cm." },
+        { q:"Dos rectángulos son semejantes. Uno mide 3 cm × 5 cm; el otro, semejante, tiene su lado menor de 9 cm. ¿Cuánto mide su lado mayor?", o:["11 cm","15 cm","17 cm","45 cm"], c:1, e:"Razón de semejanza k = 9/3 = 3. Lado mayor correspondiente = 5 × 3 = 15 cm." },
+        { q:"En un plano a escala 1:200, una calle mide 8 cm. ¿Cuál es su longitud real, en metros?", o:["1,6 m","16 m","160 m","25 m"], c:1, e:"8 cm × 200 = 1.600 cm = 16 m." },
+        { q:"Dos triángulos son semejantes con razón de semejanza k=4 (del menor al mayor). Un lado del triángulo menor mide 3 cm. ¿Cuánto mide su lado correspondiente en el mayor?", o:["7 cm","12 cm","1,33 cm","0,75 cm"], c:1, e:"lado mayor = lado menor × k = 3 × 4 = 12 cm." },
+        { q:"Un edificio de 24 m de altura proyecta una sombra de 16 m. En ese mismo momento, ¿cuánta sombra proyecta un poste de 3 m de altura?", o:["1,5 m","2 m","4,5 m","8 m"], c:1, e:"Por triángulos semejantes: 3/sombra = 24/16, entonces sombra = 3×16/24 = 2 m." },
+        { q:"Una maqueta está a escala 1:150. Si un edificio real mide 60 m de altura, ¿cuánto mide en la maqueta, en centímetros?", o:["4 cm","40 cm","400 cm","0,4 cm"], c:1, e:"60 m = 6.000 cm. A escala 1:150: 6.000 ÷ 150 = 40 cm." },
+        { q:"Dos rectángulos son semejantes: uno mide 5 cm × 8 cm; el otro, semejante, tiene su lado mayor de 20 cm. ¿Cuánto mide su lado menor?", o:["12,5 cm","10 cm","32 cm","3,2 cm"], c:0, e:"Razón de semejanza k = 20/8 = 2,5. Lado menor correspondiente = 5 × 2,5 = 12,5 cm." },
+        { q:"Un plano está a escala 1:75. Una pared mide 3 cm en el plano. ¿Cuánto mide en la realidad, en metros?", o:["0,25 m","2,25 m","22,5 m","225 m"], c:1, e:"3 cm × 75 = 225 cm = 2,25 m." },
+        { q:"Dos triángulos semejantes tienen un lado de 6 cm que corresponde a un lado de 15 cm en el otro. Si otro lado del triángulo menor mide 10 cm, ¿cuánto mide su correspondiente en el mayor?", o:["19 cm","25 cm","6,67 cm","4 cm"], c:1, e:"Razón de semejanza k = 15/6 = 2,5. Lado correspondiente = 10 × 2,5 = 25 cm." },
+        { q:"Una fotografía de 8 cm × 12 cm se amplía manteniendo la proporción hasta un póster de 24 cm de ancho. ¿Cuánto mide de largo el póster?", o:["28 cm","30 cm","36 cm","40 cm"], c:2, e:"Razón de ampliación k = 24/8 = 3. Nuevo largo = 12 × 3 = 36 cm." },
+        { q:"Un árbol proyecta una sombra de 15 m. En el mismo momento, una persona de 1,7 m de estatura proyecta una sombra de 2,5 m. ¿Cuál es la altura aproximada del árbol?", o:["8,8 m","10,2 m","22 m","6 m"], c:1, e:"Por triángulos semejantes: altura/15 = 1,7/2,5, entonces altura = 15×1,7/2,5 = 10,2 m." },
+        { q:"¿Son siempre semejantes entre sí dos círculos cualesquiera?", o:["No, depende de su área","Sí: todos los círculos son semejantes entre sí, ya que solo difieren en su radio, que actúa como un factor de escala uniforme","No, solo si tienen el mismo radio","Sí, pero solo si están en el mismo plano"], c:1, e:"Cualquier círculo se puede obtener a partir de otro simplemente escalando su radio por un factor k (misma forma, distinto tamaño). Por eso, a diferencia de los rectángulos, todos los círculos son semejantes entre sí." },
+      ]
+    },
+  ]
+},
+
+// =======================================================================
+// UNIDAD 4 — PROBABILIDAD Y ESTADÍSTICA (m4)
+// Subtemas: m4s1 Representación de datos a través de tablas y gráficos,
+//           m4s2 Medidas de posición, m4s3 Reglas de las probabilidades.
+// Nota de alcance: el temario M1 no incluye moda ni rango como unidades
+// independientes de medidas de posición; sí incluye promedio (en m4s1).
+// =======================================================================
+{
+  id: "m4",
+  name: "Probabilidad y estadística",
+  intro: "El último eje del temario: leer datos en tablas y gráficos, describir dónde se ubica un dato dentro de un grupo (cuartiles y percentiles), y calcular qué tan probable es que ocurra algo. Son herramientas que vas a seguir usando en la universidad, sea cual sea tu carrera.",
+  subtopics: [
+
+    // -----------------------------------------------------------------
+    // m4s1 — Representación de datos a través de tablas y gráficos
+    // -----------------------------------------------------------------
+    {
+      id: "m4s1",
+      name: "Representación de datos a través de tablas y gráficos",
+      videoUrl: "https://www.youtube.com/watch?v=ww_J9VD2uPI",
+      videoTitle: "PAES | Competencia Matemática M1 | Representación de datos a través de tablas y gráficos",
+      content: `<p>Antes de calcular cualquier cosa sobre un conjunto de datos, hay que saber organizarlos y leerlos correctamente en tablas y gráficos. Este subtema es más de "comprensión" que de cálculo — y por lo mismo, es donde más rinde prestar atención a los detalles del enunciado.</p>
+
+<h4 style="margin-top:22px;color:#4a3208;">Frecuencia absoluta y relativa</h4>
+<p>La <strong>frecuencia absoluta</strong> (fi) de un valor o categoría es, simplemente, cuántas veces aparece en los datos. La <strong>frecuencia relativa</strong> (fr) es esa cantidad dividida por el total de datos (n), y muestra qué proporción representa — se puede dejar como decimal o convertir a porcentaje:</p>
+<div class="calc">fr = fi / n</div>
+<div class="note-box"><p class="nb-title">Atención</p><p>La suma de todas las frecuencias absolutas siempre debe dar el total de datos (n); la suma de todas las frecuencias relativas siempre debe dar 1 (o 100%). Si no se cumple, hay un error en la tabla.</p></div>
+
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>En una encuesta a 50 estudiantes sobre su deporte favorito se obtuvo esta tabla:</p>
+<table class="ref-table"><tr><th>Deporte</th><th>Frecuencia absoluta</th><th>Frecuencia relativa</th></tr>
+<tr><td>Fútbol</td><td>20</td><td>20/50 = 0,40 = 40%</td></tr>
+<tr><td>Básquetbol</td><td>12</td><td>12/50 = 0,24 = 24%</td></tr>
+<tr><td>Vóleibol</td><td>10</td><td>10/50 = 0,20 = 20%</td></tr>
+<tr><td>Natación</td><td>8</td><td>8/50 = 0,16 = 16%</td></tr>
+<tr><td><strong>Total</strong></td><td><strong>50</strong></td><td><strong>1,00 = 100%</strong></td></tr>
+</table>
+</div>
+
+<div class="fig"><div class="fig-frame"><svg role="img" aria-label="Gráfico de barras mostrando el deporte favorito de 50 estudiantes: fútbol 20, básquetbol 12, vóleibol 10, natación 8" viewBox="0 0 660 400" xmlns="http://www.w3.org/2000/svg">
+<rect x="6" y="6" width="648" height="388" rx="18" fill="#fbf2e6" fill-opacity="0.35"/>
+<line x1="60" y1="340" x2="620" y2="340" stroke="#6b4a10" stroke-width="2.5"/>
+<line x1="60" y1="340" x2="60" y2="60" stroke="#6b4a10" stroke-width="2"/>
+<text x="35" y="145" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#5a3d0d">20</text>
+<line x1="55" y1="140" x2="620" y2="140" stroke="#d8c69a" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="35" y="225" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#5a3d0d">10</text>
+<line x1="55" y1="220" x2="620" y2="220" stroke="#d8c69a" stroke-width="1" stroke-dasharray="3,4"/>
+<rect x="90" y="140" width="90" height="200" fill="#e8c766" fill-opacity="0.7" stroke="#4a3208" stroke-width="2"/>
+<text x="135" y="130" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="14" font-weight="700" fill="#4a3208">20</text>
+<text x="135" y="362" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="13" fill="#4a3208">Fútbol</text>
+<rect x="220" y="220" width="90" height="120" fill="#9fbfa0" fill-opacity="0.7" stroke="#4a3208" stroke-width="2"/>
+<text x="265" y="210" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="14" font-weight="700" fill="#2e4a2c">12</text>
+<text x="265" y="362" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="13" fill="#4a3208">Básquetbol</text>
+<rect x="350" y="240" width="90" height="100" fill="#e6a8c4" fill-opacity="0.7" stroke="#4a3208" stroke-width="2"/>
+<text x="395" y="230" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="14" font-weight="700" fill="#6b2f4a">10</text>
+<text x="395" y="362" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="13" fill="#4a3208">Vóleibol</text>
+<rect x="480" y="260" width="90" height="80" fill="#c9b8e8" fill-opacity="0.6" stroke="#4a3208" stroke-width="2"/>
+<text x="525" y="250" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="14" font-weight="700" fill="#4a3208">8</text>
+<text x="525" y="362" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="13" fill="#4a3208">Natación</text>
+<text x="50" y="355" font-family="Georgia,serif" font-size="11" fill="#5a3d0d">0</text>
+</svg></div><figcaption><strong>Figura 1.</strong> El gráfico de barras es ideal para comparar frecuencias entre categorías distintas de un vistazo.</figcaption></div>
+
+<h4 style="margin-top:22px;color:#4a3208;">¿Qué tipo de gráfico usar?</h4>
+<table class="ref-table">
+<tr><th>Tipo de gráfico</th><th>Cuándo se usa</th></tr>
+<tr><td>Gráfico de barras</td><td>comparar frecuencias entre categorías distintas (deportes, colores, marcas)</td></tr>
+<tr><td>Gráfico circular (torta)</td><td>mostrar qué proporción del total representa cada categoría</td></tr>
+<tr><td>Histograma</td><td>datos numéricos agrupados en intervalos (por ejemplo, edades agrupadas de 10 en 10)</td></tr>
+<tr><td>Gráfico de líneas</td><td>mostrar la evolución de un dato a lo largo del tiempo</td></tr>
+</table>
+
+<h4 style="margin-top:22px;color:#4a3208;">Promedio (media aritmética)</h4>
+<p>El promedio es la suma de todos los datos dividida por la cantidad de datos:</p>
+<div class="calc">x̄ = (suma de todos los datos) / n</div>
+<p>Cuando los datos vienen en una tabla de frecuencias, cada valor se multiplica primero por su frecuencia:</p>
+<div class="calc">x̄ = (x₁·f₁ + x₂·f₂ + ... + xₖ·fₖ) / n</div>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Las notas de una prueba, con sus frecuencias, fueron: nota 4 (3 estudiantes), nota 5 (8 estudiantes), nota 6 (5 estudiantes), nota 7 (4 estudiantes). Calcula el promedio del curso.</p>
+<div class="calc">n = 3 + 8 + 5 + 4 = 20 estudiantes<br>x̄ = (4·3 + 5·8 + 6·5 + 7·4) / 20<br>= (12 + 40 + 30 + 28) / 20<br>= 110 / 20<br><span class="r">x̄ = 5,5</span></div>
+</div>
+
+<div class="note-box"><p class="nb-title">Atención</p><p>Comparar frecuencias absolutas entre grupos de tamaños distintos puede ser engañoso: 30 personas que prefieren algo, de un total de 40, es mucho más significativo que 30 personas de un total de 3.000. Para comparar de forma justa, hay que usar frecuencias relativas (porcentajes), no absolutas.</p></div>`,
+      formulario: `<div class="f-item"><span class="f-name">Frecuencia relativa</span><span>fr = fi / n</span></div>
+<div class="f-item"><span class="f-name">Suma de frecuencias absolutas</span><span>siempre igual a n (el total de datos)</span></div>
+<div class="f-item"><span class="f-name">Suma de frecuencias relativas</span><span>siempre igual a 1 (o 100%)</span></div>
+<div class="f-item"><span class="f-name">Promedio (datos sueltos)</span><span>x̄ = (suma de los datos) / n</span></div>
+<div class="f-item"><span class="f-name">Promedio (tabla de frecuencias)</span><span>x̄ = Σ(xi · fi) / n</span></div>`,
+      questions: [
+        { q:"En una encuesta a 50 personas, 20 dijeron preferir el fútbol. ¿Cuál es la frecuencia relativa de esa preferencia?", o:["20%","0,4 = 40%","2,5","0,2 = 20%"], c:1, e:"fr = fi/n = 20/50 = 0,4, que equivale a 40%." },
+        { q:"Calcula el promedio del siguiente conjunto de datos: 4, 7, 9, 10, 5", o:["7","35","8","6"], c:0, e:"x̄ = (4+7+9+10+5)/5 = 35/5 = 7." },
+        { q:"Las notas de un curso de 20 estudiantes fueron: nota 4 (3 estudiantes), nota 5 (8), nota 6 (5), nota 7 (4). ¿Cuál es el promedio del curso?", o:["5","5,5","6","22"], c:1, e:"x̄ = (4×3 + 5×8 + 6×5 + 7×4)/20 = (12+40+30+28)/20 = 110/20 = 5,5." },
+        { q:"En una tabla de frecuencias, las categorías A, B y C tienen frecuencias absolutas de 15, 18 y 9 respectivamente, con un total de 50 datos. ¿Cuál es la frecuencia absoluta de la categoría D (la única que falta)?", o:["8","42","6","50"], c:0, e:"La suma de todas las frecuencias absolutas debe ser 50: 15+18+9=42, por lo que la frecuencia de D es 50−42=8." },
+        { q:"¿Qué tipo de gráfico es más apropiado para mostrar la evolución de la temperatura de una ciudad durante los 12 meses del año?", o:["Gráfico circular (torta)","Gráfico de barras","Gráfico de líneas","Diagrama de cajón"], c:2, e:"El gráfico de líneas es el más apropiado para mostrar cómo cambia un dato a lo largo del tiempo, conectando los valores mes a mes." },
+        { q:"¿Qué tipo de gráfico es más apropiado para mostrar qué porcentaje del presupuesto de una familia se destina a cada categoría de gasto (vivienda, comida, transporte, etc.)?", o:["Gráfico de líneas","Gráfico circular (torta)","Histograma","Diagrama de dispersión"], c:1, e:"El gráfico circular es ideal cuando se quiere mostrar cómo un total se reparte proporcionalmente entre distintas categorías (cada 'porción' representa un porcentaje del todo)." },
+        { q:"En una tabla de frecuencias, la suma de todas las frecuencias relativas de las categorías dio 0,94 en vez de 1. ¿Qué se puede concluir?", o:["Que los datos son correctos, la suma no siempre da 1","Que hay un error en la tabla: la suma de las frecuencias relativas siempre debe dar 1 (100%)","Que falta calcular la frecuencia absoluta","Que el promedio está mal calculado"], c:1, e:"Por definición, la suma de las frecuencias relativas de todas las categorías debe ser exactamente 1 (o 100%), ya que juntas representan el total de los datos. Un resultado de 0,94 indica un error en la tabla." },
+        { q:"Un histograma se usa principalmente para representar:", o:["Categorías sin orden numérico, como colores favoritos","Datos numéricos agrupados en intervalos, como edades agrupadas de 10 en 10","Solamente porcentajes de un total","La evolución de un dato en el tiempo"], c:1, e:"El histograma agrupa datos numéricos continuos en intervalos (por ejemplo, de 0 a 10, de 10 a 20, etc.) y muestra la frecuencia de cada intervalo con barras contiguas." },
+        { q:"En la tienda A, 30 de 40 clientes encuestados prefieren pagar con tarjeta. En la tienda B, 30 de 300 clientes encuestados prefieren lo mismo. ¿Es correcto decir que la preferencia por tarjeta es 'igual de fuerte' en ambas tiendas porque el número de personas (30) es el mismo?", o:["Sí, porque la frecuencia absoluta es la misma en ambas", "No: en frecuencia relativa es 75% en la tienda A y solo 10% en la tienda B", "Sí, porque ambas encuestas tienen el mismo total", "No, porque la tienda B tiene menos clientes"], c:1, e:"Comparar solo frecuencias absolutas puede ser engañoso. En frecuencia relativa: tienda A = 30/40 = 75%, tienda B = 30/300 = 10%. La preferencia es mucho más fuerte proporcionalmente en la tienda A." },
+        { q:"Con los datos de deporte favorito de 50 estudiantes (fútbol 20, básquetbol 12, vóleibol 10, natación 8), ¿cuál es la frecuencia relativa de quienes prefieren vóleibol o natación en conjunto?", o:["18%","36%","20%","0,36%"], c:1, e:"Frecuencia absoluta conjunta = 10+8 = 18. Frecuencia relativa = 18/50 = 0,36 = 36%." },
+        { q:"Calcula el promedio de: 12, 15, 18, 20, 22, 25, 28, 30, 35", o:["22,78","22","20,5","25"], c:0, e:"x̄ = (12+15+18+20+22+25+28+30+35)/9 = 205/9 ≈ 22,78. Ojo: no hay que confundir el promedio con la mediana de este mismo conjunto de datos, que sí es exactamente 22." },
+        { q:"¿Cuál de las siguientes situaciones se representa mejor con un gráfico de barras en vez de un gráfico circular?", o:["El porcentaje de votos que obtuvo cada candidato en una elección, sobre el 100% de los votos", "La cantidad de goles anotados por cinco jugadores distintos en una temporada", "La distribución del tiempo diario de una persona en distintas actividades", "La composición de una mezcla en porcentajes"], c:1, e:"Cuando se comparan cantidades entre categorías (no necesariamente relacionadas con un 'total' que se reparte al 100%), el gráfico de barras es más claro. El gráfico circular es mejor cuando las partes deben sumar el 100% de un todo." },
+        { q:"En una tabla de frecuencias con 80 datos en total, una categoría tiene frecuencia relativa 0,35. ¿Cuál es su frecuencia absoluta?", o:["28","35","0,44","45"], c:0, e:"frecuencia absoluta = fr × n = 0,35 × 80 = 28." },
+        { q:"Calcula el promedio de: 6, 8, 10, 12, 14", o:["10","12","50","8"], c:0, e:"x̄ = (6+8+10+12+14)/5 = 50/5 = 10." },
+        { q:"¿Qué tipo de gráfico usarías para mostrar cuántos estudiantes de un curso nacieron en cada uno de los 12 meses del año?", o:["Gráfico de barras (una barra por mes)","Diagrama de cajón","Gráfico circular obligatoriamente","Ningún gráfico es apropiado"], c:0, e:"Como se trata de comparar cantidades entre 12 categorías (los meses), el gráfico de barras es la opción más clara para visualizar y comparar las frecuencias de un vistazo." },
+        { q:"En una tabla de frecuencias con 200 datos, una categoría tiene frecuencia relativa 0,18. ¿Cuál es su frecuencia absoluta?", o:["18","36","0,09","182"], c:1, e:"frecuencia absoluta = fr × n = 0,18 × 200 = 36." },
+        { q:"Calcula el promedio de: 20, 25, 30, 35, 40", o:["25","30","35","150"], c:1, e:"x̄ = (20+25+30+35+40)/5 = 150/5 = 30." },
+        { q:"En una encuesta a 60 personas sobre su color favorito: Rojo 18, Azul 24, Verde 12, Amarillo 6. ¿Cuál es la frecuencia relativa de Azul?", o:["24%","40%","18%","60%"], c:1, e:"fr = 24/60 = 0,4 = 40%." },
+        { q:"Con los mismos datos (Rojo 18, Azul 24, Verde 12, Amarillo 6, total 60), ¿cuál es la frecuencia relativa de Verde?", o:["12%","20%","24%","30%"], c:1, e:"fr = 12/60 = 0,2 = 20%." },
+        { q:"En una tabla de frecuencias, tres categorías tienen frecuencias 12, 20 y 8, y el total es 60. ¿Cuál es la frecuencia de la cuarta categoría?", o:["16","20","40","60"], c:1, e:"La suma de todas las frecuencias debe dar 60: 12+20+8=40, entonces la cuarta categoría tiene 60−40=20." },
+        { q:"Las notas de un curso, con sus frecuencias, fueron: nota 5 (2 estudiantes), nota 6 (10 estudiantes), nota 7 (6 estudiantes). ¿Cuál es el promedio del curso, aproximado a 2 decimales?", o:["6,00","6,22","6,50","18,00"], c:1, e:"x̄ = (5×2 + 6×10 + 7×6)/(2+10+6) = (10+60+42)/18 = 112/18 ≈ 6,22." },
+        { q:"¿Qué tipo de gráfico es más apropiado para mostrar la evolución de las ventas mensuales de una tienda durante un año?", o:["Gráfico circular","Gráfico de barras","Gráfico de líneas","Diagrama de cajón"], c:2, e:"El gráfico de líneas conecta los valores en el tiempo, mostrando claramente tendencias de subida o bajada mes a mes." },
+        { q:"En un curso de 45 estudiantes se preguntó su medio de transporte: 20 caminan, 15 usan bus, y el resto usa bicicleta. ¿Qué frecuencia relativa representan quienes usan bicicleta?", o:["10%","15%","22,2%","33,3%"], c:2, e:"Bicicleta = 45−20−15 = 10 estudiantes. fr = 10/45 ≈ 0,222 = 22,2%." },
+        { q:"En un gráfico circular (de torta), ¿pueden las porciones sumar más del 100% en total?", o:["Sí, si hay muchas categorías","No, porque representan partes de un mismo total y deben sumar exactamente 100%","Sí, siempre que cada porción sea menor al 50%","Depende de la cantidad de datos"], c:1, e:"Un gráfico circular reparte el 100% de los datos entre las distintas categorías: por definición, todas las porciones juntas deben sumar exactamente el 100% del total." },
+        { q:"Calcula el promedio de: 8, 8, 8, 8, 8", o:["0","1","8","40"], c:2, e:"Cuando todos los datos son iguales, el promedio es ese mismo valor: (8+8+8+8+8)/5 = 40/5 = 8." },
+      ]
+    },
+
+    // -----------------------------------------------------------------
+    // m4s2 — Medidas de posición
+    // -----------------------------------------------------------------
+    {
+      id: "m4s2",
+      name: "Medidas de posición",
+      videoUrl: "https://www.youtube.com/watch?v=jCfQjycgwdM",
+      videoTitle: "PAES | Competencia Matemática M1 | Medidas de posición",
+      content: `<p>Las medidas de posición dicen "dónde cae" un dato dentro de todo el grupo, ordenado de menor a mayor. Es distinto a un promedio: en vez de resumir todos los datos en un solo número, dividen el conjunto ordenado en partes.</p>
+
+<h4 style="margin-top:22px;color:#4a3208;">Cuartiles y percentiles</h4>
+<p>Los <strong>cuartiles</strong> dividen los datos ordenados en 4 partes iguales; los <strong>percentiles</strong> los dividen en 100 partes iguales (son la versión más fina de la misma idea). De hecho, los cuartiles son percentiles particulares:</p>
+<div class="calc">Q1 = P25   (25% de los datos queda por debajo)<br>Q2 = P50 = mediana   (el 50% de los datos queda por debajo: es el "dato del medio")<br>Q3 = P75   (75% de los datos queda por debajo)</div>
+
+<h4 style="margin-top:22px;color:#4a3208;">Cómo calcular un percentil, paso a paso</h4>
+<p>Para un conjunto de n datos ya <strong>ordenados de menor a mayor</strong>, la posición que ocupa el percentil k se calcula así:</p>
+<div class="calc">posición = k · (n + 1) / 100</div>
+<p>Si la posición resulta ser un número entero, el percentil es directamente el dato que está en esa posición. Si resulta un número decimal, se promedian los dos datos entre los que cae esa posición.</p>
+
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Un grupo de 9 estudiantes obtuvo estos puntajes, ya ordenados: 12, 15, 18, 20, 22, 25, 28, 30, 35. Calcula Q1, Q2 (mediana) y Q3.</p>
+<div class="calc">n = 9<br><br><strong>Q1 = P25:</strong> posición = 25×(9+1)/100 = 2,5 → se promedia el 2° y 3° dato: (15+18)/2 = 16,5<br><br><strong>Q2 = P50 (mediana):</strong> posición = 50×(9+1)/100 = 5 → es el 5° dato exactamente: <span class="r">Q2 = 22</span><br><br><strong>Q3 = P75:</strong> posición = 75×(9+1)/100 = 7,5 → se promedia el 7° y 8° dato: (28+30)/2 = 29</div>
+</div>
+
+<h4 style="margin-top:22px;color:#4a3208;">Diagrama de cajón (box plot)</h4>
+<p>El diagrama de cajón resume un conjunto de datos usando 5 valores: el <strong>mínimo</strong>, <strong>Q1</strong>, <strong>Q2 (mediana)</strong>, <strong>Q3</strong> y el <strong>máximo</strong>. La "caja" va de Q1 a Q3 (contiene el 50% central de los datos), con una línea marcando Q2; los "bigotes" (líneas que salen de la caja) llegan hasta el mínimo y el máximo.</p>
+
+<div class="fig"><div class="fig-frame"><svg role="img" aria-label="Diagrama de cajón (box plot) mostrando el mínimo 12, primer cuartil 16,5, mediana 22, tercer cuartil 29 y máximo 35" viewBox="0 0 700 260" xmlns="http://www.w3.org/2000/svg">
+<rect x="6" y="6" width="688" height="248" rx="18" fill="#fbf2e6" fill-opacity="0.35"/>
+<line x1="60" y1="220" x2="650" y2="220" stroke="#6b4a10" stroke-width="1.5"/>
+<!-- bigote izquierdo: min(141) a Q1(232) -->
+<line x1="141" y1="150" x2="232" y2="150" stroke="#4a3208" stroke-width="2.5"/>
+<line x1="141" y1="130" x2="141" y2="170" stroke="#4a3208" stroke-width="2.5"/>
+<!-- caja: Q1(232) a Q3(487) -->
+<rect x="232" y="110" width="255" height="80" fill="#e8c766" fill-opacity="0.5" stroke="#4a3208" stroke-width="2.5"/>
+<!-- linea mediana en Q2(344) -->
+<line x1="344" y1="110" x2="344" y2="190" stroke="#8a3550" stroke-width="3.5"/>
+<!-- bigote derecho: Q3(487) a max(609) -->
+<line x1="487" y1="150" x2="609" y2="150" stroke="#4a3208" stroke-width="2.5"/>
+<line x1="609" y1="130" x2="609" y2="170" stroke="#4a3208" stroke-width="2.5"/>
+<!-- etiquetas -->
+<text x="141" y="200" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="14" font-weight="700" fill="#4a3208">12</text>
+<text x="141" y="215" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#6b4a10">mín</text>
+<text x="232" y="245" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="14" font-weight="700" fill="#4a3208">16,5</text>
+<text x="232" y="105" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#6b4a10">Q1</text>
+<text x="344" y="245" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="14" font-weight="700" fill="#8a3550">22</text>
+<text x="344" y="105" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#8a3550">Q2 (mediana)</text>
+<text x="487" y="245" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="14" font-weight="700" fill="#4a3208">29</text>
+<text x="487" y="105" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#6b4a10">Q3</text>
+<text x="609" y="200" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="14" font-weight="700" fill="#4a3208">35</text>
+<text x="609" y="215" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#6b4a10">máx</text>
+</svg></div><figcaption><strong>Figura 1.</strong> La "caja" (de Q1 a Q3) contiene al 50% central de los datos; los bigotes se extienden hasta el mínimo y el máximo del conjunto.</figcaption></div>
+
+<div class="note-box"><p class="nb-title">Atención</p><p>Un percentil NO es lo mismo que un porcentaje de respuestas correctas. Que un puntaje esté en el percentil 80 significa que superó (o igualó) al 80% de las personas que rindieron esa misma prueba — no que respondió correctamente el 80% de las preguntas.</p></div>`,
+      formulario: `<div class="f-item"><span class="f-name">Posición del percentil k (datos ordenados, n datos)</span><span>posición = k(n+1)/100</span></div>
+<div class="f-item"><span class="f-name">Si la posición es entera</span><span>el percentil es el dato en esa posición</span></div>
+<div class="f-item"><span class="f-name">Si la posición es decimal</span><span>se promedian los dos datos entre los que cae</span></div>
+<div class="f-item"><span class="f-name">Cuartiles</span><span>Q1=P25 ; Q2=P50=mediana ; Q3=P75</span></div>
+<div class="f-item"><span class="f-name">Diagrama de cajón</span><span>usa 5 valores: mínimo, Q1, Q2, Q3, máximo</span></div>`,
+      questions: [
+        { q:"Un grupo de 9 estudiantes obtuvo, ya ordenados: 12, 15, 18, 20, 22, 25, 28, 30, 35. ¿Cuál es la mediana (Q2)?", o:["20","22","25","21"], c:1, e:"Con n=9, la posición de Q2=P50 es 50×(9+1)/100=5, que es entera: corresponde exactamente al 5° dato de la lista ordenada, que es 22." },
+        { q:"Usando el mismo conjunto (12, 15, 18, 20, 22, 25, 28, 30, 35), ¿cuál es Q1?", o:["15","18","16,5","17"], c:2, e:"La posición de Q1=P25 es 25×(9+1)/100=2,5, decimal: se promedia el 2° dato (15) y el 3° dato (18): (15+18)/2=16,5." },
+        { q:"Usando el mismo conjunto (12, 15, 18, 20, 22, 25, 28, 30, 35), ¿cuál es Q3?", o:["28","30","29","27,5"], c:2, e:"La posición de Q3=P75 es 75×(9+1)/100=7,5, decimal: se promedia el 7° dato (28) y el 8° dato (30): (28+30)/2=29." },
+        { q:"Usando el mismo conjunto (12, 15, 18, 20, 22, 25, 28, 30, 35), ¿cuál es el rango intercuartil (el ancho de la 'caja', Q3−Q1)?", o:["12,5","6,5","19","29"], c:0, e:"Rango intercuartil = Q3 − Q1 = 29 − 16,5 = 12,5. Es el ancho de la caja en el diagrama de cajón, y contiene al 50% central de los datos." },
+        { q:"Usando el mismo conjunto de 9 datos, ¿cuál es P40?", o:["18","20","22","19"], c:1, e:"posición = 40×(9+1)/100 = 4, entera: corresponde al 4° dato de la lista ordenada, que es 20." },
+        { q:"Usando el mismo conjunto de 9 datos, ¿cuál es P90?", o:["30","32,5","35","28"], c:2, e:"posición = 90×(9+1)/100 = 9, entera: corresponde al 9° (último) dato de la lista ordenada, que es 35." },
+        { q:"El puntaje de Andrea en una prueba estandarizada corresponde al percentil 80. ¿Qué significa esto?", o:["Que respondió correctamente el 80% de las preguntas","Que su puntaje superó (o igualó) al 80% de quienes rindieron la prueba","Que le faltó un 20% para la nota máxima","Que obtuvo el puntaje más alto de todos"], c:1, e:"Un percentil describe la posición relativa dentro de un grupo, no el porcentaje de respuestas correctas: percentil 80 significa que su puntaje fue mayor o igual al de un 80% de quienes dieron la prueba." },
+        { q:"En un diagrama de cajón, si la mediana (Q2) está mucho más cerca de Q1 que de Q3, ¿qué sugiere esto sobre los datos?", o:["Que los datos están distribuidos de forma perfectamente simétrica","Que hay más concentración de datos en la mitad inferior de la caja, cerca de valores más bajos","Que no existen datos por debajo de Q1","Que el rango intercuartil es igual a cero"], c:1, e:"Cuando la mediana está más cerca de Q1, significa que el 25% de los datos entre el mínimo y Q1 está 'más apretado' cerca de Q2, mientras que el tramo de Q2 a Q3 es más amplio: hay más dispersión hacia los valores altos." },
+        { q:"¿Es correcto afirmar que la mediana (Q2) es siempre igual al promedio (media aritmética) de un conjunto de datos?", o:["Sí, siempre son exactamente iguales","No: la mediana depende de la posición de los datos ordenados, mientras que el promedio depende del valor de todos los datos, y en general son distintos","Sí, pero solo si hay una cantidad impar de datos","No, la mediana y el promedio no tienen relación matemática"], c:1, e:"La mediana es un valor de posición (el dato 'del medio'), mientras que el promedio suma todos los valores y los divide por la cantidad de datos. Ambas medidas pueden coincidir en casos particulares, pero en general son distintas, sobre todo si hay valores muy extremos." },
+        { q:"En un conjunto de datos ordenado, ¿qué porcentaje de los datos queda, aproximadamente, entre Q1 y Q3?", o:["25%","50%","75%","100%"], c:1, e:"Como Q1 deja un 25% de los datos por debajo y Q3 deja un 75% por debajo, el tramo entre Q1 y Q3 concentra aproximadamente el 50% central de los datos." },
+        { q:"Un conjunto de datos tiene mínimo 5, Q1=10, Q2=14, Q3=18 y máximo 30. ¿Cuál es el rango total de los datos (máximo − mínimo)?", o:["25","20","13","8"], c:0, e:"Rango total = máximo − mínimo = 30 − 5 = 25." },
+        { q:"¿Cuál de las siguientes afirmaciones sobre un diagrama de cajón es correcta?", o:["Los bigotes siempre tienen el mismo largo que la caja","La caja representa el 50% central de los datos, entre Q1 y Q3","La línea dentro de la caja siempre representa el promedio","El diagrama de cajón no permite comparar dos conjuntos de datos distintos"], c:1, e:"La caja del diagrama va de Q1 a Q3 y por definición contiene al 50% central de los datos; la línea dentro de la caja marca la mediana (Q2), no el promedio." },
+        { q:"Un conjunto ordenado de 11 datos es: 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23. ¿Cuál es su mediana (Q2)?", o:["11","13","15","12"], c:1, e:"Con n=11, la posición de Q2=P50 es 50×(11+1)/100=6, entera: corresponde al 6° dato de la lista, que es 13." },
+        { q:"Usando el mismo conjunto de 11 datos (3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23), ¿cuál es Q1?", o:["5","7","9","6"], c:1, e:"La posición de Q1=P25 es 25×(11+1)/100=3, entera: corresponde al 3° dato de la lista, que es 7." },
+        { q:"Usando el mismo conjunto de 11 datos (3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23), ¿cuál es Q3?", o:["17","19","21","18"], c:1, e:"La posición de Q3=P75 es 75×(11+1)/100=9, entera: corresponde al 9° dato de la lista, que es 19." },
+        { q:"En un diagrama de cajón, ¿qué representa la distancia total entre el extremo del bigote izquierdo y el extremo del bigote derecho?", o:["El rango intercuartil (Q3−Q1)","El rango completo de los datos (máximo − mínimo)","El promedio de los datos","La mediana"], c:1, e:"Los bigotes se extienden desde Q1 hasta el mínimo, y desde Q3 hasta el máximo. Por lo tanto, la distancia total de un extremo al otro es el rango completo: máximo − mínimo." },
+        { q:"Un conjunto ordenado de 13 datos es: 4, 7, 9, 12, 15, 18, 20, 23, 25, 28, 30, 33, 36. ¿Cuál es su mediana (Q2)?", o:["18","20","23","15"], c:1, e:"Con n=13, la posición de Q2=P50 es 50×(13+1)/100=7, entera: corresponde al 7° dato de la lista, que es 20." },
+        { q:"Usando el mismo conjunto de 13 datos (4, 7, 9, 12, 15, 18, 20, 23, 25, 28, 30, 33, 36), ¿cuál es Q1?", o:["9","10,5","12","7"], c:1, e:"La posición de Q1=P25 es 25×(13+1)/100=3,5, decimal: se promedia el 3° dato (9) y el 4° dato (12): (9+12)/2=10,5." },
+        { q:"Usando el mismo conjunto de 13 datos, ¿cuál es Q3?", o:["28","29","30","27,5"], c:1, e:"La posición de Q3=P75 es 75×(13+1)/100=10,5, decimal: se promedia el 10° dato (28) y el 11° dato (30): (28+30)/2=29." },
+        { q:"Usando el mismo conjunto de 13 datos, ¿cuál es el rango intercuartil (Q3−Q1)?", o:["18,5","19","20","17,5"], c:0, e:"Rango intercuartil = Q3 − Q1 = 29 − 10,5 = 18,5." },
+        { q:"Usando el mismo conjunto de 13 datos, ¿cuál es P60?", o:["23","24","25","20"], c:1, e:"posición = 60×(13+1)/100 = 8,4, decimal: se promedia el 8° dato (23) y el 9° dato (25): (23+25)/2=24." },
+        { q:"Usando el mismo conjunto de 13 datos, ¿cuál es el rango total (máximo − mínimo)?", o:["30","32","36","4"], c:1, e:"Rango total = máximo − mínimo = 36 − 4 = 32." },
+        { q:"El puntaje de Tomás en un test estandarizado corresponde al percentil 45. ¿Qué significa esto?", o:["Que respondió correctamente el 45% de las preguntas","Que su puntaje superó (o igualó) al 45% de quienes rindieron el test","Que le faltó un 55% para el puntaje máximo","Que obtuvo un 4,5 de nota"], c:1, e:"Un percentil describe la posición relativa dentro de un grupo: percentil 45 significa que su puntaje fue mayor o igual al de un 45% de quienes dieron el test, no que respondió correctamente ese porcentaje de preguntas." },
+        { q:"En un diagrama de cajón, la 'caja' (entre Q1 y Q3) se ve muy angosta comparada con los bigotes. ¿Qué sugiere esto sobre los datos?", o:["Que el 50% central de los datos está muy concentrado (poca dispersión) en esa zona","Que hay un error en los datos","Que la mediana no existe","Que todos los datos son iguales"], c:0, e:"Una caja angosta significa que Q1 y Q3 están cerca entre sí, es decir, que el 50% central de los datos ocupa un rango de valores pequeño: están bastante concentrados en torno a la mediana." },
+        { q:"Un conjunto de datos tiene Q1 = 10 y Q3 = 10 (iguales). ¿Qué indica esto sobre el 50% central de los datos?", o:["Que no existen datos en ese conjunto","Que el 50% central de los datos vale exactamente 10, sin dispersión en esa parte","Que la mediana no se puede calcular","Que el conjunto tiene datos negativos"], c:1, e:"Si Q1 y Q3 son iguales, significa que al menos el 50% central de los datos ordenados toma exactamente ese mismo valor: no hay dispersión en esa porción de los datos." },
+      ]
+    },
+
+    // -----------------------------------------------------------------
+    // m4s3 — Reglas de las probabilidades
+    // -----------------------------------------------------------------
+    {
+      id: "m4s3",
+      name: "Reglas de las probabilidades",
+      videoUrl: "https://www.youtube.com/watch?v=NjZKp7-15Ik",
+      videoTitle: "8 ejercicios de probabilidades que podrán salir en la PAES M1",
+      content: `<p>La probabilidad mide qué tan posible es que ocurra un evento, con un número entre 0 (imposible) y 1 (seguro). En este subtema, además de calcular probabilidades simples, aprenderás dos reglas para combinar eventos: la regla aditiva (para "o") y la regla multiplicativa (para "y").</p>
+
+<h4 style="margin-top:22px;color:#4a3208;">Probabilidad de un evento (caso equiprobable)</h4>
+<p>Cuando todos los resultados posibles tienen la misma chance de ocurrir (como al lanzar un dado no cargado), la probabilidad de un evento A se calcula así:</p>
+<div class="calc">P(A) = (casos favorables) / (casos totales)</div>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Se lanza un dado de 6 caras. ¿Cuál es la probabilidad de obtener un número par?</p>
+<div class="calc">casos favorables (pares): {2, 4, 6} → 3 casos<br>casos totales: {1,2,3,4,5,6} → 6 casos<br>P(par) = 3/6<br><span class="r">= 1/2 = 0,5</span></div>
+</div>
+
+<h4 style="margin-top:22px;color:#4a3208;">Regla aditiva: probabilidad de "A o B"</h4>
+<p>Para calcular la probabilidad de que ocurra el evento A <strong>o</strong> el evento B, hay que tener cuidado con los casos que pertenecen a ambos a la vez (la intersección), para no contarlos dos veces:</p>
+<div class="calc">P(A ∪ B) = P(A) + P(B) − P(A ∩ B)</div>
+<p>Si A y B son <strong>mutuamente excluyentes</strong> (no pueden ocurrir al mismo tiempo, como sacar un 2 o un 5 en un mismo lanzamiento de dado), entonces P(A∩B) = 0, y la fórmula se simplifica a P(A∪B) = P(A) + P(B).</p>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto (eventos mutuamente excluyentes)</p>
+<p>Se lanza un dado. ¿Cuál es la probabilidad de obtener un 2 o un 5?</p>
+<div class="calc">P(2 o 5) = P(2) + P(5) = 1/6 + 1/6<br><span class="r">= 2/6 = 1/3</span></div>
+</div>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto (eventos NO excluyentes)</p>
+<p>Se extrae una carta de una baraja de 52 cartas. ¿Cuál es la probabilidad de obtener un as o una carta de corazones?</p>
+<div class="calc">P(as) = 4/52 ; P(corazón) = 13/52 ; P(as de corazón) = 1/52  <span style="color:var(--muted);">(el as de corazones es a la vez "as" y "corazón": se cuenta en ambos grupos)</span><br>P(as o corazón) = 4/52 + 13/52 − 1/52<br>= 16/52<br><span class="r">= 4/13</span></div>
+</div>
+
+<div class="fig"><div class="fig-frame"><svg role="img" aria-label="Diagrama de Venn con dos círculos superpuestos, representando el evento A, el evento B y su intersección, ilustrando la regla aditiva de probabilidades" viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg">
+<rect x="6" y="6" width="628" height="328" rx="18" fill="#fbf2e6" fill-opacity="0.35"/>
+<rect x="60" y="60" width="520" height="220" rx="10" fill="none" stroke="#6b4a10" stroke-width="2"/>
+<circle cx="250" cy="170" r="120" fill="#e8c766" fill-opacity="0.45" stroke="#4a3208" stroke-width="2.5"/>
+<circle cx="390" cy="170" r="120" fill="#e6a8c4" fill-opacity="0.45" stroke="#8a3550" stroke-width="2.5"/>
+<text x="180" y="130" font-family="'Space Grotesk',sans-serif" font-size="20" font-weight="700" fill="#4a3208">A</text>
+<text x="450" y="130" font-family="'Space Grotesk',sans-serif" font-size="20" font-weight="700" fill="#8a3550">B</text>
+<text x="308" y="175" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-style="italic" fill="#4a3208">A∩B</text>
+<text x="90" y="290" font-family="Georgia,serif" font-size="13" fill="#5a3d0d">espacio muestral completo</text>
+<text x="320" y="320" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="14" fill="#4a3208">P(A∪B) = P(A) + P(B) − P(A∩B)</text>
+</svg></div><figcaption><strong>Figura 1.</strong> Si simplemente sumáramos P(A) + P(B), la zona de intersección (A∩B) se contaría dos veces; por eso se resta una vez.</figcaption></div>
+
+<h4 style="margin-top:22px;color:#4a3208;">Regla multiplicativa: probabilidad de "A y B"</h4>
+<p>Para calcular la probabilidad de que ocurran el evento A <strong>y</strong> el evento B (uno después del otro, o al mismo tiempo), cuando son eventos <strong>independientes</strong> (lo que pasa en uno no afecta al otro, como dos lanzamientos distintos de una moneda), se multiplican sus probabilidades:</p>
+<div class="calc">P(A y B) = P(A) × P(B)   (eventos independientes)</div>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto</p>
+<p>Se lanzan dos dados. ¿Cuál es la probabilidad de que ambos muestren un 6?</p>
+<div class="calc">P(6 en el primero) = 1/6 ; P(6 en el segundo) = 1/6<br>P(ambos 6) = 1/6 × 1/6<br><span class="r">= 1/36</span></div>
+</div>
+<p>Cuando los eventos <strong>no son independientes</strong> (por ejemplo, extraer dos cartas de un mazo <strong>sin</strong> devolver la primera), la probabilidad del segundo evento cambia según lo que ocurrió en el primero:</p>
+<div class="example-box">
+<p class="ex-title">Ejemplo resuelto (eventos dependientes, sin reposición)</p>
+<p>Una bolsa tiene 4 bolitas rojas y 6 azules (10 en total). Se sacan 2 bolitas, una tras otra, <strong>sin devolver</strong> la primera. ¿Cuál es la probabilidad de que ambas sean rojas?</p>
+<div class="calc">P(1ª roja) = 4/10<br>P(2ª roja, sabiendo que ya salió una roja) = 3/9  <span style="color:var(--muted);">(quedan 3 rojas de 9 bolitas en total)</span><br>P(ambas rojas) = 4/10 × 3/9 = 12/90<br><span class="r">= 2/15</span></div>
+</div>
+
+<div class="note-box"><p class="nb-title">Atención</p><p><strong>Mutuamente excluyentes</strong> e <strong>independientes</strong> son conceptos distintos y se aplican en situaciones diferentes: excluyentes es sobre un solo evento con la palabra "o" (no pueden pasar ambos a la vez); independientes es sobre dos eventos con la palabra "y" (que uno pase no cambia la probabilidad del otro). No son sinónimos.</p></div>`,
+      formulario: `<div class="f-item"><span class="f-name">Probabilidad clásica</span><span>P(A) = casos favorables / casos totales</span></div>
+<div class="f-item"><span class="f-name">Regla aditiva (general)</span><span>P(A∪B) = P(A) + P(B) − P(A∩B)</span></div>
+<div class="f-item"><span class="f-name">Regla aditiva (mutuamente excluyentes)</span><span>P(A∪B) = P(A) + P(B)</span></div>
+<div class="f-item"><span class="f-name">Regla multiplicativa (independientes)</span><span>P(A∩B) = P(A) × P(B)</span></div>
+<div class="f-item"><span class="f-name">Complemento</span><span>P(no A) = 1 − P(A)</span></div>`,
+      questions: [
+        { q:"Se lanza un dado de 6 caras. ¿Cuál es la probabilidad de obtener un número par?", o:["1/6","1/3","1/2","2/3"], c:2, e:"Casos favorables {2,4,6}=3; casos totales=6. P = 3/6 = 1/2." },
+        { q:"Una bolsa tiene 5 bolitas rojas, 3 azules y 2 verdes (10 en total). ¿Cuál es la probabilidad de sacar una bolita azul?", o:["3/10","5/10","2/10","3/5"], c:0, e:"P(azul) = casos favorables/casos totales = 3/10." },
+        { q:"Se lanza un dado. ¿Cuál es la probabilidad de obtener un 2 o un 5?", o:["1/6","1/3","2/3","1/2"], c:1, e:"Son eventos mutuamente excluyentes (no se puede sacar 2 y 5 a la vez): P(2 o 5) = 1/6 + 1/6 = 2/6 = 1/3." },
+        { q:"Se extrae una carta de una baraja de 52. ¿Cuál es la probabilidad de obtener un as o una carta de corazones?", o:["17/52","16/52 = 4/13","4/52","13/52"], c:1, e:"P(as o corazón) = P(as) + P(corazón) − P(as de corazón) = 4/52 + 13/52 − 1/52 = 16/52 = 4/13. Se resta 1/52 porque el as de corazones se contaría dos veces si no se restara." },
+        { q:"Se lanzan dos dados. ¿Cuál es la probabilidad de que ambos muestren un 6?", o:["1/6","2/6","1/36","1/12"], c:2, e:"Son eventos independientes: P(ambos 6) = 1/6 × 1/6 = 1/36." },
+        { q:"Se lanza una moneda 3 veces seguidas. ¿Cuál es la probabilidad de obtener 3 caras seguidas?", o:["1/8","3/8","1/6","1/2"], c:0, e:"Son eventos independientes: P(cara)×P(cara)×P(cara) = (1/2)³ = 1/8." },
+        { q:"Una bolsa tiene 4 bolitas rojas y 6 azules (10 en total). Se sacan 2 bolitas, una tras otra, sin devolver la primera. ¿Cuál es la probabilidad de que ambas sean rojas?", o:["4/25","2/15","4/10","3/9"], c:1, e:"P(1ª roja)=4/10. Sin reposición, quedan 3 rojas de 9 bolitas: P(2ª roja)=3/9. P(ambas)=4/10×3/9=12/90=2/15." },
+        { q:"Si la probabilidad de que llueva mañana es 0,3, ¿cuál es la probabilidad de que NO llueva?", o:["0,3","0,7","1,3","0,03"], c:1, e:"P(no A) = 1 − P(A) = 1 − 0,3 = 0,7." },
+        { q:"¿Son 'mutuamente excluyentes' e 'independientes' conceptos equivalentes (sinónimos)?", o:["Sí, ambos significan exactamente lo mismo","No: excluyentes se refiere a que dos eventos no pueden ocurrir a la vez; independientes se refiere a que un evento no afecta la probabilidad del otro","Sí, ambos se calculan multiplicando probabilidades","No, porque los eventos excluyentes nunca tienen probabilidad"], c:1, e:"Son conceptos distintos que se aplican a preguntas distintas: 'excluyentes' es sobre un solo evento con 'o' (no pasan ambos a la vez); 'independientes' es sobre dos eventos con 'y' (uno no influye en el otro)." },
+        { q:"La probabilidad de aprobar un examen es 0,8. ¿Cuál es la probabilidad de NO aprobarlo?", o:["0,8","0,2","0,08","1,8"], c:1, e:"P(no aprobar) = 1 − P(aprobar) = 1 − 0,8 = 0,2." },
+        { q:"En una caja hay 3 fichas numeradas del 1 al 3. Se saca una ficha, se anota su número y SE DEVUELVE a la caja; luego se saca otra vez. ¿Cuál es la probabilidad de obtener el número 1 ambas veces?", o:["1/3","2/3","1/9","1/6"], c:2, e:"Como la ficha se devuelve, los dos sorteos son independientes: P(1 y 1) = 1/3 × 1/3 = 1/9." },
+        { q:"En un curso, la probabilidad de que un estudiante practique fútbol es 0,4 y la probabilidad de que practique básquetbol es 0,3. Si ambos eventos son mutuamente excluyentes (nadie practica ambos deportes), ¿cuál es la probabilidad de que un estudiante practique fútbol o básquetbol?", o:["0,12","0,7","0,1","1,2"], c:1, e:"Como son mutuamente excluyentes, P(fútbol o básquetbol) = P(fútbol) + P(básquetbol) = 0,4 + 0,3 = 0,7." },
+        { q:"Se lanza un dado de 6 caras. ¿Cuál es la probabilidad de obtener un número mayor que 4?", o:["1/6","1/3","1/2","2/3"], c:1, e:"Casos favorables {5,6}=2 de 6 casos totales. P = 2/6 = 1/3." },
+        { q:"Una bolsa tiene 6 bolitas blancas y 4 negras (10 en total). Se saca una bolita, se anota su color y SE DEVUELVE a la bolsa; luego se repite. ¿Cuál es la probabilidad de sacar blanca ambas veces?", o:["0,6","0,36","0,12","0,9"], c:1, e:"Como la bolita se devuelve, los sorteos son independientes: P(blanca y blanca) = (6/10)×(6/10) = 36/100 = 0,36." },
+        { q:"La probabilidad de que ocurra un evento A es 0,45. ¿Cuál es la probabilidad de su complemento (que A no ocurra)?", o:["0,45","0,55","1,45","0,045"], c:1, e:"P(no A) = 1 − P(A) = 1 − 0,45 = 0,55." },
+        { q:"En una caja hay 5 tarjetas numeradas del 1 al 5. ¿Cuál es la probabilidad de sacar un número impar?", o:["2/5","3/5","1/5","4/5"], c:1, e:"Casos favorables (impares): {1,3,5} = 3 casos, de 5 totales. P = 3/5." },
+        { q:"Se lanza un dado de 6 caras. ¿Cuál es la probabilidad de obtener un 3?", o:["1/6","1/3","1/2","3/6"], c:0, e:"Hay un solo caso favorable (el 3) de 6 casos totales: P = 1/6." },
+        { q:"Se lanza un dado. ¿Cuál es la probabilidad de obtener un número menor que 3?", o:["1/6","1/3","1/2","2/3"], c:1, e:"Casos favorables {1,2} = 2 de 6 totales. P = 2/6 = 1/3." },
+        { q:"Una bolsa tiene 7 fichas rojas y 3 azules (10 en total). ¿Cuál es la probabilidad de sacar una ficha roja?", o:["3/10","7/10","7/3","1/10"], c:1, e:"P(roja) = casos favorables/casos totales = 7/10." },
+        { q:"Se lanzan 2 monedas. ¿Cuál es la probabilidad de obtener cara en ambas?", o:["1/2","1/3","1/4","1"], c:2, e:"Son eventos independientes: P(cara)×P(cara) = (1/2)×(1/2) = 1/4." },
+        { q:"Se extrae una carta de una baraja de 52. ¿Cuál es la probabilidad de obtener un as o un rey (eventos mutuamente excluyentes)?", o:["8/52 = 2/13","16/52","4/52","1/52"], c:0, e:"Como son mutuamente excluyentes (una carta no puede ser as y rey a la vez): P(as o rey) = P(as)+P(rey) = 4/52+4/52 = 8/52 = 2/13." },
+        { q:"Una bolsa tiene 5 bolitas blancas y 5 negras (10 en total). Se sacan 2, una tras otra, sin devolver la primera. ¿Cuál es la probabilidad de que ambas sean negras?", o:["1/4","2/9","1/2","4/9"], c:1, e:"P(1ª negra)=5/10. Sin reposición, quedan 4 negras de 9 bolitas: P(2ª negra)=4/9. P(ambas)=(5/10)×(4/9)=20/90=2/9." },
+        { q:"La probabilidad de aprobar Matemática es 0,75 y la de aprobar Lenguaje es 0,6. Si son eventos independientes, ¿cuál es la probabilidad de aprobar ambas asignaturas?", o:["0,45","0,675","1,35","0,15"], c:0, e:"Son independientes: P(ambas) = 0,75 × 0,6 = 0,45." },
+        { q:"Se lanza un dado dos veces. ¿Cuál es la probabilidad de que el primer lanzamiento sea par Y el segundo sea impar?", o:["1/2","1/3","1/4","2/3"], c:2, e:"Son eventos independientes: P(par)=1/2, P(impar)=1/2. P(par y luego impar) = (1/2)×(1/2) = 1/4." },
+        { q:"Un estudiante afirma: 'si P(A)=0,5, entonces la probabilidad de que A no ocurra en dos intentos independientes seguidos es 0'. ¿Es correcto?", o:["Sí, porque tarde o temprano A tiene que ocurrir","No: la probabilidad de que A no ocurra en ninguno de los dos intentos es 0,25, no 0","Sí, porque P(A)=0,5 significa que ocurre la mitad de las veces siempre","No, porque esa probabilidad es igual a 1"], c:1, e:"P(no A en el 1er intento) = 0,5. P(no A en ambos intentos, independientes) = 0,5×0,5 = 0,25. No es 0: es totalmente posible (con probabilidad 25%) que A no ocurra en ninguno de los dos intentos." },
+      ]
+    },
+  ]
+}
+];
+
 const SUBJECTS = {
   bio: { key:'bio', name:'Biología', shortName:'Biología', accent:'teal',  units: BIO_UNITS },
   fis: { key:'fis', name:'Física',   shortName:'Física',   accent:'amber', units: FIS_UNITS },
   qui: { key:'qui', name:'Química',  shortName:'Química',  accent:'rust',  units: QUI_UNITS },
 };
-const SUBJECT_KEYS = Object.keys(SUBJECTS); // ['bio','fis','qui']
+const SUBJECT_KEYS = Object.keys(SUBJECTS); // ['bio','fis','qui'] — SOLO Ciencias.
+// 'mat' se agrega DESPUÉS de fijar SUBJECT_KEYS a propósito: así el ensayo final de
+// Ciencias, allSubjectsDone() y el resto de la lógica de Ciencias siguen dependiendo
+// únicamente de bio/fis/qui, y Matemática queda como un área totalmente aparte con
+// su propio banco de preguntas y su propio ensayo final (ver más abajo).
+SUBJECTS.mat = { key:'mat', name:'Matemática', shortName:'Matemática M1', accent:'blush', units: MAT_UNITS };
 
 // Duración real del ensayo final: la PAES electiva de Ciencias dura
 // 2 horas y 40 minutos (80 preguntas) según el temario oficial DEMRE.
 const EXAM_MINUTES = 160;
+// Duración real de la PAES de Competencia Matemática 1 (M1): 65 preguntas,
+// 2 horas y 20 minutos, según el temario oficial DEMRE 2027 (de las 65 preguntas,
+// 60 cuentan para el puntaje; aquí se usan las 65 para que la práctica sea completa).
+const MATH_EXAM_MINUTES = 140;
+const MATH_EXAM_QUESTIONS = 65;
 
 // ---------------------------------------------------------------------
 // UTILIDADES: barajar / muestrear arreglos (usadas por el motor de
@@ -779,6 +2533,9 @@ function buildQuestionIndex(units){
 }
 SUBJECT_KEYS.forEach(k => { SUBJECTS[k].allQuestions = buildQuestionIndex(SUBJECTS[k].units); });
 const ALL_QUESTIONS = SUBJECT_KEYS.reduce((acc,k)=>acc.concat(SUBJECTS[k].allQuestions), []);
+// Banco de Matemática, construido aparte: NO se mezcla con ALL_QUESTIONS (Ciencias).
+SUBJECTS.mat.allQuestions = buildQuestionIndex(SUBJECTS.mat.units);
+const MATH_ALL_QUESTIONS = SUBJECTS.mat.allQuestions;
 
 // ---------------------------------------------------------------------
 // PROGRESO (localStorage)
@@ -789,7 +2546,7 @@ function loadProgress(){
     const raw = localStorage.getItem(STORAGE_KEY);
     if(raw) return JSON.parse(raw);
   }catch(e){}
-  return { subtopics:{}, units:{}, finalExam:{done:false,attempts:0}, ensayos:[] };
+  return { subtopics:{}, units:{}, finalExam:{done:false,attempts:0}, mathFinalExam:{done:false,attempts:0}, ensayos:[] };
 }
 function saveProgress(){
   try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); }catch(e){}
@@ -800,9 +2557,9 @@ let progress = loadProgress();
 // ensayo final y el historial de ensayos). Pensado para que una persona nueva que use
 // este mismo computador/navegador pueda empezar de cero sin borrar el sitio a mano.
 function resetProgress(){
-  const ok = confirm('¿Reiniciar todo tu progreso en este dispositivo?\n\nSe borrarán tus subtemas aprobados, cuestionarios de unidad, ensayo final e historial de ensayos. Esta acción no se puede deshacer.');
+  const ok = confirm('¿Reiniciar todo tu progreso en este dispositivo?\n\nSe borrarán tus subtemas aprobados, cuestionarios de unidad, ensayos finales (Ciencias y Matemática) e historial de ensayos. Esta acción no se puede deshacer.');
   if(!ok) return;
-  progress = { subtopics:{}, units:{}, finalExam:{done:false,attempts:0}, ensayos:[] };
+  progress = { subtopics:{}, units:{}, finalExam:{done:false,attempts:0}, mathFinalExam:{done:false,attempts:0}, ensayos:[] };
   saveProgress();
   go(renderProgress);
 }
@@ -876,12 +2633,220 @@ function goHome(){
   renderNav();
 }
 function renderNav(){
-  if(!current || current.fn===renderHome){ navActions.innerHTML=''; return; }
-  navActions.innerHTML = `
-    <button class="nav-btn" onclick="goBack()">← Volver</button>
-    <button class="nav-btn" onclick="goHome()">⌂ Inicio</button>
+  if(!current || current.fn===renderHome){ navActions.innerHTML=''; }
+  else {
+    navActions.innerHTML = `
+      <button class="nav-btn" onclick="goBack()">← Volver</button>
+      <button class="nav-btn" onclick="goHome()">⌂ Inicio</button>
+    `;
+  }
+  updateNotesFabVisibility();
+}
+
+// =======================================================================
+// BLOC DE NOTAS FLOTANTE
+// Visible en toda la app (Inicio, Temario de Ciencias y de Matemática,
+// Progreso, Ensayos, etc.) EXCEPTO durante un cuestionario (subtema, unidad,
+// ensayo final o ensayo libre): ahí se oculta el botón y se cierra el panel
+// si estaba abierto, para no estorbar mientras se rinde una prueba.
+// Las notas se guardan en localStorage, en una clave propia separada del
+// progreso (paesCiencias_notes_v1), así que no interfieren entre sí.
+// =======================================================================
+const NOTES_KEY = 'paesCiencias_notes_v1';
+let notesState = { view: 'list', editingId: null }; // view: 'list' | 'editor'
+
+function loadNotes(){
+  try{
+    const raw = localStorage.getItem(NOTES_KEY);
+    if(raw) return JSON.parse(raw);
+  }catch(e){}
+  return [];
+}
+function saveNotes(notes){
+  try{ localStorage.setItem(NOTES_KEY, JSON.stringify(notes)); }catch(e){}
+}
+function escapeHtml(str){
+  return String(str==null ? '' : str).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function updateNotesFabVisibility(){
+  const fab = document.getElementById('notesFab');
+  if(!fab) return;
+  const isQuiz = current && current.fn === renderQuizScreen;
+  if(isQuiz){
+    fab.classList.add('nf-hidden');
+    closeNotesPanel();
+  } else {
+    fab.classList.remove('nf-hidden');
+  }
+}
+
+function toggleNotesPanel(){
+  const panel = document.getElementById('notesPanel');
+  if(panel.classList.contains('np-hidden')) openNotesPanel();
+  else closeNotesPanel();
+}
+function openNotesPanel(){
+  const panel = document.getElementById('notesPanel');
+  const fab = document.getElementById('notesFab');
+  const fabRect = fab.getBoundingClientRect();
+  const panelW = Math.min(340, window.innerWidth - 24);
+  const panelH = Math.min(560, window.innerHeight * 0.76);
+  let left = fabRect.left - panelW + fabRect.width;
+  let top = fabRect.top - panelH - 14;
+  left = Math.max(12, Math.min(window.innerWidth - panelW - 12, left));
+  top = Math.max(12, Math.min(window.innerHeight - panelH - 12, top));
+  panel.style.left = left + 'px';
+  panel.style.top = top + 'px';
+  panel.classList.remove('np-hidden');
+  notesState.view = 'list';
+  notesState.editingId = null;
+  renderNotesPanel();
+}
+function closeNotesPanel(){
+  const panel = document.getElementById('notesPanel');
+  if(panel) panel.classList.add('np-hidden');
+}
+
+function renderNotesPanel(){
+  const body = document.getElementById('notesPanelBody');
+  if(!body) return;
+  if(notesState.view === 'editor') renderNotesEditor(body);
+  else renderNotesList(body);
+}
+
+function renderNotesList(body){
+  const notes = loadNotes().slice().sort((a,b)=> b.updatedAt - a.updatedAt);
+  body.innerHTML = `
+    <button class="notes-new-btn" onclick="startNewNote()">+ Nueva nota</button>
+    ${notes.length ? notes.map(n => `
+      <div class="note-item" onclick="openNoteForEdit('${n.id}')">
+        <div class="note-item-title">${escapeHtml(n.title || 'Sin título')}</div>
+        ${n.content ? `<div class="note-item-snippet">${escapeHtml(n.content.slice(0,70).replace(/\n/g,' '))}${n.content.length>70?'…':''}</div>` : ''}
+        <div class="note-item-date">${fmtDate(new Date(n.updatedAt).toISOString())}</div>
+      </div>`).join('')
+    : '<div class="notes-empty">Aún no tienes notas.<br>Crea la primera con el botón de arriba.</div>'}
   `;
 }
+
+function startNewNote(){
+  notesState.view = 'editor';
+  notesState.editingId = null;
+  renderNotesPanel();
+}
+function openNoteForEdit(id){
+  notesState.view = 'editor';
+  notesState.editingId = id;
+  renderNotesPanel();
+}
+function backToNotesList(){
+  notesState.view = 'list';
+  notesState.editingId = null;
+  renderNotesPanel();
+}
+
+function renderNotesEditor(body){
+  const notes = loadNotes();
+  const note = notesState.editingId ? notes.find(n=>n.id===notesState.editingId) : null;
+  body.innerHTML = `
+    <span class="notes-back" onclick="backToNotesList()">← Volver a mis notas</span>
+    <input type="text" id="noteTitleInput" class="notes-title-input" placeholder="Título de la nota" maxlength="120" value="${escapeHtml(note ? note.title : '')}">
+    <textarea id="noteContentInput" class="notes-content-input" placeholder="Escribe tu nota aquí…">${escapeHtml(note ? note.content : '')}</textarea>
+    <div class="notes-actions">
+      <button class="btn btn-primary" id="noteSaveBtn" onclick="saveCurrentNote()">Guardar</button>
+      <button class="btn btn-secondary" onclick="downloadCurrentNote()">⭳ Descargar .txt</button>
+      ${note ? '<button class="notes-delete-btn" onclick="deleteCurrentNote()">🗑 Eliminar</button>' : ''}
+    </div>
+  `;
+}
+
+function saveCurrentNote(){
+  const titleEl = document.getElementById('noteTitleInput');
+  const contentEl = document.getElementById('noteContentInput');
+  if(!titleEl || !contentEl) return null;
+  const title = titleEl.value.trim();
+  const content = contentEl.value;
+  let notes = loadNotes();
+  const now = Date.now();
+  let savedId = notesState.editingId;
+  if(savedId){
+    const idx = notes.findIndex(n=>n.id===savedId);
+    if(idx>-1) notes[idx] = { ...notes[idx], title, content, updatedAt: now };
+    else { notes.push({ id: savedId, title, content, updatedAt: now }); }
+  } else {
+    savedId = 'n' + now + Math.random().toString(36).slice(2,8);
+    notes.push({ id: savedId, title, content, updatedAt: now });
+    notesState.editingId = savedId;
+  }
+  saveNotes(notes);
+  const btn = document.getElementById('noteSaveBtn');
+  if(btn){
+    const orig = 'Guardar';
+    btn.textContent = '✓ Guardado';
+    setTimeout(()=>{ if(document.getElementById('noteSaveBtn')) document.getElementById('noteSaveBtn').textContent = orig; }, 1300);
+  }
+  return savedId;
+}
+
+function deleteCurrentNote(){
+  if(!notesState.editingId) return;
+  const ok = confirm('¿Eliminar esta nota? Esta acción no se puede deshacer.');
+  if(!ok) return;
+  const notes = loadNotes().filter(n=>n.id!==notesState.editingId);
+  saveNotes(notes);
+  backToNotesList();
+}
+
+function downloadCurrentNote(){
+  const titleEl = document.getElementById('noteTitleInput');
+  const contentEl = document.getElementById('noteContentInput');
+  if(!titleEl || !contentEl) return;
+  saveCurrentNote(); // se guarda primero, para que el archivo descargado coincida con lo guardado
+  const rawTitle = titleEl.value.trim() || 'nota';
+  // El nombre del ARCHIVO debe ser ASCII puro: los navegadores basados en Chromium no
+  // conservan bien el atributo download con tildes/ñ en blobs (el archivo se descarga
+  // como "download" sin nombre). El CONTENIDO del archivo sí conserva las tildes normalmente.
+  const asciiTitle = rawTitle
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // separa tildes de su letra y las quita (á -> a)
+    .replace(/[ñÑ]/g, m => m === 'ñ' ? 'n' : 'N');
+  const filename = (asciiTitle.replace(/[^a-zA-Z0-9 _-]/g, '').trim().replace(/\s+/g,'_').slice(0,60)) || 'nota';
+  const blob = new Blob([contentEl.value], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename + '.txt';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(()=>URL.revokeObjectURL(url), 1000);
+}
+
+// Arrastrar el panel de notas desde su encabezado (mouse, trackpad y táctil)
+(function setupNotesDrag(){
+  const header = document.getElementById('notesPanelHeader');
+  const panel = document.getElementById('notesPanel');
+  if(!header || !panel) return;
+  let dragging = false, startX=0, startY=0, origLeft=0, origTop=0;
+  header.addEventListener('pointerdown', (e) => {
+    if(e.target.closest('.notes-panel-close')) return;
+    dragging = true;
+    const rect = panel.getBoundingClientRect();
+    startX = e.clientX; startY = e.clientY; origLeft = rect.left; origTop = rect.top;
+    try{ header.setPointerCapture(e.pointerId); }catch(err){}
+  });
+  header.addEventListener('pointermove', (e) => {
+    if(!dragging) return;
+    const dx = e.clientX - startX, dy = e.clientY - startY;
+    const rect = panel.getBoundingClientRect();
+    let newLeft = origLeft + dx, newTop = origTop + dy;
+    newLeft = Math.max(6, Math.min(window.innerWidth - rect.width - 6, newLeft));
+    newTop = Math.max(6, Math.min(window.innerHeight - 40, newTop));
+    panel.style.left = newLeft + 'px';
+    panel.style.top = newTop + 'px';
+  });
+  header.addEventListener('pointerup', () => { dragging = false; });
+  header.addEventListener('pointercancel', () => { dragging = false; });
+})();
 
 // ---------------------------------------------------------------------
 // PANTALLA: INICIO
@@ -889,31 +2854,92 @@ function renderNav(){
 function renderHome(){
   app.innerHTML = `
     <div class="hero">
-      <div class="eyebrow">Admisión 2027 · Prueba electiva de Ciencias</div>
+      <div class="eyebrow">Admisión 2027 · Ciencias y Competencia Matemática 1</div>
       <h1>ESTUDIA PARA TU<br>PAES 2026/7</h1>
       <div class="sub">no dejes para mañana lo que puedes hacer hoy</div>
     </div>
     <div class="cards">
-      <button class="card c1" onclick="go(renderEnsayoSetup)">
+      <button class="card c1" onclick="go(renderEnsayoAreaSelect)">
         <div class="icon"></div>
         <div class="tag">01 · Práctica libre</div>
         <h2>Ensayos</h2>
-        <p>Genera un ensayo con preguntas aleatorias del temario de Ciencias (Biología, Física y Química). Elige cuántas preguntas quieres responder.</p>
+        <p>Genera un ensayo con preguntas aleatorias del temario de Ciencias (Biología, Física y Química) o de Matemática (M1). Elige el área y cuántas preguntas quieres responder.</p>
         <div class="go">Comenzar →</div>
       </button>
-      <button class="card c2" onclick="go(renderSubjectSelect)">
+      <button class="card c2" onclick="go(renderTemarioAreaSelect)">
         <div class="icon"></div>
         <div class="tag">02 · Contenido</div>
         <h2>Temario</h2>
-        <p>Recorre las unidades y subtemas de Biología, Física y Química con contenido de estudio y cuestionarios por tema.</p>
+        <p>Recorre las unidades y subtemas de Ciencias (Biología, Física y Química) o de Matemática (M1), con contenido de estudio, formularios, videos y cuestionarios por tema.</p>
         <div class="go">Explorar →</div>
       </button>
       <button class="card c3" onclick="go(renderProgress)">
         <div class="icon"></div>
         <div class="tag">03 · Seguimiento</div>
         <h2>Progreso</h2>
-        <p>Revisa cuánto del temario has completado y tu desempeño promedio en los ensayos realizados.</p>
+        <p>Revisa cuánto del temario has completado en Ciencias y en Matemática, y tu desempeño promedio en los ensayos realizados.</p>
         <div class="go">Ver progreso →</div>
+      </button>
+    </div>
+  `;
+}
+
+// ---------------------------------------------------------------------
+// PANTALLA: ELEGIR ÁREA DEL TEMARIO — Ciencias o Matemática (M1)
+// ---------------------------------------------------------------------
+function renderTemarioAreaSelect(){
+  const totalMatSub = MAT_UNITS.reduce((a,u)=>a+u.subtopics.length,0);
+  const totalCienSub = SUBJECT_KEYS.reduce((a,k)=>a+SUBJECTS[k].units.reduce((b,u)=>b+u.subtopics.length,0), 0);
+  const totalCienUnits = SUBJECT_KEYS.reduce((a,k)=>a+SUBJECTS[k].units.length, 0);
+  app.innerHTML = `
+    <div class="section-head">
+      <h2>Temario</h2>
+      <div class="note">Elige un área para revisar sus unidades y subtemas</div>
+    </div>
+    <div class="cards cards-2">
+      <button class="card c1" onclick="go(renderSubjectSelect)">
+        <div class="icon"></div>
+        <div class="tag">3 asignaturas · ${totalCienUnits} unidades · ${totalCienSub} subtemas</div>
+        <h2>Ciencias</h2>
+        <p>Biología, Física y Química: el módulo electivo de Ciencias de la PAES.</p>
+        <div class="go">Explorar →</div>
+      </button>
+      <button class="card c2" onclick="go(renderTemarioUnits,['mat'])">
+        <div class="icon"></div>
+        <div class="tag">${MAT_UNITS.length} unidades · ${totalMatSub} subtemas</div>
+        <h2>Matemática (M1)</h2>
+        <p>Números, Álgebra y funciones, Geometría, Probabilidad y estadística: Competencia Matemática 1, la prueba obligatoria de la PAES.</p>
+        <div class="go">Explorar →</div>
+      </button>
+    </div>
+  `;
+}
+
+// ---------------------------------------------------------------------
+// PANTALLA: ELEGIR ÁREA DEL ENSAYO — Ciencias o Matemática (M1)
+// ---------------------------------------------------------------------
+let ensayoArea = null; // 'cien' | 'mat' — se fija al elegir el área, antes de renderEnsayoSetup
+function renderEnsayoAreaSelect(){
+  ensayoArea = null;
+  app.innerHTML = `
+    <div class="section-head">
+      <h2>Ensayos</h2>
+      <div class="note">¿Sobre qué área quieres practicar?</div>
+    </div>
+    <div class="cards cards-2">
+      <button class="card c1" onclick="go(renderEnsayoSetup,['cien'])">
+        <div class="icon"></div>
+        <div class="tag">${ALL_QUESTIONS.length} preguntas en el banco</div>
+        <h2>Ciencias</h2>
+        <p>Preguntas al azar del banco de Biología, Física y Química.</p>
+        <div class="go">Elegir →</div>
+      </button>
+      <button class="card c2" onclick="go(renderEnsayoSetup,['mat'])">
+        <div class="icon"></div>
+        <div class="tag">${MATH_ALL_QUESTIONS.length} preguntas en el banco</div>
+        <h2>Matemática (M1)</h2>
+        <p>Preguntas al azar del banco de Matemática M1.</p>
+        <div class="go">Elegir →</div>
       </button>
     </div>
   `;
@@ -923,13 +2949,18 @@ function renderHome(){
 // PANTALLA: CONFIGURAR ENSAYO
 // ---------------------------------------------------------------------
 let selectedCount = null;
-function renderEnsayoSetup(){
-  const opts = [5,10,15,30,60,80];
+function renderEnsayoSetup(area){
+  ensayoArea = area === 'mat' ? 'mat' : 'cien';
+  const isMat = ensayoArea === 'mat';
+  const pool = isMat ? MATH_ALL_QUESTIONS : ALL_QUESTIONS;
+  const areaLabel = isMat ? 'Matemática (M1)' : 'Ciencias (Biología, Física y Química)';
+  const opts = isMat ? [5,10,15,20,30,65] : [5,10,15,30,60,80];
   selectedCount = null;
   app.innerHTML = `
+    <div class="crumbs"><span class="note" style="font-family:'Space Grotesk',sans-serif; font-size:12px; color:var(--muted); cursor:pointer;" onclick="go(renderEnsayoAreaSelect)">← Ensayos</span></div>
     <div class="section-head">
-      <h2>Ensayos</h2>
-      <div class="note">${ALL_QUESTIONS.length} preguntas disponibles en el banco de Ciencias (Biología, Física y Química)</div>
+      <h2>Ensayo de ${areaLabel}</h2>
+      <div class="note">${pool.length} preguntas disponibles en el banco de ${areaLabel}</div>
     </div>
     <p style="color:var(--muted); font-family:'Space Grotesk',sans-serif; font-size:14px; max-width:560px;">
       Elige cuántas preguntas quieres responder. Cada vez que generes un ensayo, las preguntas y el orden de las alternativas se sortean de nuevo.
@@ -951,13 +2982,16 @@ function pickCount(n){
 }
 function launchEnsayo(){
   if(!selectedCount) return;
-  const pool = sample(ALL_QUESTIONS, selectedCount);
+  const isMat = ensayoArea === 'mat';
+  const pool = isMat ? MATH_ALL_QUESTIONS : ALL_QUESTIONS;
+  const areaLabel = isMat ? 'Matemática' : 'Ciencias';
+  const picked = sample(pool, selectedCount);
   go(renderQuizScreen, [{
-    title:`Ensayo · ${selectedCount} preguntas`,
-    questions: pool,
+    title:`Ensayo de ${areaLabel} · ${selectedCount} preguntas`,
+    questions: picked,
     timed:false,
     onFinish:(correct,total)=>{
-      progress.ensayos.unshift({date:new Date().toISOString(), total, correct});
+      progress.ensayos.unshift({date:new Date().toISOString(), total, correct, area: isMat?'mat':'cien'});
       if(progress.ensayos.length>50) progress.ensayos.length=50;
       saveProgress();
     },
@@ -1176,8 +3210,12 @@ function renderSubjectSelect(){
 function renderTemarioUnits(subjectKey){
   const subj = SUBJECTS[subjectKey];
   const totalSub = subj.units.reduce((a,u)=>a+u.subtopics.length,0);
+  const isMat = subjectKey === 'mat';
+  const backFn = isMat ? 'renderTemarioAreaSelect' : 'renderSubjectSelect';
+  const mathFinalUnlocked = isMat && subjectAllUnitsDone('mat');
+  const mathFinalDone = progress.mathFinalExam && progress.mathFinalExam.done;
   app.innerHTML = `
-    <div class="crumbs"><span class="note" style="font-family:'Space Grotesk',sans-serif; font-size:12px; color:var(--muted); cursor:pointer;" onclick="go(renderSubjectSelect)">← Temario</span></div>
+    <div class="crumbs"><span class="note" style="font-family:'Space Grotesk',sans-serif; font-size:12px; color:var(--muted); cursor:pointer;" onclick="go(${backFn})">← Temario</span></div>
     <div class="section-head">
       <h2>Temario de ${subj.name}</h2>
       <div class="note">${subj.units.length} unidades · ${totalSub} subtemas</div>
@@ -1195,6 +3233,19 @@ function renderTemarioUnits(subjectKey){
         </div>`;
       }).join('')}
     </div>
+    ${isMat ? `
+    <div class="section-head" style="margin-top:44px;">
+      <h2 style="font-size:1.5rem;">Ensayo final de Matemática</h2>
+    </div>
+    <div class="study-card" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+      <div>
+        <p style="margin:0 0 6px;"><strong>${MATH_EXAM_QUESTIONS} preguntas</strong> de las 4 unidades de Matemática M1 · cronometrado, ${MATH_EXAM_MINUTES} minutos (duración real de la PAES de Competencia Matemática 1)</p>
+        <p style="margin:0; font-size:14px;">${mathFinalUnlocked ? 'Ya completaste las 4 unidades: ¡puedes rendirlo!' : 'Se desbloquea al aprobar todos los cuestionarios de unidad de Matemática.'}</p>
+      </div>
+      <button class="btn ${mathFinalUnlocked?'btn-primary':'btn-secondary'}" ${mathFinalUnlocked?'':'disabled'} onclick="startMathFinalExam()">
+        ${mathFinalDone? 'Rendir de nuevo' : 'Rendir ensayo final'} ${mathFinalUnlocked?'':'🔒'}
+      </button>
+    </div>` : ''}
   `;
 }
 
@@ -1254,6 +3305,11 @@ function renderSubtopicDetail(subjectKey, unitId, subId){
     <div class="section-head"><h2>${s.name}</h2></div>
     <div class="study-card">
       ${s.content}
+      ${s.formulario ? `<div class="formula-box"><p class="fx-title">Formulario</p>${s.formulario}</div>` : ''}
+      ${s.videoUrl ? `<a class="video-box" href="${s.videoUrl}" target="_blank" rel="noopener">
+        <span class="v-play">▶</span>
+        <span class="v-text"><strong>¿Te quedan dudas? Mira este video</strong>${s.videoTitle || 'Ver explicación en video'} ↗</span>
+      </a>` : ''}
     </div>
     <div class="btn-row">
       <button class="btn btn-primary" onclick="startSubtopicQuiz('${subjectKey}','${unitId}','${subId}')">
@@ -1334,6 +3390,27 @@ function startFinalExam(){
   }]);
 }
 
+// Ensayo final de Matemática (M1): 65 preguntas cronometradas, 140 minutos,
+// tomadas SOLO del banco de Matemática (MATH_ALL_QUESTIONS). Se desbloquea al
+// aprobar el cuestionario de las 4 unidades de Matemática (independiente de Ciencias).
+function startMathFinalExam(){
+  if(!subjectAllUnitsDone('mat')) return;
+  go(renderQuizScreen, [{
+    title:`Ensayo final de Matemática · ${MATH_EXAM_QUESTIONS} preguntas`,
+    questions: sample(MATH_ALL_QUESTIONS, Math.min(MATH_EXAM_QUESTIONS, MATH_ALL_QUESTIONS.length)),
+    timed:true,
+    minutes: MATH_EXAM_MINUTES,
+    onFinish:(correct,total)=>{
+      const prev = progress.mathFinalExam || {attempts:0, best:{score:0,total}};
+      const best = (!prev.best || correct>prev.best.score) ? {score:correct,total} : prev.best;
+      progress.mathFinalExam = { done:true, best, attempts:(prev.attempts||0)+1 };
+      saveProgress();
+    },
+    onRepeat:()=>startMathFinalExam(),
+    repeatLabel:'Rendir otro ensayo final'
+  }]);
+}
+
 // ---------------------------------------------------------------------
 // PANTALLA: PROGRESO
 // ---------------------------------------------------------------------
@@ -1354,8 +3431,22 @@ function renderProgress(){
   const doneItems = doneSub + doneUnits + finalDone;
   const overallPct = Math.round((doneItems/totalItems)*100);
 
+  // Matemática: mismos cálculos, pero totalmente aparte de Ciencias.
+  const matCounts = subjectProgressCounts('mat');
+  const mathFinalDone = progress.mathFinalExam && progress.mathFinalExam.done ? 1 : 0;
+  const matTotalItems = matCounts.totalSub + matCounts.totalUnits + 1;
+  const matDoneItems = matCounts.doneSub + matCounts.doneUnits + mathFinalDone;
+  const matOverallPct = Math.round((matDoneItems/matTotalItems)*100);
+
   const ensayos = progress.ensayos || [];
-  const avgPct = ensayos.length ? Math.round(ensayos.reduce((a,e)=>a+(e.correct/e.total),0)/ensayos.length*100) : null;
+  const ensayosCien = ensayos.filter(e=>e.area!=='mat');
+  const ensayosMat = ensayos.filter(e=>e.area==='mat');
+  const avgPctCien = ensayosCien.length ? Math.round(ensayosCien.reduce((a,e)=>a+(e.correct/e.total),0)/ensayosCien.length*100) : null;
+  const avgPctMat = ensayosMat.length ? Math.round(ensayosMat.reduce((a,e)=>a+(e.correct/e.total),0)/ensayosMat.length*100) : null;
+  const avgLabel = [
+    avgPctCien!==null ? `Ciencias ${avgPctCien}%` : null,
+    avgPctMat!==null ? `Matemática ${avgPctMat}%` : null,
+  ].filter(Boolean).join(' · ') || '—';
 
   app.innerHTML = `
     <div class="section-head">
@@ -1366,11 +3457,20 @@ function renderProgress(){
 
     <div class="prog-block">
       <div class="prog-top">
-        <h3>Avance total del temario (Biología + Física + Química)</h3>
+        <h3>Avance de Ciencias (Biología + Física + Química)</h3>
         <span class="pct" title="${doneItems}/${totalItems} completado">${overallPct}%</span>
       </div>
       <div class="bar-track"><div class="bar-fill" style="width:${overallPct}%"></div></div>
       <div class="subrow"><span>Subtemas: ${doneSub}/${totalSub}</span><span>Unidades: ${doneUnits}/${totalUnits}</span><span>Ensayo final: ${finalDone?'completado':'pendiente'}</span></div>
+    </div>
+
+    <div class="prog-block">
+      <div class="prog-top">
+        <h3>Avance de Matemática (M1)</h3>
+        <span class="pct" title="${matDoneItems}/${matTotalItems} completado">${matOverallPct}%</span>
+      </div>
+      <div class="bar-track"><div class="bar-fill" style="width:${matOverallPct}%"></div></div>
+      <div class="subrow"><span>Subtemas: ${matCounts.doneSub}/${matCounts.totalSub}</span><span>Unidades: ${matCounts.doneUnits}/${matCounts.totalUnits}</span><span>Ensayo final: ${mathFinalDone?'completado':'pendiente'}</span></div>
     </div>
 
     ${SUBJECT_KEYS.map(k=>{
@@ -1403,20 +3503,51 @@ function renderProgress(){
 
     <div class="prog-block" style="margin-top:20px;">
       <div class="prog-top">
-        <h3>Ensayo final (80 preguntas cronometradas, de Biología + Física + Química)</h3>
+        <h3>Ensayo final de Ciencias (80 preguntas cronometradas)</h3>
         <span class="pct">${progress.finalExam && progress.finalExam.done ? `${progress.finalExam.best.score}/${progress.finalExam.best.total}` : 'pendiente'}</span>
       </div>
-      <div class="subrow"><span>Intentos: ${(progress.finalExam && progress.finalExam.attempts) || 0}</span><span>${allSubjectsDone() ? 'Desbloqueado' : 'Se desbloquea al completar las 3 áreas'}</span></div>
+      <div class="subrow"><span>Intentos: ${(progress.finalExam && progress.finalExam.attempts) || 0}</span><span>${allSubjectsDone() ? 'Desbloqueado' : 'Se desbloquea al completar las 3 áreas de Ciencias'}</span></div>
+    </div>
+
+    <div class="section-head" style="margin-top:36px; margin-bottom:14px;">
+      <h2 style="font-size:1.25rem;">Matemática (M1)</h2>
+      <div class="note">${matCounts.doneSub}/${matCounts.totalSub} subtemas · ${matCounts.doneUnits}/${matCounts.totalUnits} unidades aprobadas</div>
+    </div>
+    ${MAT_UNITS.map(u=>{
+      const doneS = u.subtopics.filter(s=>progress.subtopics[s.id] && progress.subtopics[s.id].done).length;
+      const totalS = u.subtopics.length;
+      const uq = progress.units[u.id];
+      const pct = Math.round(((doneS + (uq&&uq.done?1:0)) / (totalS+1))*100);
+      return `
+      <div class="prog-block">
+        <div class="prog-top">
+          <h3>${u.name}</h3>
+          <span class="pct" title="${doneS + (uq&&uq.done?1:0)}/${totalS+1} completado">${pct}%</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div>
+        <div class="subrow">
+          <span>Subtemas: ${doneS}/${totalS}</span>
+          <span>Cuestionario de unidad: ${uq&&uq.done ? `aprobado (${uq.best.score}/${uq.best.total})` : 'pendiente'}</span>
+        </div>
+      </div>`;
+    }).join('')}
+
+    <div class="prog-block" style="margin-top:20px;">
+      <div class="prog-top">
+        <h3>Ensayo final de Matemática (${MATH_EXAM_QUESTIONS} preguntas cronometradas)</h3>
+        <span class="pct">${progress.mathFinalExam && progress.mathFinalExam.done ? `${progress.mathFinalExam.best.score}/${progress.mathFinalExam.best.total}` : 'pendiente'}</span>
+      </div>
+      <div class="subrow"><span>Intentos: ${(progress.mathFinalExam && progress.mathFinalExam.attempts) || 0}</span><span>${subjectAllUnitsDone('mat') ? 'Desbloqueado' : 'Se desbloquea al completar las 4 unidades de Matemática'}</span></div>
     </div>
 
     <div class="prog-block">
       <div class="prog-top">
         <h3>Ensayos (práctica libre)</h3>
-        <span class="pct">${avgPct!==null ? avgPct+'% promedio' : '—'}</span>
+        <span class="pct">${avgLabel}</span>
       </div>
       ${ensayos.length ? ensayos.slice(0,10).map(e=>`
         <div class="ensayo-row">
-          <span>${fmtDate(e.date)}</span>
+          <span>${fmtDate(e.date)} <span style="color:var(--muted-2);">· ${e.area==='mat'?'Matemática':'Ciencias'}</span></span>
           <span>${e.correct}/${e.total} correctas (${Math.round(e.correct/e.total*100)}%)</span>
         </div>`).join('') : '<div class="empty-note">Aún no has generado ningún ensayo.</div>'}
       ${ensayos.length>10 ? `<div class="empty-note" style="margin-top:6px;">Mostrando los 10 más recientes de ${ensayos.length}.</div>` : ''}
