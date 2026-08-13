@@ -348,16 +348,106 @@ h1,h2,h3,.display{ font-family:'Fraunces', serif; letter-spacing:-0.01em; }
   .topbar{ padding:16px 16px 0; }
   .hero{ padding:36px 0 4px; }
 }
+
+/* ---------- Cuentas: barra superior ---------- */
+.topbar-right{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end; }
+.auth-actions{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.auth-btn{
+  font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13px; border-radius:999px;
+  padding:8px 16px; border:1px solid var(--line-strong); background:transparent; color:var(--cream);
+  cursor:pointer; transition:all .15s ease;
+}
+.auth-btn:hover{ background:rgba(122,74,16,0.08); border-color:var(--cream); }
+.auth-btn-primary{ background:var(--amber); color:#2b1a05; border-color:transparent; }
+.auth-btn-primary:hover{ background:#e2c065; }
+.auth-chip{
+  font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13px; color:var(--amber-text);
+  background:rgba(212,175,55,0.14); border:1px solid rgba(212,175,55,0.4); padding:7px 14px; border-radius:999px;
+  max-width:160px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+
+/* ---------- Cuentas: aviso de invitado (sin sesión) ---------- */
+.guest-banner{
+  position:relative; z-index:2; max-width:1080px; margin:14px auto 0; padding:11px 20px;
+  background:rgba(193,71,106,0.12); border:1px solid rgba(193,71,106,0.35); border-radius:12px;
+  color:#7a1f3d; font-family:'Space Grotesk',sans-serif; font-size:13px; text-align:center;
+  display:flex; align-items:center; justify-content:center; gap:8px; flex-wrap:wrap;
+}
+.guest-banner a{ color:#7a1f3d; font-weight:700; text-decoration:underline; cursor:pointer; }
+.guest-banner.hidden{ display:none; }
+
+/* ---------- Cuentas: modal (registro / login / recuperar) ---------- */
+.modal-overlay{
+  position:fixed; inset:0; z-index:900; background:rgba(58,38,6,0.45); backdrop-filter:blur(2px);
+  display:flex; align-items:center; justify-content:center; padding:20px;
+}
+.modal-overlay.hidden{ display:none; }
+.modal-box{
+  position:relative; width:100%; max-width:400px; max-height:88vh; overflow-y:auto;
+  background:linear-gradient(160deg, var(--paper), var(--paper-dim)); border:1px solid rgba(122,74,16,0.28);
+  border-radius:18px; box-shadow:0 24px 60px rgba(58,38,6,0.4); padding:30px 28px 26px; color:#4a3208;
+}
+.modal-close{
+  position:absolute; top:14px; right:14px; width:28px; height:28px; border-radius:50%; border:none;
+  background:rgba(122,74,16,0.1); color:#4a3208; cursor:pointer; font-size:13px; line-height:1;
+}
+.modal-close:hover{ background:rgba(122,74,16,0.2); }
+.modal-title{ font-family:'Fraunces',serif; font-size:1.5rem; margin:0 0 6px; color:#3d2a06; }
+.modal-sub{ font-family:'Space Grotesk',sans-serif; font-size:13px; color:var(--muted); margin:0 0 20px; line-height:1.5; }
+.field-label{ display:block; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:12.5px; color:#5f4410; margin:14px 0 6px; }
+.field-input{
+  width:100%; box-sizing:border-box; border:1px solid rgba(122,74,16,0.25); border-radius:9px;
+  padding:11px 13px; font-family:'Space Grotesk',sans-serif; font-size:14px; color:#3d2a06;
+  background:rgba(255,255,255,0.65);
+}
+.field-input:focus{ outline:none; border-color:var(--amber-dim); background:#fff; }
+.pw-rules{ list-style:none; margin:8px 0 0; padding:0; display:flex; flex-direction:column; gap:4px; }
+.pw-rules li{ font-family:'Space Grotesk',sans-serif; font-size:12px; color:var(--muted); padding-left:20px; position:relative; }
+.pw-rules li::before{ content:"○"; position:absolute; left:0; color:var(--muted-2); }
+.pw-rules li.ok{ color:#4a6b32; }
+.pw-rules li.ok::before{ content:"✓"; color:#4a6b32; font-weight:700; }
+.field-hint{ font-family:'Space Grotesk',sans-serif; font-size:12px; margin:6px 0 0; min-height:15px; }
+.field-hint.ok{ color:#4a6b32; }
+.field-hint.bad{ color:#9a2f52; }
+.form-error{ font-family:'Space Grotesk',sans-serif; font-size:12.5px; color:#9a2f52; min-height:16px; margin:14px 0 0; }
+.modal-submit{ width:100%; justify-content:center; margin-top:16px; }
+.modal-switch{ font-family:'Space Grotesk',sans-serif; font-size:12.5px; color:var(--muted); text-align:center; margin:16px 0 0; }
+.modal-switch a{ color:var(--amber-text); font-weight:600; text-decoration:none; cursor:pointer; }
+.modal-switch a:hover{ text-decoration:underline; }
+.modal-success{ text-align:center; padding:20px 0; font-family:'Space Grotesk',sans-serif; }
+.modal-success .big-check{ font-size:2.6rem; margin-bottom:10px; color:#4a6b32; }
+
+/* ---------- Cuentas: panel de correo simulado (recuperar contraseña) ---------- */
+.fake-email{ border:1px solid rgba(122,74,16,0.22); border-radius:12px; overflow:hidden; margin-top:6px; }
+.fake-email-head{ background:rgba(122,74,16,0.08); padding:12px 16px; display:flex; flex-direction:column; gap:3px; font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--muted); }
+.fake-email-body{ padding:18px 16px; font-size:14px; line-height:1.6; }
+.fake-email-body p{ margin:0 0 12px; }
+.fake-email-note{ font-family:'Space Grotesk',sans-serif; font-size:11.5px; color:var(--muted); background:rgba(212,175,55,0.1); border-radius:8px; padding:10px 12px; margin-top:14px; line-height:1.5; }
+
+@media (max-width:600px){
+  .topbar{ flex-wrap:wrap; row-gap:10px; }
+  .topbar-right{ width:100%; justify-content:flex-start; }
+  .modal-box{ padding:24px 20px 22px; }
+}
 </style>
 </head>
 <body>
 
 <div class="topbar">
   <div class="brand"><span class="dot"></span> Herbario PAES · Ciencias y Matemática</div>
-  <div class="nav-actions" id="navActions"></div>
+  <div class="topbar-right">
+    <div class="nav-actions" id="navActions"></div>
+    <div class="auth-actions" id="authActions"></div>
+  </div>
 </div>
 
+<div id="guestBanner" class="guest-banner hidden"></div>
+
 <div class="wrap" id="app"></div>
+
+<div id="authModalOverlay" class="modal-overlay hidden" onclick="AuthUI.overlayClick()">
+  <div id="authModalBox" class="modal-box" onclick="event.stopPropagation()"></div>
+</div>
 
 <div class="signature">te ama, diddier,<br><b>tú puedes!!</b></div>
 
@@ -379,6 +469,7 @@ h1,h2,h3,.display{ font-family:'Fraunces', serif; letter-spacing:-0.01em; }
   <div class="notes-panel-body" id="notesPanelBody"></div>
 </div>
 
+<script src="./auth.js"></script>
 <script src="./app.js"></script>
 </body>
 </html>

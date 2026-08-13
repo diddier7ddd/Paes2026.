@@ -3453,7 +3453,7 @@ function renderProgress(){
       <h2>Tu progreso</h2>
       <button class="nav-btn" onclick="resetProgress()" style="border-color:var(--rust); color:var(--rust);">↺ Reiniciar progreso</button>
     </div>
-    <p class="empty-note" style="margin:-18px 0 26px;">Este progreso se guarda solo en este navegador y este dispositivo: si abres la web en otro computador o navegador, partirá desde 0%.</p>
+    <p class="empty-note" style="margin:-18px 0 26px;">${window.AuthUI ? window.AuthUI.progressStorageNoticeHtml() : 'Este progreso se guarda solo en este navegador y este dispositivo: si abres la web en otro computador o navegador, partirá desde 0%.'}</p>
 
     <div class="prog-block">
       <div class="prog-top">
