@@ -1,0 +1,8 @@
+# Dependencias e info sensible del servidor (cada quien instala/config lo suyo)
+server/node_modules/
+server/.env
+
+# Basura habitual de SO/editores
+.DS_Store
+Thumbs.db
+*.log

@@ -1,0 +1,38 @@
+# Blueprint de Render (https://render.com) para el servidor de /server.
+# Al conectar este repo en Render → "New +" → "Blueprint", Render lee este
+# archivo solo y arma el servicio automáticamente. Las variables marcadas
+# "sync: false" te las pide Render en pantalla durante ese paso (nunca
+# quedan escritas en este archivo ni en el repo).
+services:
+  - type: web
+    name: herbario-paes-server
+    runtime: node
+    rootDir: server
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: ALLOWED_ORIGIN
+        sync: false # ej: https://tu-usuario.github.io  (sin la barra ni el nombre del repo al final)
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: ANTHROPIC_MODEL
+        value: claude-sonnet-5
+      - key: ANTHROPIC_MAX_TOKENS
+        value: 1536
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_PORT
+        value: 587
+      - key: SMTP_SECURE
+        value: false
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: EMAIL_FROM
+        sync: false
+      - key: RATE_LIMIT_EMAIL_MAX
+        value: 5
+      - key: RATE_LIMIT_CHAT_MAX
+        value: 20

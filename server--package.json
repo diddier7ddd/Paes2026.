@@ -1,0 +1,24 @@
+{
+  "name": "herbario-paes-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Servidor Node/Express para Herbario PAES: (1) envío real de correos de recuperación de contraseña y (2) asistente de IA de Ciencias y Matemática que responde primero con el temario del sitio y, si no está ahí, investiga en la web siguiendo un proceso de verificación exhaustiva.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "extract-content": "node scripts/extract-content.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.116.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.6.2",
+    "minisearch": "^7.2.0",
+    "nodemailer": "^9.0.5"
+  }
+}
