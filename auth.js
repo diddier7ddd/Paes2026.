@@ -17,35 +17,32 @@
    Esta página es un archivo HTML/JS autocontenido, sin servidor propio.
    No existe backend, así que:
 
-   1) No es posible enviar un correo real desde JavaScript de navegador
-      sin un servicio externo. Por defecto (EMAIL_CONFIG.enabled = false)
-      el paso de "enviar correo" se SIMULA dentro de la misma página: se
-      muestra un panel con pinta de correo y un botón "Confirmar", en vez
-      de un envío real. Queda claramente rotulado como simulado.
+   1) [ACTUALIZADO] El envío de correo real ya NO depende de un servicio
+      externo tipo EmailJS: se hace contra un servidor propio (carpeta
+      /server, junto a este archivo — ver server/README.md) que expone
+      POST /api/send-reset-email y manda el correo de verdad por SMTP.
+      Este archivo solo arma el enlace de recuperación (el token sigue
+      viviendo en el localStorage de este navegador, como siempre) y se
+      lo pasa a ese servidor.
 
-      Si en algún momento quieres correos reales, puedes conectar EmailJS
-      (servicio gratuito pensado justo para esto: enviar correo desde
-      JS sin backend). Pasos:
-        a) Crea una cuenta gratis en https://www.emailjs.com
-        b) Conecta un servicio de correo (por ej. tu Gmail) → te da un
-           "Service ID".
-        c) Crea una plantilla de correo con las variables {{to_email}} y
-           {{reset_link}} → te da un "Template ID".
-        d) Copia tu "Public Key" desde Account → General.
-        e) Agrega ANTES de este script, en index.html:
-           <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-        f) Completa los 3 valores en EMAIL_CONFIG más abajo y cambia
-           enabled a true.
-      Si EmailJS falla al enviar (o no lo configuras), el código vuelve
-      solo al modo simulado, así que nunca se rompe el flujo.
+      La URL del servidor se define UNA sola vez —compartida también con
+      el asistente de IA, para no repetirla en dos archivos— en el
+      <script> chico que hay en index.html justo antes de este archivo:
+      window.HERBARIO_API_BASE_URL. Si ese servidor no está corriendo,
+      no está configurado (SMTP vacío en su .env) o la petición falla
+      por cualquier motivo (sin internet, CORS, etc.), el código cae
+      solo al panel de correo simulado de siempre, así que el flujo
+      nunca se rompe aunque el servidor esté apagado — misma filosofía
+      de "nunca se rompe" que tenía antes con EmailJS, solo que ahora el
+      camino feliz manda un correo de verdad en vez de simularlo siempre.
 
-   2) Las "cuentas" viven en el localStorage de ESTE navegador, igual que
-      el progreso ya vivía antes. Iniciar sesión en un navegador o
-      computador distinto NO trae tu cuenta ni tu progreso: no hay
-      sincronización entre dispositivos, porque no hay servidor. Lo que
-      sí gana la cuenta es: progreso que no se pierde al recargar, y que
-      varias personas puedan usar el mismo navegador sin mezclar su
-      avance.
+   2) Las "cuentas" (usuario/contraseña) siguen viviendo enteramente en
+      el localStorage de ESTE navegador, exactamente como antes — el
+      servidor nuevo NO tiene base de datos de usuarios ni sabe nada de
+      contraseñas: solo manda el correo que este archivo le pide.
+      Iniciar sesión en un navegador o computador distinto sigue sin
+      traer tu cuenta ni tu progreso: eso no cambió. Lo único que cambió
+      es que el correo de recuperación ahora puede llegar de verdad.
 
    3) app.js sigue usando localStorage.getItem/setItem exactamente igual
       que antes (STORAGE_KEY, NOTES_KEY): no se tocó su lógica. Lo que
@@ -70,17 +67,15 @@
 (function () {
 
   // ---------------------------------------------------------------------
-  // Config EmailJS (opcional) — ver instrucciones completas arriba
+  // URL del servidor propio (carpeta /server) — ver instrucciones arriba.
+  // window.HERBARIO_API_BASE_URL se define en index.html, compartido con
+  // el asistente de IA. Si no está definido (index.html muy viejo, o
+  // abriste este archivo suelto), cae a localhost:3000 como default de
+  // desarrollo local.
   // ---------------------------------------------------------------------
-  const EMAIL_CONFIG = {
-    enabled: false,
-    serviceId: 'TU_SERVICE_ID',
-    templateId: 'TU_TEMPLATE_ID',
-    publicKey: 'TU_PUBLIC_KEY'
+  const BACKEND_CONFIG = {
+    apiBaseUrl: (typeof window !== 'undefined' && window.HERBARIO_API_BASE_URL) || 'http://localhost:3000',
   };
-  if (EMAIL_CONFIG.enabled && window.emailjs) {
-    window.emailjs.init({ publicKey: EMAIL_CONFIG.publicKey });
-  }
 
   // ---------------------------------------------------------------------
   // Referencia real a localStorage, ANTES de reemplazarla más abajo.
@@ -532,14 +527,22 @@
     tokens[token] = { usernameLower: user.usernameLower, expiresAt: Date.now() + RESET_TOKEN_TTL_MS };
     saveResetTokens(tokens);
 
-    if (EMAIL_CONFIG.enabled && window.emailjs) {
-      const link = location.origin + location.pathname + '#auth-reset=' + token;
-      window.emailjs.send(EMAIL_CONFIG.serviceId, EMAIL_CONFIG.templateId, { to_email: user.email, reset_link: link })
-        .then(() => renderRealEmailSentScreen(user.email))
-        .catch(() => renderSimulatedEmailScreen(user.email, token));
-    } else {
-      renderSimulatedEmailScreen(user.email, token);
-    }
+    const link = location.origin + location.pathname + '#auth-reset=' + token;
+
+    // Le pedimos al servidor propio que mande el correo de verdad. Si el
+    // servidor no responde, no está configurado, o falla por cualquier
+    // motivo, caemos solas al panel simulado — el flujo nunca se rompe.
+    fetch(BACKEND_CONFIG.apiBaseUrl + '/api/send-reset-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ to: user.email, username: user.username, resetLink: link }),
+    })
+      .then(res => res.json().catch(() => ({ ok: false })))
+      .then(data => {
+        if (data && data.ok) renderRealEmailSentScreen(user.email);
+        else renderSimulatedEmailScreen(user.email, token);
+      })
+      .catch(() => renderSimulatedEmailScreen(user.email, token));
   }
 
   function submitReset(evt) {

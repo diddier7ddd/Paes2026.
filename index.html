@@ -290,6 +290,72 @@ h1,h2,h3,.display{ font-family:'Fraunces', serif; letter-spacing:-0.01em; }
   .notes-panel{ width:calc(100vw - 24px); }
 }
 
+/* ---------- Widget del asistente de IA (Ciencias y Matemática) ---------- */
+/* Mismo lenguaje visual que el widget de notas (mismo tamaño, radios,
+   sombras) para que se sienta parte del mismo sistema, pero con su propia
+   identidad: el degradado cónico usa los 4 colores de asignatura (teal,
+   amber, rust, blush) como guiño a que responde de las 4 áreas. Se ubica
+   a la izquierda del botón de notas, con la misma fila inferior. */
+.ai-fab{
+  position:fixed; bottom:24px; right:94px; width:56px; height:56px; border-radius:50%;
+  background:conic-gradient(from 200deg, var(--teal), var(--amber), var(--rust), var(--blush), var(--teal));
+  border:2px solid rgba(255,255,255,0.65); box-shadow:0 8px 22px rgba(122,74,16,0.38);
+  display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:500;
+  transition:transform .15s ease, box-shadow .15s ease; padding:0;
+}
+.ai-fab:hover{ transform:translateY(-2px) scale(1.05); box-shadow:0 12px 28px rgba(122,74,16,0.46); }
+.ai-fab.nf-hidden{ display:none; }
+.ai-fab svg{ width:26px; height:26px; display:block; }
+
+.ai-panel{
+  position:fixed; width:360px; max-width:calc(100vw - 24px); max-height:min(600px, 78vh);
+  background:linear-gradient(160deg, var(--paper), var(--paper-dim)); border:1px solid rgba(122,74,16,0.28); border-radius:16px;
+  box-shadow:0 18px 54px rgba(58,38,6,0.32); z-index:600; display:flex; flex-direction:column;
+  overflow:hidden;
+}
+.ai-panel.np-hidden{ display:none; }
+.ai-panel-header{
+  background:linear-gradient(120deg, var(--teal), var(--amber) 130%); padding:11px 8px 11px 16px;
+  display:flex; align-items:center; justify-content:space-between; cursor:grab; user-select:none;
+  touch-action:none;
+}
+.ai-panel-header:active{ cursor:grabbing; }
+.ai-panel-title{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:13.5px; color:#1f2e1a; letter-spacing:0.01em; display:flex; align-items:center; gap:7px; }
+.ai-panel-close{ background:rgba(255,255,255,0.55); border:none; width:26px; height:26px; border-radius:50%; cursor:pointer; font-size:13px; color:#1f2e1a; line-height:1; flex:none; }
+.ai-panel-close:hover{ background:rgba(255,255,255,0.85); }
+
+.ai-panel-body{ padding:14px; overflow-y:auto; flex:1; display:flex; flex-direction:column; gap:10px; }
+.ai-intro{ font-family:'Space Grotesk',sans-serif; font-size:12.3px; color:var(--muted); text-align:center; padding:14px 10px; line-height:1.55; }
+.ai-intro b{ color:var(--amber-text); }
+.ai-msg{ max-width:88%; padding:9px 13px; border-radius:14px; font-size:13.6px; line-height:1.55; word-wrap:break-word; }
+.ai-msg.user{ align-self:flex-end; background:var(--amber); color:#2b1a05; border-bottom-right-radius:4px; white-space:pre-wrap; }
+.ai-msg.assistant{ align-self:flex-start; background:rgba(255,255,255,0.68); color:#3d2a06; border:1px solid rgba(122,74,16,0.14); border-bottom-left-radius:4px; }
+.ai-msg.assistant.error{ background:rgba(193,71,106,0.12); border-color:rgba(193,71,106,0.35); color:#7a1f3d; }
+.ai-msg p{ margin:0 0 8px; }
+.ai-msg p:last-child{ margin-bottom:0; }
+.ai-sources{ align-self:flex-start; max-width:88%; display:flex; flex-direction:column; gap:4px; }
+.ai-source-chip{ font-family:'Space Grotesk',sans-serif; font-size:10.8px; color:#3f5c2c; background:rgba(143,174,110,0.16); border:1px solid rgba(143,174,110,0.42); border-radius:8px; padding:5px 9px; line-height:1.4; }
+.ai-source-chip.web{ color:#3d5872; background:rgba(170,194,220,0.2); border-color:rgba(61,88,114,0.32); }
+.ai-source-chip a{ color:inherit; }
+.ai-typing{ align-self:flex-start; display:flex; gap:4px; padding:11px 15px; background:rgba(255,255,255,0.5); border-radius:14px; border-bottom-left-radius:4px; }
+.ai-typing span{ width:6px; height:6px; border-radius:50%; background:var(--muted-2); opacity:0.5; animation:aiTypingDot 1.1s infinite ease-in-out; }
+.ai-typing span:nth-child(2){ animation-delay:.15s; }
+.ai-typing span:nth-child(3){ animation-delay:.3s; }
+@keyframes aiTypingDot{ 0%,60%,100%{ transform:translateY(0); opacity:0.4; } 30%{ transform:translateY(-4px); opacity:0.9; } }
+
+.ai-input-row{ display:flex; gap:8px; align-items:flex-end; padding:12px 14px; border-top:1px solid rgba(122,74,16,0.14); background:rgba(255,255,255,0.32); }
+.ai-input{ flex:1; border:1px solid rgba(122,74,16,0.22); border-radius:18px; padding:9px 15px; font-family:'Space Grotesk',sans-serif; font-size:13px; color:#3d2a06; background:rgba(255,255,255,0.75); resize:none; max-height:80px; line-height:1.4; }
+.ai-input:focus{ outline:none; border-color:var(--amber-dim); background:#fff; }
+.ai-send-btn{ width:36px; height:36px; min-width:36px; border-radius:50%; border:none; background:var(--amber); color:#2b1a05; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all .15s ease; }
+.ai-send-btn:hover:not(:disabled){ background:#e2c065; transform:translateY(-1px); }
+.ai-send-btn:disabled{ opacity:0.4; cursor:not-allowed; }
+.ai-send-btn svg{ width:16px; height:16px; }
+.ai-disclaimer{ font-family:'Space Grotesk',sans-serif; font-size:10.3px; color:var(--muted-2); text-align:center; padding:0 14px 11px; line-height:1.4; }
+
+@media (max-width:600px){
+  .ai-panel{ width:calc(100vw - 24px); }
+}
+
 /* ---------- Quiz ---------- */
 .quiz-meta{ display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:10px; }
 .timer{ background:rgba(193,71,106,0.15); border:1px solid rgba(193,71,106,0.4); color:#7a1f3d; padding:8px 16px; border-radius:999px; font-weight:600; font-size:14px; }
@@ -469,7 +535,39 @@ h1,h2,h3,.display{ font-family:'Fraunces', serif; letter-spacing:-0.01em; }
   <div class="notes-panel-body" id="notesPanelBody"></div>
 </div>
 
+<!-- Asistente de IA: botón flotante + panel de chat. Se oculta/muestra en
+     conjunto con el de notas (ver chat-widget.js), sin tocar app.js. -->
+<button id="aiFab" class="ai-fab nf-hidden" onclick="AiWidget.toggle()" title="Pregúntame de Ciencias o Matemática" aria-label="Abrir el asistente de Ciencias y Matemática">
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M5.5 5.2h13a1.8 1.8 0 0 1 1.8 1.8v6.4a1.8 1.8 0 0 1-1.8 1.8H10.6l-3.6 3v-3H5.5a1.8 1.8 0 0 1-1.8-1.8V7a1.8 1.8 0 0 1 1.8-1.8z" fill="#fdf8ef" stroke="#4a3208" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M13.4 7.5l.8 1.75 1.75.8-1.75.8-.8 1.75-.8-1.75-1.75-.8 1.75-.8z" fill="#e6a8c4" stroke="#4a3208" stroke-width="0.8" stroke-linejoin="round"/>
+  </svg>
+</button>
+
+<div id="aiPanel" class="ai-panel np-hidden">
+  <div class="ai-panel-header" id="aiPanelHeader">
+    <span class="ai-panel-title">✨ Asistente · Ciencias y Matemática</span>
+    <button class="ai-panel-close" onclick="AiWidget.close()" aria-label="Cerrar asistente">✕</button>
+  </div>
+  <div class="ai-panel-body" id="aiPanelBody"></div>
+  <div class="ai-input-row">
+    <textarea id="aiInput" class="ai-input" rows="1" maxlength="1500" placeholder="Pregunta algo de Ciencias o Matemática…" aria-label="Escribe tu pregunta"></textarea>
+    <button id="aiSendBtn" class="ai-send-btn" onclick="AiWidget.send()" aria-label="Enviar pregunta">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 12L20 4l-6 16-3.5-7L3.5 12z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" fill="none"/></svg>
+    </button>
+  </div>
+  <p class="ai-disclaimer">Puede cometer errores. Revisa siempre los temas importantes.</p>
+</div>
+
+<script>
+  // URL del servidor propio (carpeta /server — server.js). Se define UNA
+  // sola vez acá, y tanto auth.js (correo de recuperación) como
+  // chat-widget.js (asistente de IA) la leen de acá para no repetirla.
+  // Cambia este valor cuando publiques el sitio de verdad (ver server/README.md).
+  window.HERBARIO_API_BASE_URL = 'http://localhost:3000';
+</script>
 <script src="./auth.js"></script>
 <script src="./app.js"></script>
+<script src="./chat-widget.js"></script>
 </body>
 </html>
